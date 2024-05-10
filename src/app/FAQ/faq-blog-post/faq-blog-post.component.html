@@ -1,0 +1,126 @@
+<div class="container">
+  <nav aria-label="breadcrumb" style="margin-top: 5px">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a style="color: #273947; font-weight: 600" routerLink=""
+          >Household Goods Moving And Storage</a
+        >
+      </li>
+      <li class="breadcrumb-item">
+        <a style="color: #273947; font-weight: 600" routerLink="/blog/">Blog</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ currentPage }}
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <main>
+        <article>
+          <div class="card">
+            <div class="card-header">
+              <header class="entry-header">
+                <h1 itemprop="headline">
+                  {{ article.title }}
+                </h1>
+                <p>
+                  <time [attr.datetime]="lastUpdate" class=""
+                    >Last Updated: {{ textLastUpdate }}</time
+                  >
+                  <span>&nbsp;• 4 min read</span>
+                </p>
+              </header>
+            </div>
+            <div class="card-body">
+              <div class="entry-content clear" itemprop="text">
+                <section>
+                  <div class="container">
+                    <div>
+                      {{ article.introduction }}
+                    </div>
+                  </div>
+                </section>
+
+                <div>
+                  <section>
+                    <ol style="padding-left: 1rem">
+                      <li
+                        style="list-style-type: none"
+                        *ngFor="let h2 of article.h2List; let i = index"
+                      >
+                        <h2>
+                          <strong id="{{ h2.id }}">{{ h2.title }}</strong>
+                        </h2>
+                        {{ h2.paragraph.p }}
+                        <div *ngFor="let p of h2.paragraph; let i = index">
+                          <p>{{ p.p }}</p>
+                          <app-article-table
+                            [table]="p.table"
+                            *ngIf="p.table"
+                          ></app-article-table>
+
+                          <ol *ngIf="p.ul">
+                            <li
+                              style="list-style-type: none"
+                              *ngFor="let li of p.ul; let i = index"
+                            >
+                              <h3>
+                                <strong>{{ li.h3 }}</strong>
+                              </h3>
+                              <p *ngFor="let p of li.p; let j = index">
+                                {{ p.p }}
+                              </p>
+
+                              <ul *ngIf="li.ul">
+                                <li *ngFor="let li of li.ul; let j = index">
+                                  <h4 style="font-weight: 100; font-size: 16px">
+                                    <strong>{{ li.h4 }}:</strong> {{ li.p }}
+                                  </h4>
+                                </li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </div>
+                      </li>
+                    </ol>
+                  </section>
+
+                  <section>
+                    <h2>
+                      <span id="Conclusion">{{ article.conclusion.h2 }}</span>
+                    </h2>
+                    <p
+                      *ngFor="
+                        let p of article.conclusion.paragraph;
+                        let j = index
+                      "
+                    >
+                      {{ p.p }}
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+    <div class="col-sm">
+      <aside>
+        <div class="container">
+          <div class="row">
+            <section>
+              <app-article-quote></app-article-quote>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,296 @@
+<div class="container">
+  <nav aria-label="breadcrumb" style="margin-top: 5px">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a style="color: #273947; font-weight: 600" routerLink=""
+          >Household Goods Moving And Storage</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ currentPage }}
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <main>
+        <article>
+          <div class="card">
+            <div class="card-header">
+              <header class="entry-header">
+                <h1 itemprop="headline">
+                  {{ article.title }}
+                </h1>
+                <p>
+                  <time [attr.datetime]="lastUpdate" class=""
+                    >Last Updated: {{ textLastUpdate }}</time
+                  >
+                  <span>&nbsp;• 4 min read</span>
+                </p>
+              </header>
+            </div>
+            <div class="card-body">
+              <div class="entry-content clear" itemprop="text">
+                <section>
+                  <div class="container">
+                    <div>
+                      <a
+                        target="_blank"
+                        routerLink="/household-moving-company/how-to-find-an-interstate-mover/video"
+                        >Watch the video: How to Find an Interstate Mover: Tips
+                        for Choosing the Right Interstate Movers</a
+                      >
+                    </div>
+                    <div>
+                      {{ article.mainParagraph }}
+                    </div>
+                  </div>
+                </section>
+
+                <div>
+                  <section>
+                    <ol>
+                      <li
+                        style="list-style-type: none"
+                        *ngFor="let h3 of article.h3List; let i = index"
+                      >
+                        <h2>
+                          <strong id="{{ h3.id }}">{{ h3.title }}</strong>
+                        </h2>
+                        <p *ngIf="i != 4">{{ h3.paragraph }}</p>
+                        <div class="container" *ngIf="i == 4">
+                          <div class="row">
+                            <div class="col-sm-8">
+                              <p>{{ h3.paragraph }}</p>
+                            </div>
+
+                            <div class="col-sm">
+                              <img
+                                width="200px"
+                                src="../../../assets/images/interstate-movers.jpg"
+                                alt="Interstate movers providing moving services"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ol>
+                  </section>
+
+                  <section>
+                    <h2>
+                      <span id="Interstate_Movers_Cost">
+                        How Much Do Interstate Movers Cost?</span
+                      >
+                    </h2>
+                    <p>
+                      The average cost of an interstate move can vary
+                      significantly based on various factors such as distance
+                      traveled, volume or weight of belongings, additional
+                      services required, and the specific moving company's
+                      rates.
+                      <br />
+                      Generally, moves to popular destinations may be cheaper
+                      due to higher demand and more frequent routes.
+                      <br />
+                      Keep in mind that summer is typically a more expensive
+                      time to move due to high demand.
+                      <br />
+                      However, to provide a rough estimate:
+                    </p>
+                    <h3>Average Interstate Moving Costs: Low Season Rates</h3>
+                    <table
+                      class="table"
+                      itemscope
+                      itemtype="https://schema.org/Table"
+                    >
+                      <caption>
+                        Low Season Interstate Movers Rates: November - March.
+                        <time [attr.datetime]="prices.lastUpdate" class=""
+                          >Last Updated: {{ prices.textLastUpdate }}</time
+                        >
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th
+                            scope="col"
+                            *ngFor="
+                              let th of prices.columnHeaders;
+                              let i = index
+                            "
+                          >
+                            {{ th }}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          itemscope
+                          itemtype="https://schema.org/Service"
+                          *ngFor="let row of prices.rows; let i = index"
+                        >
+                          <th scope="row" itemprop="name">
+                            {{ row.header }}
+                          </th>
+                          <td *ngFor="let column of row.columns; let j = index">
+                            <span itemprop="priceRange">
+                              {{ column }}
+                            </span>
+                            <meta itemprop="priceCurrency" content="USD" />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3>Average Interstate Moving Costs: Peak Season Rates</h3>
+                    <table
+                      class="table"
+                      itemscope
+                      itemtype="http://schema.org/Table"
+                    >
+                      <caption>
+                        Peak Season Interstate Movers Rates: April - October.
+                        <time
+                          [attr.datetime]="pricesPickSeason.lastUpdate"
+                          class=""
+                          >Last Updated:
+                          {{ pricesPickSeason.textLastUpdate }}</time
+                        >
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th
+                            scope="col"
+                            *ngFor="
+                              let th of pricesPickSeason.columnHeaders;
+                              let i = index
+                            "
+                          >
+                            {{ th }}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          itemscope
+                          itemtype="https://schema.org/Service"
+                          *ngFor="
+                            let row of pricesPickSeason.rows;
+                            let i = index
+                          "
+                        >
+                          <th scope="row" itemprop="name">{{ row.header }}</th>
+                          <td *ngFor="let column of row.columns; let j = index">
+                            <span itemprop="priceRange">
+                              {{ column }}
+                            </span>
+                            <meta itemprop="priceCurrency" content="USD" />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p>
+                      For a personalized move quote tailored to your specific
+                      needs and circumstances for your interstate move or to
+                      schedule an appointment with one of our experienced
+                      estimators, please fill out our
+                      <a style="color: #273947; font-weight: 600" href=""
+                        >Free Instant Quote</a
+                      >
+                      or contact us directly at
+                      <a
+                        style="color: #273947; font-weight: 600"
+                        [href]="'tel:+' + phoneLink"
+                        >{{ phone }}</a
+                      >. Our team is dedicated to providing you with accurate
+                      and transparent pricing, ensuring that your interstate
+                      move is as seamless and stress-free as possible. We're
+                      here to help every step of the way. Don't hesitate to
+                      reach out - we look forward to assisting you with your
+                      upcoming move!
+                    </p>
+                  </section>
+                  <section>
+                    <h2>
+                      <span id="Conclusion">Conclusion</span>
+                    </h2>
+                    <p>
+                      {{ article.conclusion }}
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+    <div class="col-sm">
+      <aside>
+        <div class="container">
+          <div class="row">
+            <section>
+              <app-article-quote></app-article-quote>
+            </section>
+            <section>
+              <div>
+                Service Areas:
+                <ul *ngFor="let area of serviceArea; let i = index">
+                  <li>
+                    <a
+                      routerLink="/household-moving-company/interstate-movers/{{
+                        area.key
+                      }}/"
+                      >{{ area.name }} Interstate Movers</a
+                    >
+                    <ul *ngFor="let state of area.states; let i = index">
+                      <li>
+                        <a
+                          routerLink="/household-moving-company/interstate-movers/{{
+                            area.key
+                          }}/{{ state.key }}/"
+                          >{{ state.name }} Interstate Movers</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <p class="card-text">Need help? Call Now</p>
+              <a [href]="'tel:+12405707987'">
+                <button
+                  type="button"
+                  class="btn btn-lg"
+                  style="
+                    background-color: #ffde59;
+                    border: 0px;
+                    color: #273947;
+                    font-weight: bold;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="currentColor"
+                    class="bi bi-telephone"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+                    ></path>
+                  </svg>
+                  240 - 570 - 7987
+                </button>
+              </a>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

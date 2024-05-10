@@ -1,0 +1,19 @@
+<div class="container">
+  <nav aria-label="breadcrumb" style="margin-top: 5px">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a style="color: #273947; font-weight: 600" routerLink=""
+          >Household Goods Moving And Storage</a
+        >
+      </li>
+      <li class="breadcrumb-item active">Blog</li>
+    </ol>
+  </nav>
+</div>
+<div class="container" style="padding: 10px 0px">
+  <h1>Household Goods Blog</h1>
+  <app-faq-blog-card
+    *ngFor="let post of blogPosts; let i = index"
+    [post]="post"
+  ></app-faq-blog-card>
+</div>
