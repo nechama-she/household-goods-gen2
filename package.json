@@ -1,5 +1,5 @@
 {
-  "name": "amplify-angular-template",
+  "name": "household-goods-moving",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:amplify-angular-template": "node dist/amplify-angular-template/server/server.mjs"
+    "serve:ssr:household-goods-moving": "node dist/household-goods-moving/server/server.mjs"
   },
   "private": true,
   "dependencies": {
