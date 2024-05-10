@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>
+    <a
+      *ngIf="subject.moreQuestionsLink"
+      style="color: #273947"
+      href="residential-movers/faq"
+      >{{ subject.h2 }}</a
+    >
+    <span *ngIf="!subject.moreQuestionsLink">{{ subject.h2 }}</span>
+  </h2>
+  <div>
+    <app-faq-question
+      *ngFor="let question of subject.questions; let i = index"
+      [question]="question"
+      [questionIndex]="i + 1"
+    ></app-faq-question>
+    <div *ngIf="subject.moreQuestionsLink">
+      <p>
+        <a style="color: #273947" [href]="subject.moreQuestionsLink"
+          >click here for more questions about residential moves</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

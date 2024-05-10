@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://www.household-goods-moving-and-storage.com/sitemap.xml

@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <caption>
+      {{
+        table.caption
+      }}
+      <time [attr.datetime]="lastUpdate" class=""
+        >Last Updated: {{ textLastUpdate }}</time
+      >
+    </caption>
+    <thead>
+      <tr class="table-dark">
+        <th *ngFor="let th of table.headers; let i = index">
+          {{ th }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of table.rows; let i = index">
+        <td
+          style="min-width: 85px"
+          *ngFor="let column of row.columns; let j = index"
+        >
+          <ul *ngIf="column.ul">
+            <li *ngFor="let li of column.ul; let j = index">
+              {{ li }}
+            </li>
+          </ul>
+          <span *ngIf="!column.ul && !column.product">
+            {{ column }}
+          </span>
+          <div *ngIf="column.product">
+            {{ column.productName }}
+            <br />
+            <a [href]="column.product" target="_blank">
+              <img
+                width="150px"
+                src="../../../assets/images/buy-now-on-amazon.png"
+              />
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

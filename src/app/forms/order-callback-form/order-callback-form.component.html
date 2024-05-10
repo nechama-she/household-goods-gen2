@@ -1,0 +1,68 @@
+<div class="container">
+  <div>
+    <img style="width: 400px" src="../../../assets/images/EliJones.jpg" />
+  </div>
+  <div>
+    <form
+      name="orderCallbackFormName"
+      *ngIf="showForm"
+      [formGroup]="orderCallbackForm"
+      style="color: #273947; max-width: 100%; font-size: 14px"
+      (ngSubmit)="sendEmail()"
+    >
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="nameInput"
+          #nameInput
+          formControlName="nameInput"
+          name="nameInput"
+          placeholder=""
+        />
+        <label for="nameInput">Name</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="tel"
+          class="form-control"
+          id="phoneInput"
+          formControlName="phoneInput"
+          name="phoneInput"
+          #phoneInput
+          placeholder=""
+          required
+        />
+        <label for="phoneInput">Phone Number</label>
+        <div class="invalid-feedback text-start">
+          Please enter a valid phone number
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="btn btn-lg"
+          style="
+            background-color: #ffde59;
+            border: 0px;
+            color: #273947;
+            font-weight: bold;
+          "
+        >
+          Callback
+        </button>
+        <div style="font-size: 14px; margin-left: 20px">
+          * We do not share your information with any third parties without your
+          permission. Only our estimator will call you regarding your move. We
+          do not sell, communicate or divulge your information to any mailing
+          lists.
+        </div>
+      </div>
+    </form>
+    <app-order-callback-form-thanks
+      *ngIf="!showForm"
+    ></app-order-callback-form-thanks>
+  </div>
+</div>

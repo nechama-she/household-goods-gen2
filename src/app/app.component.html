@@ -1,1 +1,145 @@
-<app-todos></app-todos>
+<!-- Modal Thank you-->
+<div
+  class="modal fade"
+  id="sendQouteThankModal"
+  tabindex="-1"
+  aria-labelledby="sendQouteThankModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border: 0px">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeSendQouteThankModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Thank you for contanting
+        <a style="color: #577476; font-weight: bold" [href]="homePageLink"
+          >Household Goods Moving And Storage</a
+        >! A repersentor will contact you soon.
+      </div>
+      <div class="modal-footer" style="border: 0px">
+        <a [href]="'tel:+' + phoneLink">
+          <button
+            type="button"
+            class="btn btn-lg"
+            style="
+              background-color: #ffde59;
+              border: 0px;
+              color: #273947;
+              font-weight: bold;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              class="bi bi-telephone"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+              ></path>
+            </svg>
+            {{ phone }}
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal order callback-->
+<app-order-callback-modal></app-order-callback-modal>
+<app-quote-modal></app-quote-modal>
+
+<nav class="navbar sticky-top" style="background-color: #f0e5d4">
+  <div class="container-fluid">
+    <div class="justify-content-start">
+      <a class="navbar-brand" [href]="homePageLink" class="logo-desktop-only">
+        <img
+          src="../assets/images/moving-logo.webp"
+          width="90"
+          height="90"
+          class="d-inline-block align-top"
+          alt="Household Goods
+          Moving And Storage"
+        />
+      </a>
+      <div
+        class="d-inline-block"
+        style="font-weight: bold; font-size: xx-large; color: #273947"
+      >
+        <span
+          ><a href="/" style="text-decoration: none; color: #273947">
+            <span style="font-size: 20px; font-weight: bold"
+              >Household Goods Moving And Storage</span
+            >
+            <br />
+            <span style="font-size: 15px">USDOT Number: 4012295</span>
+          </a></span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a [href]="'tel:+' + phoneLink"
+          ><button
+            (click)="logActivity('header phone')"
+            type="button"
+            class="btn btn-lg"
+            style="
+              background-color: #ffde59;
+              border: 0px;
+              color: #273947;
+              font-weight: bold;
+              min-width: 200px;
+              min-height: 48px;
+              font-size: 16px;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              class="bi bi-telephone"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+              ></path>
+            </svg>
+            {{ phone }}
+          </button></a
+        >
+      </div>
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-lg"
+          style="
+            background-color: #ffde59;
+            border: 0px;
+            color: #273947;
+            font-weight: bold;
+            min-height: 48px;
+            max-width: 200px;
+            font-size: 15px;
+          "
+          (click)="openOrderCallbackModal()"
+        >
+          ORDER CALLBACK
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+<app-footer [phoneLink]="phoneLink" [phone]="phone"></app-footer>
