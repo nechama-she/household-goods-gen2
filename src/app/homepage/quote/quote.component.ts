@@ -9,10 +9,10 @@ import { FormBuilder } from '@angular/forms';
   styleUrl: './quote.component.scss',
 })
 export class QuoteComponent {
-  @ViewChild('M8SX8KNKg') trustmaryWidget!: ElementRef;
+  @ViewChild('5O_Rkjdu7') trustmaryWidget!: ElementRef;
   scriptAdded: boolean = false;
   phoneLink = '12405707987';
-  phone = '(240)-570-7987';
+  phoneText = '(240)-570-7987';
   homePageLink = '/';
   title = 'household-goods-moving';
   jsonLdData: any;
@@ -46,7 +46,7 @@ export class QuoteComponent {
   ngAfterViewInit() {
     if (!this.scriptAdded) {
       const script = this.document.createElement('script');
-      script.src = 'https://widget.trustmary.com/M8SX8KNKg';
+      script.src = 'https://widget.trustmary.com/5O_Rkjdu7';
       script.async = true;
       if (this.trustmaryWidget.nativeElement.innerHTML == '')
         this.trustmaryWidget.nativeElement.appendChild(script);
