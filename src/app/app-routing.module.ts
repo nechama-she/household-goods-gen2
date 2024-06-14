@@ -16,6 +16,7 @@ import { DmvHomeComponent } from './movers/dmv/dmv-home/dmv-home.component';
 import { ChicagoHomeComponent } from './movers/chicago/chicago-home/chicago-home.component';
 import { PackingMaterialsTableComponent } from './packing-materials/packing-materials-table/packing-materials-table.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
@@ -33,7 +34,39 @@ const routes: Routes = [
     path: 'essential-moving-supplies-checklist-for-an-easy-move',
     component: PackingMaterialsTableComponent,
   },
+  {
+    path: 'moving-services',
+    component: MovingServicesMainComponent,
+  },
+  {
+    path: 'local-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
+    path: 'short-distance-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
+    path: 'apartment-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
 
+  {
+    path: 'office-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
+    path: 'appliance-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
+    path: 'piano-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
+    path: 'same-day-movers-rockville-maryland',
+    component: ArticlePageComponent,
+  },
   {
     path: 'blog',
     component: FaqBlogComponent,

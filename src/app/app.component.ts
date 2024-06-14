@@ -36,6 +36,11 @@ export class AppComponent {
     modal.classList.add('show');
     //this.logActivity('order callback');
   }
+  openMenuModal() {
+    let modal = this.document.getElementById('menuModal') as HTMLFormElement;
+    modal.style.display = 'block';
+    modal.classList.add('show');
+  }
   logActivity(action) {
     let url = 'https://formspree.io/f/mwkgagwo';
     const httpOptions = {

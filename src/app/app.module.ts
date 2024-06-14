@@ -39,6 +39,8 @@ import { OrderCallbackModalComponent } from './forms/order-callback-modal/order-
 import { OrderCallbackFormComponent } from './forms/order-callback-form/order-callback-form.component';
 import { OrderCallbackFormThanksComponent } from './forms/order-callback-form-thanks/order-callback-form-thanks.component';
 import { QuoteModalComponent } from './forms/quote/quote-modal/quote-modal.component';
+import { MenuComponent } from './homepage/menu/menu.component';
+import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { QuoteModalComponent } from './forms/quote/quote-modal/quote-modal.compo
     OrderCallbackFormComponent,
     OrderCallbackFormThanksComponent,
     QuoteModalComponent,
+    MenuComponent,
+    MovingServicesMainComponent,
   ],
   imports: [
     BrowserModule,
