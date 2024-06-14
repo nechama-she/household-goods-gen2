@@ -1,0 +1,182 @@
+<div class="container">
+  <h1>MOVING SERVICES</h1>
+  <div style="margin-bottom: 30px">
+    At <a href="/">HOUSEHOLD GOODS MOVING AND STORAGE</a>, we're dedicated to
+    assisting businesses and homeowners with their relocation needs. Whether
+    it's a local move within the same city or a long-distance move to another
+    state, we're here to support you every step of the way.<br /><br />
+    Find out more about the different types of services offered by
+    <a href="/">HOUSEHOLD GOODS MOVING AND STORAGE</a>
+    here:
+  </div>
+  <div
+    class="card shadow"
+    *ngFor="let service of movingServices; let i = index"
+  >
+    <div class="card-body">
+      <div class="row">
+        <div
+          class="col-sm"
+          style="text-align: center; margin: auto; width: 60%"
+        >
+          <img
+            alt="{{ service.h2 }}"
+            src="{{ service.logo }}"
+            class="image-service"
+          />
+        </div>
+        <div class="col-sm-9 p-3">
+          <h2>
+            <a href="{{ service.linkToPost }}">{{ service.h2 }}</a>
+          </h2>
+          <p>
+            {{ service.p }}
+          </p>
+          <button type="button" class="btn btn-lg service-button">
+            <a href="{{ service.linkToPost }}">{{ service.linkToPostText }}</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="card shadow">
+    <div class="card-body">
+      <h2>State to State Movers</h2>
+      <p>
+        Let Household Goods Moving And Storage be your trusted partner for your
+        state-to-state move. With our expertise and licensing, we're fully
+        equipped to facilitate your interstate relocation seamlessly, no matter
+        the distance. Request a quote today, customize your interstate moving
+        services, and leave the logistics to us.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING STATE TO STATE</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Local Movers</h2>
+      <p>
+        For your local move, trust our team of trained professionals to handle
+        relocations within your neighborhood, community, or city. Typically
+        covering distances under 50 miles, our relocation service ensures a
+        smooth transition to your new home. Hire Household Goods Moving And
+        Storage today for a hassle-free local move experience.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING LOCAL</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Short-Distance Movers</h2>
+      <p>
+        For your short-distance move, rely on our team of trained professionals
+        to manage relocations within your neighborhood, community, or city. With
+        distances typically under 50 miles, our relocation service guarantees a
+        seamless transition to your new home. Choose Household Goods Moving And
+        Storage today for a stress-free local moving experience.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING SHORT-DISTANCE</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Apartment Movers</h2>
+      <p>
+        Household Goods Moving And Storage team will execute a top-quality move
+        tailored to your preferences and schedule. We prioritize your needs and
+        are ready to accommodate your relocation at a time that suits you best.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING APARTMENT</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Office Movers</h2>
+      <p>
+        Household Goods Moving And Storage We specialize in relocating all
+        office equipment, files, computers, and furniture swiftly and securely
+        to minimize business downtime. With us, you can expect no delays and
+        efficient office moves every single time.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING OFFICE</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Appliance Movers</h2>
+      <p>
+        Household Goods Moving And Storage team are specially trained
+        professionals excel at packing and relocating valuable appliances such
+        as washing machines, refrigerators, televisions, air conditioners, and
+        dishwashers with utmost care and safety. No item is too big or too small
+        for us to handle securely.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING APPLIANCE</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Piano Movers</h2>
+      <p>
+        Whether you're moving a piano within your neighborhood or across state
+        lines, the task can be daunting without professional assistance. With
+        Household Goods Moving And Storage, we ensure a seamless and stress-free
+        process from start to finish, making your piano relocation effortless.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING PIANO</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Same Day Movers</h2>
+      <p>
+        For those in need of immediate service to save time, Household Goods
+        Moving And Storage is here to help. We take every precaution and offer
+        efficient logistics management to facilitate same-day relocation.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>MOVING SAME DAY</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Professional Packers and Movers</h2>
+      <p>
+        We offer a comprehensive range of packing supplies, including boxes of
+        all sizes, blankets, furniture pads, protective foams, and more, to
+        ensure that everything is packed safely and securely before your move.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>PROFESSIONAL PACKERS AND MOVERS</a>
+      </button>
+    </div>
+  </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Car Transport</h2>
+      <p>
+        From start to finish, the Guardian Auto Transport process is
+        meticulously crafted to ensure that shipping your car to Maryland is a
+        simple, reliable, and stress-free experience.
+      </p>
+      <button type="button" class="btn btn-lg service-button">
+        <a>AUTO TRANSPORT SERVICES</a>
+      </button>
+    </div>
+  </div>-->
+</div>

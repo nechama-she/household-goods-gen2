@@ -1,0 +1,40 @@
+a {
+  text-decoration: none;
+  color: #212529;
+  font-weight: bold;
+}
+.service-button {
+  background-color: #273947;
+  border: 0px;
+  color: #f0e5d4;
+  font-size: 15px;
+}
+.service-button a {
+  background-color: #273947;
+  border: 0px;
+  color: #f0e5d4;
+  font-size: 15px;
+}
+h2 {
+  font-size: 18px;
+}
+.card {
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 992px) {
+  .image-service {
+    min-width: 180px;
+    max-width: 180px;
+    max-height: 180px;
+    min-height: 180px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .image-service {
+    min-width: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+  }
+}

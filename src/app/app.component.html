@@ -56,7 +56,9 @@
 </div>
 <!-- Modal order callback-->
 <app-order-callback-modal></app-order-callback-modal>
+
 <app-quote-modal></app-quote-modal>
+<app-menu></app-menu>
 
 <nav class="navbar sticky-top" style="background-color: #f0e5d4">
   <div class="container-fluid">
@@ -78,7 +80,11 @@
         <span
           ><a href="/" style="text-decoration: none; color: #273947">
             <span style="font-size: 20px; font-weight: bold"
-              >Household Goods Moving And Storage</span
+              >Household Goods</span
+            >
+            <br />
+            <span style="font-size: 20px; font-weight: bold"
+              >Moving And Storage</span
             >
             <br />
             <span style="font-size: 15px">USDOT Number: 4012295</span>
@@ -86,6 +92,45 @@
         >
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#menuModal"
+          type="button"
+          class="btn btn-lg"
+          style="
+            background-color: #ffde59;
+            border: 0px;
+            color: #273947;
+            font-weight: bold;
+
+            min-height: 48px;
+            font-size: 16px;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="container-fluid"
+    style="border-top: 1px solid #273947; padding-top: 5px"
+  >
+    <div class="justify-content-start"></div>
     <div class="row">
       <div class="col">
         <a [href]="'tel:+' + phoneLink"
@@ -130,7 +175,8 @@
             font-weight: bold;
             min-height: 48px;
             max-width: 200px;
-            font-size: 15px;
+            min-width: 160px;
+            font-size: 14px;
           "
           (click)="openOrderCallbackModal()"
         >
