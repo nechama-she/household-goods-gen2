@@ -82,13 +82,13 @@ export class MovingServicesMainComponent {
         linkToPostText: 'PROFESSIONAL PACKERS AND MOVERS',
         logo: '../../../assets/images/household-moving-services/professional packers and movers.png',
       },
-      {
+      /*{
         h2: 'Car Transport',
         p: 'From start to finish, the Guardian Auto Transport process is meticulously crafted to ensure that shipping your car to Maryland is a simple, reliable, and stress-free experience.',
         linkToPost: 'moving-services/long-distance-movers',
         linkToPostText: 'AUTO TRANSPORT SERVICES',
         logo: '../../../assets/images/household-moving-services/car transport.png',
-      },
+      },*/
     ];
   }
 }
