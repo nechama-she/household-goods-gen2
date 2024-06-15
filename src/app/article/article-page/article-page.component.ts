@@ -60,6 +60,9 @@ export class ArticlePageComponent {
       case router.url.includes('same-day-movers-rockville-maryland'):
         this.getSameDayMovers();
         break;
+      case router.url.includes('junk-removal-rockville-maryland'):
+        this.getJunkRemovalMovers();
+        break;
     }
 
     this.getPrices();
@@ -222,6 +225,26 @@ export class ArticlePageComponent {
         'At Household Goods Moving & Storage, we specialize in same-day moving services, providing swift and efficient relocations for clients in Rockville MD and surrounding areas. Count on us for prompt assistance and dependable support when you need it most.',
     });
     this.getArticle_SameDayMovers();
+  }
+  getJunkRemovalMovers() {
+    this.currentPage = 'Junk Removal';
+    this.currentPageLink = 'junk-removal';
+    this.lastUpdate = '2024-06-10';
+    this.textLastUpdate = 'June, 6 2024';
+    this.titleService.setTitle(
+      'Junk Removal in Rockville MD | Household Goods Movers'
+    );
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Need fast and reliable junk removal in Montgomery County, Rockville, Maryland? HOUSEHOLD GOODS MOVING AND STORAGE offers professional and eco-friendly junk removal services for homes and offices. Get a clutter-free space today!',
+    });
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Need fast and reliable junk removal in Montgomery County, Rockville, Maryland? HOUSEHOLD GOODS MOVING AND STORAGE offers professional and eco-friendly junk removal services for homes and offices. Get a clutter-free space today!',
+    });
+    this.getArticle_JunkRemoval();
   }
   ngOnInit(): void {
     this.serviceArea = [
@@ -971,6 +994,125 @@ export class ArticlePageComponent {
           title: 'Strong Reputation in Rockville, Maryland',
           paragraph:
             'The positive feedback from satisfied clients underscores our exceptional reputation at HOUSEHOLD GOODS MOVING AND STORAGE. Many residents and businesses in Montgomery County and Rockville, Maryland, commend our reliability, efficiency, and friendly service. High ratings on review platforms and word-of-mouth recommendations highlight our standing as the best same day mover in the area.',
+        },
+      ],
+    };
+  }
+  getArticle_JunkRemoval() {
+    this.article = {
+      id: 'junk-removal-rockville-maryland',
+      title: 'Junk Removal Services by HOUSEHOLD GOODS MOVING AND STORAGE',
+      mainParagraph:
+        "At HOUSEHOLD GOODS MOVING AND STORAGE, we offer comprehensive junk removal services tailored to meet the needs of our clients in Montgomery County, Rockville, Maryland. Whether you're decluttering your home, renovating your office, or cleaning out an estate, our professional team is here to help you dispose of unwanted items quickly and efficiently.",
+      h2Paragraph: '',
+      conclusion:
+        "Ready to reclaim your space and get rid of unwanted items? Contact HOUSEHOLD GOODS MOVING AND STORAGE today for a free quote on our junk removal services. We’re here to make the process easy and stress-free, so you can enjoy a clutter-free home or office. Call us to schedule your junk removal service in Montgomery County, Rockville, Maryland. Let us help you clear the clutter and make room for what's important!",
+      h3List: [
+        {
+          id: 'Why_Choose_Our_Junk_Removal_Services?',
+          title: 'Why Choose Our Junk Removal Services?',
+          paragraph: '',
+          list: [
+            {
+              id: 'Professional_and_Reliable_Team',
+              title: 'Professional and Reliable Team:',
+              paragraph:
+                'Our trained and experienced team handles all types of junk removal with care and professionalism. We arrive on time, work efficiently, and ensure that your space is left clean and clutter-free.',
+            },
+            {
+              id: 'Comprehensive_Service',
+              title: 'Comprehensive Service:',
+              paragraph:
+                'From small household items to large furniture and appliances, we handle all kinds of junk removal. No job is too big or too small for us.',
+            },
+            {
+              id: 'Eco-Friendly_Disposal',
+              title: 'Eco-Friendly Disposal:',
+              paragraph:
+                'We are committed to environmentally responsible junk removal. We sort and dispose of items in a manner that minimizes waste, recycling and donating usable items whenever possible.',
+            },
+            {
+              id: 'Convenient_Scheduling',
+              title: 'Convenient Scheduling:',
+              paragraph:
+                'We offer flexible scheduling options to fit your busy life. Whether you need same-day service or prefer to plan ahead, we accommodate your schedule.',
+            },
+            {
+              id: 'Transparent_Pricing',
+              title: 'Transparent Pricing:',
+              paragraph:
+                'Our pricing is competitive and transparent, with no hidden fees. We provide upfront quotes, so you know exactly what to expect.',
+            },
+          ],
+        },
+
+        {
+          id: 'Our_Junk_Removal_Process',
+          title: 'Our Junk Removal Process',
+          paragraph: '',
+          list: [
+            {
+              id: 'Consultation_and_Quote',
+              title: 'Consultation and Quote:',
+              paragraph:
+                'Contact us to discuss your junk removal needs. We provide a free, no-obligation quote based on the volume and type of items to be removed.',
+            },
+            {
+              id: 'Efficient Removal',
+              title: 'Efficient Removal:',
+              paragraph:
+                ' Our team arrives at your location, prepared with the necessary equipment to handle the removal process efficiently. We carefully remove all unwanted items, ensuring no damage to your property.',
+            },
+            {
+              id: 'Eco-Friendly_Disposal',
+              title: 'Eco-Friendly Disposal:',
+              paragraph:
+                'We sort through the items to determine what can be recycled, donated, or disposed of responsibly. Our goal is to minimize landfill waste and support community organizations through donations.',
+            },
+            {
+              id: 'Clean-Up',
+              title: 'Clean-Up:',
+              paragraph:
+                'After removing the junk, we clean up the area, leaving your space neat and tidy. You’ll be amazed at how much more space you have once the clutter is gone.',
+            },
+          ],
+        },
+        {
+          id: 'Types_of_Junk_We_Handle',
+          title: 'Types of Junk We Handle',
+          paragraph: '',
+          list: [
+            {
+              id: 'Household_Items',
+              title: 'Household Items:',
+              paragraph:
+                'Furniture, appliances, electronics, mattresses, and more.',
+            },
+            {
+              id: 'Office_Equipment',
+              title: 'Office Equipment:',
+              paragraph:
+                'Desks, chairs, computers, printers, and office supplies.',
+            },
+            {
+              id: 'Construction_Debris',
+              title: 'Construction Debris:',
+              paragraph:
+                'Lumber, drywall, tiles, and other construction materials.',
+            },
+            {
+              id: 'Yard_Waste',
+              title: 'Yard Waste:',
+              paragraph:
+                'Branches, leaves, grass clippings, and other organic waste.',
+            },
+            {
+              id: 'Estate_Cleanouts',
+              title: 'Estate Cleanouts:',
+              paragraph:
+                'Complete cleanout services for estates, including sorting and disposal of all items.',
+            },
+          ],
         },
       ],
     };

@@ -68,6 +68,10 @@ const routes: Routes = [
     component: ArticlePageComponent,
   },
   {
+    path: 'junk-removal-rockville-maryland',
+    component: ArticlePageComponent,
+  },
+  {
     path: 'blog',
     component: FaqBlogComponent,
   },
