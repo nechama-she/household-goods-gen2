@@ -33,6 +33,10 @@ img {
   height: 55%; /* Adjust overlay height */
   background-color: transparent; /* Adjust overlay color and opacity */
 }
+li a {
+  color: #212529;
+  text-decoration: none;
+}
 @media screen and (min-width: 760px) {
   .margin-desktop {
     margin: 20px 50px;
