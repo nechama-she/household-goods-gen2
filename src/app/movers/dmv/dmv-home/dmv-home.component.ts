@@ -7,7 +7,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrl: './dmv-home.component.scss',
 })
 export class DmvHomeComponent {
-  @ViewChild('epuTEbXvx') trustmaryWidget!: ElementRef;
+  //@ViewChild('epuTEbXvx') trustmaryWidget!: ElementRef;
+  @ViewChild('456') skWidget!: ElementRef;
   scriptAdded: boolean = false;
   constructor(@Inject(DOCUMENT) private document: Document) {
     // this.logActivity('init');
@@ -15,10 +16,10 @@ export class DmvHomeComponent {
   ngAfterViewInit() {
     if (!this.scriptAdded) {
       const script = this.document.createElement('script');
-      script.src = 'https://widget.trustmary.com/epuTEbXvx';
+      script.src = 'https://widgets.sociablekit.com/google-reviews/widget.js';
       script.async = true;
-      if (this.trustmaryWidget.nativeElement.innerHTML == '')
-        this.trustmaryWidget.nativeElement.appendChild(script);
+      if (this.skWidget.nativeElement.innerHTML == '')
+        this.skWidget.nativeElement.appendChild(script);
       this.scriptAdded = true;
     }
   }

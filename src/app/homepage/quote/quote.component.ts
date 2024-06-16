@@ -9,7 +9,9 @@ import { FormBuilder } from '@angular/forms';
   styleUrl: './quote.component.scss',
 })
 export class QuoteComponent {
-  @ViewChild('5O_Rkjdu7') trustmaryWidget!: ElementRef;
+  //@ViewChild('5O_Rkjdu7') trustmaryWidget!: ElementRef;
+  @ViewChild('123') skWidget!: ElementRef;
+
   scriptAdded: boolean = false;
   phoneLink = '12405707987';
   phoneText = '(240)-570-7987';
@@ -46,10 +48,13 @@ export class QuoteComponent {
   ngAfterViewInit() {
     if (!this.scriptAdded) {
       const script = this.document.createElement('script');
-      script.src = 'https://widget.trustmary.com/5O_Rkjdu7';
+      //script.src = 'https://widget.trustmary.com/5O_Rkjdu7';
+      script.src = 'https://widgets.sociablekit.com/google-reviews/widget.js';
       script.async = true;
-      if (this.trustmaryWidget.nativeElement.innerHTML == '')
-        this.trustmaryWidget.nativeElement.appendChild(script);
+      script.defer = true;
+
+      if (this.skWidget.nativeElement.innerHTML == '')
+        this.skWidget.nativeElement.appendChild(script);
       this.scriptAdded = true;
     }
   }
