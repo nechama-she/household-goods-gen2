@@ -11,8 +11,12 @@ import { FormBuilder } from '@angular/forms';
 export class QuoteComponent {
   //@ViewChild('5O_Rkjdu7') trustmaryWidget!: ElementRef;
   @ViewChild('123') skWidget!: ElementRef;
+  @ViewChild('googleProfileHome') googleProfileHome!: ElementRef;
 
   scriptAdded: boolean = false;
+  GoogleReviewsScriptAdded: boolean = false;
+  GoogleProfileScriptAdded: boolean = false;
+
   phoneLink = '12405707987';
   phoneText = '(240)-570-7987';
   homePageLink = '/';
@@ -46,16 +50,33 @@ export class QuoteComponent {
     });
   }
   ngAfterViewInit() {
-    if (!this.scriptAdded) {
+    this.addGoogleReviews();
+    this.addGoogleProfile();
+  }
+  addGoogleReviews() {
+    this.addScript(
+      'https://widgets.sociablekit.com/google-reviews/widget.js',
+      this.skWidget,
+      this.GoogleReviewsScriptAdded
+    );
+  }
+  addGoogleProfile() {
+    this.addScript(
+      'https://widgets.sociablekit.com/google-business-profile/widget.js',
+      this.googleProfileHome,
+      this.GoogleProfileScriptAdded
+    );
+  }
+  addScript(src, nativeElement, scriptAdded) {
+    if (!scriptAdded) {
       const script = this.document.createElement('script');
-      //script.src = 'https://widget.trustmary.com/5O_Rkjdu7';
-      script.src = 'https://widgets.sociablekit.com/google-reviews/widget.js';
+      script.src = src;
       script.async = true;
       script.defer = true;
 
-      if (this.skWidget.nativeElement.innerHTML == '')
-        this.skWidget.nativeElement.appendChild(script);
-      this.scriptAdded = true;
+      if (nativeElement.nativeElement.innerHTML == '')
+        nativeElement.nativeElement.appendChild(script);
+      scriptAdded = true;
     }
   }
   sendEmail() {
