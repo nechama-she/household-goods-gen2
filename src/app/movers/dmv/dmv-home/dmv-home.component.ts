@@ -1,5 +1,6 @@
 import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dmv-home',
@@ -10,8 +11,30 @@ export class DmvHomeComponent {
   //@ViewChild('epuTEbXvx') trustmaryWidget!: ElementRef;
   @ViewChild('456') skWidget!: ElementRef;
   scriptAdded: boolean = false;
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private titleService: Title,
+    private meta: Meta
+  ) {
     // this.logActivity('init');
+    this.titleService.setTitle(
+      'Household Goods Moving and Storage: Top-Rated Movers in The DMV'
+    );
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Household Goods Moving and Storage, your trusted choice for movers in the DMV area. Our dedicated team provides dependable, personalized moving solutions to ensure a smooth transition. Contact us now to start planning your stress-free move.',
+    });
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Household Goods Moving and Storage, your trusted choice for movers in the DMV area. Our dedicated team provides dependable, personalized moving solutions to ensure a smooth transition. Contact us now to start planning your stress-free move.',
+    });
+    this.meta.updateTag({
+      name: 'og:image',
+      content:
+        'https://www.household-goods-moving-and-storage.com/assets/images/dmv/dmv_movers_og_image.jpg',
+    });
   }
   ngAfterViewInit() {
     if (!this.scriptAdded) {
