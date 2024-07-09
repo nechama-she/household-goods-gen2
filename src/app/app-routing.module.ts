@@ -17,14 +17,20 @@ import { ChicagoHomeComponent } from './movers/chicago/chicago-home/chicago-home
 import { PackingMaterialsTableComponent } from './packing-materials/packing-materials-table/packing-materials-table.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
+import { DirectDeliveryComponent } from './products/direct-delivery/direct-delivery.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
+  { path: 'direct-delivery-move', component: DirectDeliveryComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   { path: 'movers/faq', component: FAQMainPageComponent },
   { path: 'residential-movers/faq', component: FAQMainPageComponent },
   { path: 'southern-california-mover', component: SocalHomeComponent },
+  {
+    path: 'best-moving-company-in-washington-dc-area/:source',
+    component: DmvHomeComponent,
+  },
   {
     path: 'best-moving-company-in-washington-dc-area',
     component: DmvHomeComponent,

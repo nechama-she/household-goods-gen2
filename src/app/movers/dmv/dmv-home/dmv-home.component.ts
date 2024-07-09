@@ -1,6 +1,7 @@
 import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dmv-home',
@@ -11,11 +12,16 @@ export class DmvHomeComponent {
   //@ViewChild('epuTEbXvx') trustmaryWidget!: ElementRef;
   @ViewChild('456') skWidget!: ElementRef;
   scriptAdded: boolean = false;
+  source: string;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private titleService: Title,
-    private meta: Meta
+    private meta: Meta,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
+    this.source = activatedRoute.snapshot.paramMap.get('source');
+
     // this.logActivity('init');
     this.titleService.setTitle(
       'Household Goods Moving and Storage: Top-Rated Movers in The DMV'
