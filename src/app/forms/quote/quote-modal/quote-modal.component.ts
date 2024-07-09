@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class QuoteModalComponent {
   showForm = true;
+
   constructor(@Inject(DOCUMENT) private document: Document) {}
   closeBookOnlineModal() {
     console.log(this.showForm);

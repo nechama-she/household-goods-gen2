@@ -41,6 +41,7 @@ import { OrderCallbackFormThanksComponent } from './forms/order-callback-form-th
 import { QuoteModalComponent } from './forms/quote/quote-modal/quote-modal.component';
 import { MenuComponent } from './homepage/menu/menu.component';
 import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
+import { DirectDeliveryComponent } from './homepage/direct-delivery/direct-delivery.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MovingServicesMainComponent } from './moving-services/moving-services-m
     QuoteModalComponent,
     MenuComponent,
     MovingServicesMainComponent,
+    DirectDeliveryComponent,
   ],
   imports: [
     BrowserModule,

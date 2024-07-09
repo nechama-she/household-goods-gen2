@@ -16,7 +16,9 @@
           (click)="closeBookOnlineModal()"
         ></button>
       </div>
-      <div class="modal-body"><app-article-quote></app-article-quote></div>
+      <div class="modal-body">
+        <app-article-quote [urlSource]="'bookOnlineModal'"></app-article-quote>
+      </div>
       <div class="modal-footer" style="border: 0px"></div>
     </div>
   </div>

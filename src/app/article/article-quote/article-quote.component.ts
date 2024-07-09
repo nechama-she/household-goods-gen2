@@ -11,6 +11,8 @@ import { FormBuilder } from '@angular/forms';
 export class ArticleQuoteComponent {
   @ViewChild('leadFormViewChild') leadFormViewChild!: ElementRef;
   @Input() source: string;
+  @Input() urlSource: string;
+
   phoneLink = '12405707987';
   phone = '(240)-570-7987';
   homePageLink = '/';
@@ -61,7 +63,8 @@ export class ArticleQuoteComponent {
       &moveSize=${this.leadForm.value.moveSizeInput}
       &nameInput=${this.leadForm.value.nameInput}
       &emailInput=${this.leadForm.value.emailInput}
-      &phoneInput=${this.leadForm.value.phoneInput}`;
+      &phoneInput=${this.leadForm.value.phoneInput}
+      &urlSource=${this.urlSource}`;
       let errorMessage: string = '';
 
       this.httpClient.post<any>(url, data, httpOptions).subscribe({
