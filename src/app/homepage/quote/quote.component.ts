@@ -2,6 +2,7 @@ import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quote',
@@ -23,6 +24,7 @@ export class QuoteComponent {
   title = 'household-goods-moving';
   jsonLdData: any;
   scriptId: string;
+  texttest: any;
   leadFormHome = this.fb.group({
     movingFromInput: [''],
     movingToInput: [''],
@@ -35,9 +37,15 @@ export class QuoteComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private fb: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private meta: Meta
   ) {}
   ngOnInit(): void {
+    this.meta.updateTag({
+      name: 'og:image:secure',
+      content:
+        'https://www.household-goods-moving-and-storage.com/assets/images/dmv/dmv_movers_og_image.jpg',
+    });
     let form = this.document.querySelector(
       '[name="leadFormHome"]'
     ) as HTMLFormElement;

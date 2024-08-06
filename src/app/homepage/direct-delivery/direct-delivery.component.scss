@@ -1,0 +1,16 @@
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+ul li {
+  margin-bottom: 5px;
+}
+ul li:before {
+  content: "✓";
+  color: #820d05;
+  font-weight: bold;
+  border: 1px solid #820d05;
+  margin-right: 5px;
+}

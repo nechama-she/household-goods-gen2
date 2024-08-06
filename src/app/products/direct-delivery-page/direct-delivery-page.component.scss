@@ -1,0 +1,189 @@
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* 
+     * Optional: Makes the sample page fill the window. 
+     */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* .controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  } */
+
+/* #origin-input,
+  #destination-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 200px;
+  }
+  
+  #origin-input:focus,
+  #destination-input:focus {
+    border-color: #4d90fe;
+  } */
+
+#mode-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  margin-left: 12px;
+  padding: 5px 11px 0px 11px;
+}
+
+#mode-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+.header,
+.footer {
+  background-color: #006d77;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+.main {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.order-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.order-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.order-item i {
+  margin-right: 10px;
+  color: #006d77;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+}
+.confirm {
+  background-color: #52b788;
+}
+.edit {
+  background-color: #83c5be;
+}
+.cancel {
+  background-color: #ef476f;
+}
+.form-check-input:checked {
+  background-color: #006d77;
+  border-color: #006d77;
+}
+.form-check-input:focus {
+  border-color: #006d77;
+  box-shadow: 0 0 0 5px #d9eff1;
+}
+#movingTo:focus,
+#movingFrom:focus {
+  border-color: #006d77;
+  box-shadow: 0 0 0 5px #d9eff1;
+}
+/* Large screen styles */
+.large-screen {
+  display: block;
+}
+
+.small-screen {
+  display: none;
+}
+
+/* Small screen styles */
+@media (max-width: 400px) {
+  .large-screen {
+    display: none;
+  }
+
+  .small-screen {
+    display: block;
+  }
+}
+
+.collapsible {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.toggle-button {
+  display: none;
+  width: 100%;
+  background: #f1f1f1;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+/* Show toggle button only on mobile devices */
+@media (max-width: 767px) {
+  .toggle-button {
+    display: flex;
+  }
+}
+
+#collapsible-content {
+  padding: 2px;
+  display: block; /* Show content by default */
+}
+
+/* Hide content by default on mobile */
+@media (max-width: 767px) {
+  #collapsible-content {
+    display: none;
+  }
+  .collapsible {
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .toggle-button {
+    display: none !important;
+  }
+}
+#toggle-icon {
+  font-weight: bold;
+}

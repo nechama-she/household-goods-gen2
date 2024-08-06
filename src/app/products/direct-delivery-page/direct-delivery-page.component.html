@@ -1,0 +1,278 @@
+<div class="large-screen">
+  <div>
+    <div id="mode-selector" class="controls" style="display: none">
+      <input type="radio" name="type" id="changemode-walking" />
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit" />
+      <label for="changemode-transit">Transit</label>
+
+      <input
+        type="radio"
+        name="type"
+        id="changemode-driving"
+        checked="checked"
+      />
+      <label for="changemode-driving">Driving</label>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col" style="min-width: 334px">
+        <div class="collapsible">
+          <button class="toggle-button" (click)="toggleCollapse()">
+            <span id="toggle-icon">{{
+              isCollapsed ? "+ SHOW MAP" : "- HIDE MAP"
+            }}</span>
+          </button>
+          <div
+            id="collapsible-content"
+            [ngStyle]="{ display: isCollapsed ? 'none' : 'block' }"
+          >
+            <div style="width: inherit; height: 440px; min-width: 334px">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="min-width: 334px">
+        <div class="card">
+          <div class="card-body">
+            <form name="leadMap" [formGroup]="leadMap">
+              <div style="font-size: 20px; font-weight: bold">Pickup From:</div>
+              <div class="input-group">
+                <span class="input-group-text" id="movingFromIcon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-geo-alt"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+                    ></path>
+                    <path
+                      d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                    ></path>
+                  </svg>
+                </span>
+
+                <input
+                  id="movingFrom"
+                  class="form-control controls"
+                  type="text"
+                  placeholder="Enter Zip Code or Full Address"
+                  aria-label="Enter Zip Code or Full Address"
+                  #movingFrom
+                  formControlName="movingFrom"
+                  name="movingFrom"
+                />
+              </div>
+              <div style="font-size: 20px; margin-top: 14px; font-weight: bold">
+                Drop Off:
+              </div>
+              <div class="input-group">
+                <span class="input-group-text" id="movingToIcon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-geo-alt"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+                    ></path>
+                    <path
+                      d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                    ></path>
+                  </svg>
+                </span>
+
+                <input
+                  id="movingTo"
+                  class="form-control controls"
+                  type="text"
+                  placeholder="Enter Zip Code or Full Address"
+                  aria-label="Enter Zip Code or Full Address"
+                  #movingTo
+                  formControlName="movingTo"
+                  name="movingTo"
+                />
+              </div>
+
+              <div style="font-size: 20px; margin-top: 14px; font-weight: bold">
+                Move Date:
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-calendar-week"></i>
+                </span>
+
+                <input
+                  id="moveDate"
+                  class="form-control controls"
+                  type="date"
+                  placeholder="mm/dd/yyyy"
+                  aria-label="mm/dd/yyyy"
+                  #moveDate
+                  formControlName="moveDate"
+                  name="moveDate"
+                  onclick="this.showPicker()"
+                  onfocus="this.showPicker()"
+                  [(ngModel)]="moveDateValue"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <app-collapsible title="Additional Packing Services">
+          <div class="form-check" style="height: 30px">
+            <input
+              style="width: 1.5em; height: 1.5em"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="fullPack"
+              [(ngModel)]="fullPackIsChecked"
+              (change)="checkAdditionalServicesValue()"
+            />
+            <label
+              class="form-check-label"
+              for="fullPack"
+              style="font-size: 1.2em; margin-left: 5px"
+            >
+              Full Pack - $1600
+            </label>
+          </div>
+
+          <div class="form-check" style="height: 30px">
+            <input
+              style="width: 1.5em; height: 1.5em"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="unpack"
+              [(ngModel)]="unpackIsChecked"
+              (change)="checkAdditionalServicesValue()"
+            />
+            <label
+              class="form-check-label"
+              for="unpack"
+              style="font-size: 1.2em; margin-left: 5px"
+            >
+              Unpack - $700
+            </label>
+          </div>
+          <div class="form-check" style="height: 30px">
+            <input
+              style="width: 1.5em; height: 1.5em"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="debrisRemoval"
+              [checked]="addPrice(600)"
+              [(ngModel)]="debrisRemovalIsChecked"
+              (change)="checkAdditionalServicesValue()"
+            />
+            <label
+              class="form-check-label"
+              for="Debris Removal"
+              style="font-size: 1.2em; margin-left: 5px"
+            >
+              Debris Removal - $600
+            </label>
+          </div>
+        </app-collapsible>
+        <!--div style="font-size: 20px; font-weight: bold">
+              Additional Packing Services:
+            </div-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="min-width: 334px">
+        <div class="card" style="margin-top: 20px">
+          <div class="card-body">
+            <div style="font-size: 20px; font-weight: bold">Order Summary</div>
+            <div class="main">
+              <div class="order-card">
+                <div class="order-item">
+                  <i class="bi bi-pin-map"></i>
+                  <strong>Pick Up:&nbsp;</strong> <span id="pickup"> </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-pin-map"></i>
+                  <strong>Delivery:&nbsp;</strong> <span id="delivery"> </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-sign-turn-slight-right"></i>
+                  <strong>Route Distance:&nbsp;</strong>
+                  <span id="routeDistance"> </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-calendar-check"></i>
+                  <strong>Move Date:&nbsp;</strong> {{ moveDateValue }}
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-truck"></i>
+                  <strong>Move Size:&nbsp;</strong> Up to a 26' truck
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="min-width: 334px">
+        <div class="card" style="margin-top: 20px">
+          <div class="card-body">
+            <div style="font-size: 20px; font-weight: bold">Order Price</div>
+            <div class="main">
+              <div class="order-card">
+                <div class="order-item">
+                  <i class="bi bi-currency-dollar"></i>
+                  <strong>Move Price:&nbsp;</strong>
+                  <span id="movePrice"> </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-box2-heart"></i>
+                  <strong>Full Pack:&nbsp;</strong
+                  ><span id="fullPackOrder"> excl.</span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-box-seam"></i>
+                  <strong>Unpack:&nbsp;</strong
+                  ><span id="unpackOrder">excl. </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-trash"></i>
+                  <strong>Debris Removal:&nbsp;</strong
+                  ><span id="debrisRemovalOrder">excl. </span>
+                </div>
+                <div class="order-item">
+                  <i class="bi bi-currency-dollar"></i>
+                  <strong>Total Price:&nbsp;</strong>
+                  <span id="totalPrice"> </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span id="moveError"> </span>
+  <div #googleMap></div>
+</div>
+<!-- 
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises. See
+      https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { LongDistanceMovingPageComponent } from './long-distance-moving-page/long-distance-moving-page.component';
 import { ResidentialMoversPageComponent } from './residential-movers-page/residential-movers-page.component';
@@ -17,11 +18,12 @@ import { ChicagoHomeComponent } from './movers/chicago/chicago-home/chicago-home
 import { PackingMaterialsTableComponent } from './packing-materials/packing-materials-table/packing-materials-table.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
-import { DirectDeliveryComponent } from './products/direct-delivery/direct-delivery.component';
+import { DirectDeliveryPageComponent } from './products/direct-delivery-page/direct-delivery-page.component';
+import { OrderSummaryComponent } from './products/order-summary/order-summary.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
-  { path: 'direct-delivery-move', component: DirectDeliveryComponent },
+  { path: 'direct-delivery-move', component: DirectDeliveryPageComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   { path: 'movers/faq', component: FAQMainPageComponent },
@@ -129,7 +131,7 @@ const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
 };
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOptions)],
+  imports: [RouterModule.forRoot(routes, routerOptions), FormsModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
