@@ -1,17 +1,21 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.move-quote,
+.move-information {
+  flex: 1 1 300px;
+  margin-bottom: 20px;
+}
+.form-check {
+  height: 48px;
+}
+@media (max-width: 379px) {
+  .move-information {
+    display: none !important;
   }
-  
-  .move-quote,
-  .move-information
-   {
-    flex: 1 1 300px;
-    margin-bottom: 20px;
-  }
-  .form-check{
-    height: 48px
-  }
+}

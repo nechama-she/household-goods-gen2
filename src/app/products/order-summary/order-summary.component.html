@@ -1,0 +1,14 @@
+<p>order-summary works!</p>
+<form name="leadMap" [formGroup]="leadMap">
+  <input
+    type="text"
+    class="form-control"
+    id="movingFrom"
+    #movingFrom
+    placeholder=""
+    formControlName="movingFrom"
+    name="movingFrom"
+  />
+</form>
+
+<span>{{ leadMap.value.movingFrom }}</span>

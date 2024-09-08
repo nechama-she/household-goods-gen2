@@ -1,1 +1,209 @@
-<p>direct-delivery works!</p>
+<div class="large-screen-content">
+  <!-- <input
+    id="origin-input"
+    class="controls"
+    type="text"
+    placeholder="Enter an origin location"
+  /> -->
+
+  <!--  <input
+    id="destination-input"
+    class="controls"
+    type="text"
+    placeholder="Enter a destination location"
+  /> -->
+
+  <div id="mode-selector" class="controls" style="display: none">
+    <input type="radio" name="type" id="changemode-walking" />
+    <label for="changemode-walking">Walking</label>
+
+    <input type="radio" name="type" id="changemode-transit" />
+    <label for="changemode-transit">Transit</label>
+
+    <input type="radio" name="type" id="changemode-driving" checked="checked" />
+    <label for="changemode-driving">Driving</label>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col" style="width: inherit; height: 440px; min-width: 400px">
+        <div id="map"></div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <!--form name="mapForm" [formGroup]="mapForm"></form-->
+            <div style="font-size: 20px; font-weight: bold">Pickup From:</div>
+            <div class="input-group">
+              <span class="input-group-text" id="movingFromMap">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-geo-alt"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+                  ></path>
+                  <path
+                    d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                  ></path>
+                </svg>
+              </span>
+
+              <input
+                id="originInput"
+                class="form-control controls"
+                type="text"
+                placeholder="Enter Zip Code or Full Address"
+                aria-label="Enter Zip Code or Full Address"
+                aria-describedby="movingFrom"
+                formControlName="originInput"
+                #originInput
+              />
+            </div>
+
+            <div style="font-size: 20px; font-weight: bold">Drop Off:</div>
+            <div class="input-group">
+              <span class="input-group-text" id="movingToMap">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-geo-alt"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+                  ></path>
+                  <path
+                    d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                  ></path>
+                </svg>
+              </span>
+
+              <input
+                id="destination-input"
+                class="form-control controls"
+                type="text"
+                placeholder="Enter Zip Code or Full Address"
+                aria-label="Enter Zip Code or Full Address"
+                aria-describedby="movingToMap"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 20px">
+          <div class="card-body">
+            <div style="font-size: 20px; font-weight: bold">
+              Additional Packing Services:
+            </div>
+            <div class="form-check" style="height: 60px">
+              <input
+                style="width: 3em; height: 3em"
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="fullPack"
+              />
+              <label
+                class="form-check-label"
+                for="fullPack"
+                style="font-size: 1.7em; margin-left: 5px"
+              >
+                Full Pack - $1600
+              </label>
+            </div>
+            <div class="form-check" style="height: 60px">
+              <input
+                style="width: 3em; height: 3em"
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="unpack"
+              />
+              <label
+                class="form-check-label"
+                for="unpack"
+                style="font-size: 1.7em; margin-left: 5px"
+              >
+                Unpack - $700
+              </label>
+            </div>
+            <div class="form-check" style="height: 60px">
+              <input
+                style="width: 3em; height: 3em"
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="Debris Removal"
+              />
+              <label
+                class="form-check-label"
+                for="Debris Removal"
+                style="font-size: 1.7em; margin-left: 5px"
+              >
+                Debris Removal - $600
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="margin-top: 20px">
+          <div class="card-header"><h2>Order Summary</h2></div>
+          <div class="card-body">
+            <h3>
+              <strong>Order Datails: </strong>
+            </h3>
+            <div style="margin-left: 20px">
+              Pick Up: <span id="pickup">{{ mapForm.value.originInput }}</span>
+            </div>
+            <div style="margin-left: 20px">
+              Delivery: <span id="delivery"></span>
+            </div>
+            <div style="margin-left: 20px">
+              Route Distance: <span id="routeDistance"></span>
+            </div>
+
+            <h3>
+              <strong>Order Price: </strong>
+            </h3>
+            <div style="margin-left: 20px">
+              Basic Package: <span id="movePrice"></span>
+            </div>
+            <div style="margin-left: 20px">
+              Full Pack: <span id="fullPack">Not Included</span>
+            </div>
+            <div style="margin-left: 20px">
+              Unpack: <span id="fullPack">Not Included</span>
+            </div>
+            <div style="margin-left: 20px">
+              Debris Removal: <span id="fullPack">Not Included</span>
+            </div>
+            <div style="margin-left: 20px">
+              Total : <span id="fullPack"></span>
+            </div>
+            <h3><strong>Move date: </strong> <span id="moveError"></span></h3>
+
+            <h3><strong>Note: </strong> <span id="moveError"></span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div #googleMap></div>
+</div>
+<!-- 
+    The `defer` attribute causes the script to execute after the full HTML
+    document has been parsed. For non-blocking uses, avoiding race conditions,
+    and consistent behavior across browsers, consider loading using Promises. See
+    https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+    for more information.
+    -->
