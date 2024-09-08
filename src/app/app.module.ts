@@ -4,6 +4,7 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,12 @@ import { QuoteModalComponent } from './forms/quote/quote-modal/quote-modal.compo
 import { MenuComponent } from './homepage/menu/menu.component';
 import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
 import { DirectDeliveryComponent } from './homepage/direct-delivery/direct-delivery.component';
+import { OrderSummaryComponent } from './products/order-summary/order-summary.component';
+import { DirectDeliveryPageComponent } from './products/direct-delivery-page/direct-delivery-page.component';
+import { DirectDeliveryPageSmallScreenComponent } from './products/direct-delivery-page-small-screen/direct-delivery-page-small-screen.component';
+import { CollapsibleComponent } from './collapsible/collapsible.component';
+import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
+import { ConsolidatedMoveComponent } from './homepage/consolidated-move/consolidated-move.component';
 
 @NgModule({
   declarations: [
@@ -80,16 +87,24 @@ import { DirectDeliveryComponent } from './homepage/direct-delivery/direct-deliv
     MenuComponent,
     MovingServicesMainComponent,
     DirectDeliveryComponent,
+    OrderSummaryComponent,
+    DirectDeliveryPageComponent,
+    DirectDeliveryPageSmallScreenComponent,
+    CollapsibleComponent,
+    DirectDeliveryAfterPaymentComponent,
+    ConsolidatedMoveComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
     HttpClientModule,
     NgxPageScrollModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
+  exports: [DirectDeliveryComponent],
 })
 export class AppModule {}

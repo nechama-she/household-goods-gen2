@@ -1,6 +1,7 @@
 export interface Article {
-    id:string,
-    header: string,
-    paragraph: string,
-    keyword: string;
+  id: string;
+  header: string;
+  paragraph: string;
+  keyword: string;
+  image: string;
 }
