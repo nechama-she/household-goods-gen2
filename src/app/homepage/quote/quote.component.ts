@@ -2,7 +2,9 @@ import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { Title, Meta } from '@angular/platform-browser';
+
+import {  Meta } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-quote',
@@ -42,9 +44,30 @@ export class QuoteComponent {
   ) {}
   ngOnInit(): void {
     this.meta.updateTag({
+
       name: 'og:image:secure',
       content:
         'https://www.household-goods-moving-and-storage.com/assets/images/dmv/dmv_movers_og_image.jpg',
+
+    });
+    this.meta.updateTag({
+      property: 'og:image:secure',
+      content:
+        'https://www.household-goods-moving-and-storage.com/assets/images/homepageFBad.png',
+    });
+    this.meta.updateTag({
+      property: 'og:image:url',
+      content:
+        'https://www.household-goods-moving-and-storage.com/assets/images/homepageFBad.png',
+    });
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Household Goods Moving And Storage',
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: 'Nationwide Moving Services at Affordable Rates',
+
     });
     let form = this.document.querySelector(
       '[name="leadFormHome"]'
