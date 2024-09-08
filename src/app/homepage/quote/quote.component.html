@@ -1,4 +1,56 @@
-<h1>Welcome to Household Goods Moving And Storage: Your Trusted Movers</h1>
+<div class="row" style="padding: 20px">
+  <div class="col" style="min-width: 252px; max-width: 360px">
+    <img
+      style="width: inherit"
+      alt="household goods movers"
+      src="../../../assets/images/homepage-mover.jpg"
+    />
+  </div>
+  <div class="col">
+    <h1>Household Goods Moving And Storage</h1>
+    <p>
+      From small apartments to large homes, across the street or across the
+      country, trust our team to handle your <b>household goods move</b> with
+      care and professionalism. We provide reliable, stress-free moving services
+      throughout the U.S., ensuring your belongings are safely packed,
+      transported, and delivered on time.
+    </p>
+    <ul style="list-style-type: none; padding: 0; margin: 0">
+      <li>
+        <i class="bi bi-box2-heart"></i>&nbsp;<b>Expert Packing:</b> We
+        carefully pack and protect your items, ensuring everything arrives in
+        perfect condition.
+      </li>
+      <li>
+        <i class="bi bi-people-fill"></i>&nbsp;<b>Dedicated Team:</b> Our
+        professional movers handle every step of your household goods move with
+        care and efficiency.
+      </li>
+      <li>
+        <i class="bi bi-truck"></i>
+        &nbsp;<b>Timely Delivery:</b> We prioritize on-time delivery, ensuring
+        your belongings reach their destination as scheduled.
+      </li>
+      <li>
+        <i class="bi bi-signpost-split"></i>&nbsp;<b>Full Coverage:</b> Moving
+        services available throughout the U.S., with no hidden fees or
+        unexpected charges.
+      </li>
+    </ul>
+    <br />
+    <p>
+      Call us today at
+      <b
+        ><a [href]="'tel:+' + phoneLink">{{ phoneText }}</a></b
+      >
+      to schedule your next move!
+    </p>
+    <app-third-party-reviews></app-third-party-reviews>
+  </div>
+</div>
+<!--
+
+-->
 <div
   class="card text-start"
   style="border-width: 5px 0px; border-color: #ffde59"
@@ -16,7 +68,7 @@
               <form
                 name="leadFormHome"
                 [formGroup]="leadFormHome"
-                style="color: #273947; min-width: 280px"
+                style="color: #273947; min-width: 250px"
                 (ngSubmit)="sendEmail()"
               >
                 <div class="form-floating mb-3">
@@ -304,15 +356,14 @@
     </div>
   </div>
 </div>
-<!--div #5O_Rkjdu7 style="border-bottom: 5px solid #ffde59"></div-->
 <div
   style="border-bottom: 5px solid #ffde59"
   class="sk-ww-google-reviews"
   data-embed-id="25426271"
   #123
 ></div>
-<app-third-party-reviews></app-third-party-reviews>
+
+<app-consolidated-move></app-consolidated-move>
 <app-direct-delivery></app-direct-delivery>
-<!--app-areas></app-areas-->
 <app-articles [phoneLink]="phoneLink" [phone]="phoneText"></app-articles>
 <app-faq-homepage></app-faq-homepage>

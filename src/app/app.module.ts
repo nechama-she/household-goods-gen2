@@ -47,6 +47,8 @@ import { OrderSummaryComponent } from './products/order-summary/order-summary.co
 import { DirectDeliveryPageComponent } from './products/direct-delivery-page/direct-delivery-page.component';
 import { DirectDeliveryPageSmallScreenComponent } from './products/direct-delivery-page-small-screen/direct-delivery-page-small-screen.component';
 import { CollapsibleComponent } from './collapsible/collapsible.component';
+import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
+import { ConsolidatedMoveComponent } from './homepage/consolidated-move/consolidated-move.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { CollapsibleComponent } from './collapsible/collapsible.component';
     DirectDeliveryPageComponent,
     DirectDeliveryPageSmallScreenComponent,
     CollapsibleComponent,
+    DirectDeliveryAfterPaymentComponent,
+    ConsolidatedMoveComponent,
   ],
   imports: [
     BrowserModule,

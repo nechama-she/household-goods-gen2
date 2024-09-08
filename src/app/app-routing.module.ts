@@ -20,11 +20,18 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { MovingServicesMainComponent } from './moving-services/moving-services-main/moving-services-main.component';
 import { DirectDeliveryPageComponent } from './products/direct-delivery-page/direct-delivery-page.component';
 import { OrderSummaryComponent } from './products/order-summary/order-summary.component';
+import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
   { path: 'direct-delivery-move', component: DirectDeliveryPageComponent },
+  {
+    path: 'direct-delivery-move-thank-you',
+    component: DirectDeliveryAfterPaymentComponent,
+  },
+
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'terms', component: PrivacyPolicyComponent },
 
   { path: 'movers/faq', component: FAQMainPageComponent },
   { path: 'residential-movers/faq', component: FAQMainPageComponent },

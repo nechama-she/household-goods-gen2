@@ -18,9 +18,96 @@
   </div>
 
   <div class="container">
+    <div class="row" style="margin-bottom: 20px; margin-top: 20px">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col" style="min-width: 252px; max-width: 360px">
+                <img
+                  style="width: inherit"
+                  alt="26-foot moving truck for flat-rate long-distance move"
+                  src="../../../assets/images/direct-delivery/flat-rate-direct-delivery-mover.jpg"
+                />
+              </div>
+              <div class="col">
+                <h1
+                  style="
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                  "
+                >
+                  Direct Delivery with Flat Rates for a 26-Foot Truck
+                </h1>
+
+                Our <b>direct delivery service</b> offers a
+                <b>dedicated 26-foot truck</b> exclusively for your move. Unlike
+                consolidated moves where shipments are combined, your belongings
+                are the only items on the truck, ensuring
+                <b>no shared space</b> and <b>no delays</b> from other
+                deliveries.
+                <br />
+                With <b>flat-rate pricing</b>, you'll have a clear,
+                all-inclusive cost for your move, covering everything from
+                loading to delivery.
+                <br />
+                <br />
+                <b>Benefits of Direct Delivery:</b>
+                <ul style="list-style-type: none; padding: 10px; margin: 0">
+                  <li>
+                    <i
+                      class="bi bi-check-circle-fill"
+                      style="color: #006d77"
+                    ></i
+                    ><b> Exclusive use of the truck</b> - no sharing space with
+                    other customers
+                  </li>
+                  <li>
+                    <i
+                      class="bi bi-check-circle-fill"
+                      style="color: #006d77"
+                    ></i
+                    ><b> Faster delivery</b> - no additional stops or detours
+                  </li>
+                  <li>
+                    <i
+                      class="bi bi-check-circle-fill"
+                      style="color: #006d77"
+                    ></i
+                    ><b> Flat-rate pricing</b> - no hidden fees or surprises
+                  </li>
+                  <li>
+                    <i
+                      class="bi bi-check-circle-fill"
+                      style="color: #006d77"
+                    ></i
+                    ><b> Dedicated team</b> - from loading to delivery, your
+                    belongings get personalized care
+                  </li>
+                  <li>
+                    <i
+                      class="bi bi-check-circle-fill"
+                      style="color: #006d77"
+                    ></i
+                    ><b> Streamlined process</b> - more control over timing and
+                    delivery
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col" style="min-width: 334px">
-        <div class="collapsible">
+      <div class="col margin-small-screen" style="min-width: 320px">
+        <app-collapsible title="MAP">
+          <div style="width: inherit; height: 440px; min-width: 260px">
+            <div id="map"></div>
+          </div>
+        </app-collapsible>
+        <!--div class="collapsible">
           <button class="toggle-button" (click)="toggleCollapse()">
             <span id="toggle-icon">{{
               isCollapsed ? "+ SHOW MAP" : "- HIDE MAP"
@@ -34,13 +121,21 @@
               <div id="map"></div>
             </div>
           </div>
-        </div>
+        </div-->
       </div>
 
-      <div class="col" style="min-width: 334px">
+      <div class="col margin-small-screen" style="min-width: 320px">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body card-body-small-screen">
             <form name="leadMap" [formGroup]="leadMap">
+              <div style="text-align: right">
+                <a
+                  style="color: #006d77"
+                  href="javascript:;"
+                  (click)="checkout = false"
+                  >Edit</a
+                >
+              </div>
               <div style="font-size: 20px; font-weight: bold">Pickup From:</div>
               <div class="input-group">
                 <span class="input-group-text" id="movingFromIcon">
@@ -68,8 +163,8 @@
                   placeholder="Enter Zip Code or Full Address"
                   aria-label="Enter Zip Code or Full Address"
                   #movingFrom
-                  formControlName="movingFrom"
                   name="movingFrom"
+                  [disabled]="checkout"
                 />
               </div>
               <div style="font-size: 20px; margin-top: 14px; font-weight: bold">
@@ -101,8 +196,8 @@
                   placeholder="Enter Zip Code or Full Address"
                   aria-label="Enter Zip Code or Full Address"
                   #movingTo
-                  formControlName="movingTo"
                   name="movingTo"
+                  [disabled]="checkout"
                 />
               </div>
 
@@ -121,84 +216,101 @@
                   placeholder="mm/dd/yyyy"
                   aria-label="mm/dd/yyyy"
                   #moveDate
-                  formControlName="moveDate"
                   name="moveDate"
                   onclick="this.showPicker()"
                   onfocus="this.showPicker()"
-                  [(ngModel)]="moveDateValue"
+                  [disabled]="checkout"
+                  min="{{ date }}"
                 />
               </div>
             </form>
           </div>
         </div>
+        <div style="margin-top: 10px">
+          <app-collapsible title="Additional Packing Services">
+            <div class="height-big-screen">
+              <div style="text-align: right">
+                <a
+                  style="color: #006d77"
+                  href="javascript:;"
+                  (click)="checkout = false"
+                  >Edit</a
+                >
+              </div>
+              <div>
+                <div class="form-check" style="height: 30px">
+                  <input
+                    style="width: 1.5em; height: 1.5em"
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fullPack"
+                    [(ngModel)]="fullPackIsChecked"
+                    (change)="checkAdditionalServicesValue()"
+                    [disabled]="checkout"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="fullPack"
+                    style="font-size: 1.2em; margin-left: 5px"
+                  >
+                    Full Pack - $1600
+                  </label>
+                </div>
 
-        <app-collapsible title="Additional Packing Services">
-          <div class="form-check" style="height: 30px">
-            <input
-              style="width: 1.5em; height: 1.5em"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="fullPack"
-              [(ngModel)]="fullPackIsChecked"
-              (change)="checkAdditionalServicesValue()"
-            />
-            <label
-              class="form-check-label"
-              for="fullPack"
-              style="font-size: 1.2em; margin-left: 5px"
-            >
-              Full Pack - $1600
-            </label>
-          </div>
+                <div class="form-check" style="height: 30px">
+                  <input
+                    style="width: 1.5em; height: 1.5em"
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="unpack"
+                    [(ngModel)]="unpackIsChecked"
+                    (change)="checkAdditionalServicesValue()"
+                    [disabled]="checkout"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="unpack"
+                    style="font-size: 1.2em; margin-left: 5px"
+                  >
+                    Unpack - $700
+                  </label>
+                </div>
+                <div class="form-check" style="height: 30px">
+                  <input
+                    style="width: 1.5em; height: 1.5em"
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="debrisRemoval"
+                    [checked]="addPrice(600)"
+                    [(ngModel)]="debrisRemovalIsChecked"
+                    (change)="checkAdditionalServicesValue()"
+                    [disabled]="checkout"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="Debris Removal"
+                    style="font-size: 1.2em; margin-left: 5px"
+                  >
+                    Debris Removal - $600
+                  </label>
+                </div>
+              </div>
+            </div>
+          </app-collapsible>
+        </div>
 
-          <div class="form-check" style="height: 30px">
-            <input
-              style="width: 1.5em; height: 1.5em"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="unpack"
-              [(ngModel)]="unpackIsChecked"
-              (change)="checkAdditionalServicesValue()"
-            />
-            <label
-              class="form-check-label"
-              for="unpack"
-              style="font-size: 1.2em; margin-left: 5px"
-            >
-              Unpack - $700
-            </label>
-          </div>
-          <div class="form-check" style="height: 30px">
-            <input
-              style="width: 1.5em; height: 1.5em"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="debrisRemoval"
-              [checked]="addPrice(600)"
-              [(ngModel)]="debrisRemovalIsChecked"
-              (change)="checkAdditionalServicesValue()"
-            />
-            <label
-              class="form-check-label"
-              for="Debris Removal"
-              style="font-size: 1.2em; margin-left: 5px"
-            >
-              Debris Removal - $600
-            </label>
-          </div>
-        </app-collapsible>
         <!--div style="font-size: 20px; font-weight: bold">
               Additional Packing Services:
             </div-->
       </div>
     </div>
-    <div class="row">
-      <div class="col" style="min-width: 334px">
-        <div class="card" style="margin-top: 20px">
-          <div class="card-body">
+    <div class="row margin-big-screen">
+      <div class="col margin-small-screen" style="min-width: 320px">
+        <div class="card">
+          <div class="card-body card-body-small-screen">
             <div style="font-size: 20px; font-weight: bold">Order Summary</div>
             <div class="main">
               <div class="order-card">
@@ -217,7 +329,7 @@
                 </div>
                 <div class="order-item">
                   <i class="bi bi-calendar-check"></i>
-                  <strong>Move Date:&nbsp;</strong> {{ moveDateValue }}
+                  <strong> Move Date:&nbsp;</strong> {{ moveDate.value }}
                 </div>
                 <div class="order-item">
                   <i class="bi bi-truck"></i>
@@ -228,16 +340,16 @@
           </div>
         </div>
       </div>
-      <div class="col" style="min-width: 334px">
-        <div class="card" style="margin-top: 20px">
-          <div class="card-body">
+      <div class="col margin-small-screen" style="min-width: 320px">
+        <div class="card">
+          <div class="card-body card-body-small-screen">
             <div style="font-size: 20px; font-weight: bold">Order Price</div>
             <div class="main">
               <div class="order-card">
                 <div class="order-item">
                   <i class="bi bi-currency-dollar"></i>
                   <strong>Move Price:&nbsp;</strong>
-                  <span id="movePrice"> </span>
+                  <span #movePrice id="movePrice"> </span>
                 </div>
                 <div class="order-item">
                   <i class="bi bi-box2-heart"></i>
@@ -257,9 +369,193 @@
                 <div class="order-item">
                   <i class="bi bi-currency-dollar"></i>
                   <strong>Total Price:&nbsp;</strong>
-                  <span id="totalPrice"> </span>
+                  <span #totalPrice id="totalPrice"> </span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+      <div class="col" style="min-width: 320px">
+        <div class="card">
+          <div class="card-body card-body-small-screen">
+            <div style="text-align: right">
+              <a
+                style="color: #006d77"
+                href="javascript:;"
+                (click)="checkout = false"
+                >Edit</a
+              >
+            </div>
+            <div
+              style="font-size: 20px; font-weight: bold; margin-bottom: 10px"
+            >
+              Contact Info
+            </div>
+
+            <form
+              name="faltRateFormName"
+              [formGroup]="faltRateFormForm"
+              style="color: #273947; max-width: 100%; font-size: 14px"
+              (ngSubmit)="creatNewLead()"
+            >
+              <div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <fieldset [disabled]="checkout">
+                        <label for="firstNameInput">First Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="firstNameInput"
+                          #firstNameInput
+                          formControlName="firstNameInput"
+                          formControlDisabled="true"
+                          name="firstNameInput"
+                          placeholder=""
+                          required
+                        />
+
+                        <div class="invalid-feedback text-start">
+                          First name is required. Please enter your first name.
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <fieldset [disabled]="checkout">
+                        <label for="lastNameInput">Last Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lastNameInput"
+                          #lastNameInput
+                          formControlName="lastNameInput"
+                          name="lastNameInput"
+                          placeholder=""
+                          required
+                        />
+
+                        <div class="invalid-feedback text-start">
+                          Last name is required. Please enter your last name.
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <fieldset [disabled]="checkout">
+                        <label for="phoneInput">Phone Number</label>
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="phoneInput"
+                          formControlName="phoneInput"
+                          name="phoneInput"
+                          #phoneInput
+                          placeholder=""
+                          required
+                          pattern="\(?[0-9]{3}\)?\s?-?[\s\-\s]?[0-9]{3}\s?-?[\s\-\s]?[0-9]{4}"
+                        />
+
+                        <div class="invalid-feedback text-start">
+                          Please enter a valid phone number
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <fieldset [disabled]="checkout">
+                        <label for="emailInput">Email Address</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="emailInput"
+                          #emailInput
+                          formControlName="emailInput"
+                          name="emailInput"
+                          placeholder=""
+                          required
+                          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                        />
+
+                        <div class="invalid-feedback text-start">
+                          Please enter a valid email address
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="font-size: 14px; margin-bottom: 10px">
+                * We do not share your information with any third parties
+                without your permission. Only our representor will call you
+                regarding your move. We do not sell, communicate or divulge your
+                information to any mailing lists.
+              </div>
+              <div style="margin-bottom: 10px">
+                By clicking on the button below, I acknowledge that I have
+                reviewed the
+                <a href="/terms" target="_blank"
+                  >Privacy and Cancellation Policies</a
+                >
+                and I accept the above rules and restrictions.
+              </div>
+              <button
+                [disabled]="
+                  movePrice.textContent === '' || moveDate.value === ''
+                "
+                type="submit"
+                class="btn btn-lg"
+                style="
+                  background-color: #ffde59;
+                  border: 0px;
+                  color: #273947;
+                  font-weight: bold;
+                  min-height: 48px;
+                  width: 270px;
+                  font-size: 14px;
+                  padding: 0px !important;
+                "
+              >
+                CHECK OUT
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="checkout"
+      class="row"
+      style="margin-top: 10px; margin-bottom: 10px"
+    >
+      <div class="col" style="min-width: 320px">
+        <div class="card">
+          <div class="card-body">
+            The total cost of your move is
+            <span style="font-weight: bold">{{ totalPrice.textContent }}</span
+            >. When you book your move, a
+            <span style="font-weight: bold">$150 deposit</span> will be
+            required, which will be applied toward your total cost. The
+            remaining balance will be split into two payments:
+            <span style="font-weight: bold">half due at pickup</span> and the
+            <span style="font-weight: bold">other half upon delivery</span>.
+            <hr />
+            <div style="height: 1550px">
+              <iframe
+                scrolling="no"
+                frameborder="0"
+                style="width: 100%; height: 100%"
+                src="https://square.link/u/hV75kUnR"
+              ></iframe>
             </div>
           </div>
         </div>

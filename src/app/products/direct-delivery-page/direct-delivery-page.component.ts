@@ -6,7 +6,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 
@@ -19,6 +19,17 @@ export class DirectDeliveryPageComponent {
   @ViewChild('googleMap') googleMap!: ElementRef;
   @ViewChild('movePrice') movePriceElem: ElementRef;
   @ViewChild('totalPrice') totalPriceElem: ElementRef;
+
+  faltRateFormForm = this.fb.group({
+    firstNameInput: [''],
+    lastNameInput: [''],
+    phoneInput: [''],
+    emailInput: [''],
+  });
+
+  checkout: boolean = false;
+  checkoutEnable: boolean = false;
+  date: string;
   fullPackIsChecked: boolean;
   unpackIsChecked: boolean;
   debrisRemovalIsChecked: boolean;
@@ -34,7 +45,8 @@ export class DirectDeliveryPageComponent {
   });
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private httpClient: HttpClient
   ) {}
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -42,6 +54,20 @@ export class DirectDeliveryPageComponent {
   }
 
   ngOnInit() {
+    const datepipe: DatePipe = new DatePipe('en-US');
+    this.date = datepipe.transform(new Date(), 'yyyy-MM-dd');
+
+    let form = this.document.querySelector(
+      '[name="faltRateFormName"]'
+    ) as HTMLFormElement;
+    form.addEventListener('submit', (submitEvent: SubmitEvent) => {
+      if (!this.faltRateFormForm.valid || !form.checkValidity()) {
+        submitEvent.preventDefault();
+        submitEvent.stopPropagation();
+      }
+
+      form.classList.add('was-validated');
+    });
     this.checkWindowSize();
   }
 
@@ -59,6 +85,41 @@ export class DirectDeliveryPageComponent {
   }
   ngAfterViewInit() {
     this.addGoogleMap();
+  }
+  creatNewLead() {
+    let url = 'https://formspree.io/f/xblrwyjn';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    };
+    if (this.faltRateFormForm.valid) {
+      this.checkout = true;
+      let data = `firstNameInput=${this.faltRateFormForm.value.firstNameInput}
+      &lastNameInput=${this.faltRateFormForm.value.lastNameInput}
+      &phoneInput=${this.faltRateFormForm.value.phoneInput}
+      &emailInput=${this.faltRateFormForm.value.emailInput}
+      &movingFrom=${
+        (document.getElementById('movingFrom') as HTMLInputElement).value
+      }
+      &movingTo=${
+        (document.getElementById('movingTo') as HTMLInputElement).value
+      }
+      &moveDate=${
+        (document.getElementById('moveDate') as HTMLInputElement).value
+      }
+      &moveSize='26 ft truck'`;
+      let errorMessage: string = '';
+
+      this.httpClient.post<any>(url, data, httpOptions).subscribe({
+        next: (data) => {},
+        error: (error) => {
+          errorMessage = error.message;
+          console.log('error!', errorMessage);
+        },
+      });
+    }
   }
   checkAdditionalServicesValue() {
     this.totalPrice = document
@@ -251,8 +312,15 @@ class AutocompleteDirectionsHandler {
             'text'
           ].replace(' mi', '');
           document.getElementById('routeDistance').innerText = distance + ' mi';
-          if (distance * 1 > 100) {
+          console.log(typeof distance);
+          distance = Number(distance.replace(',', ''));
+          console.log(typeof distance);
+          console.log(distance);
+
+          if (distance > 100) {
+            console.log('distance is bigge than 100');
             const price = 2300 + Math.max(0, distance - 230) * 10;
+            console.log(price);
             document.getElementById('movePrice').innerText = ('$' +
               price) as unknown as string;
 
@@ -286,6 +354,8 @@ class AutocompleteDirectionsHandler {
             document.getElementById('totalPrice').innerText = ('$' +
               totalPrice) as unknown as string;
           } else {
+            console.log('distance is bigge than 100');
+
             document.getElementById('moveError').innerText =
               'less of a 100 miles is local';
             document.getElementById('totalPrice').innerText = '';
