@@ -5,6 +5,7 @@ import { ArticlePage } from '../../model/interface/article-page';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Table } from '../../model/interface/table';
+import { SEOService } from '../../services/SEOService/seo.service';
 
 import { JsonLdService } from '../../services/jsonld.service';
 
@@ -33,7 +34,8 @@ export class ArticlePageComponent {
     private titleService: Title,
     private meta: Meta,
     private router: Router,
-    private jsonLdService: JsonLdService
+    private jsonLdService: JsonLdService,
+    private seoService: SEOService
   ) {
     switch (true) {
       case router.url.includes('how-to-find-an-interstate-mover'):
@@ -66,6 +68,11 @@ export class ArticlePageComponent {
     }
 
     this.getPrices();
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   getInterstateMovers() {
     this.currentPage = 'Interstate Movers';

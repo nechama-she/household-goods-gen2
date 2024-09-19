@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SEOService } from '../../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-moving-services-main',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 })
 export class MovingServicesMainComponent {
   movingServices: any;
-  constructor() {
+  constructor(private seoService: SEOService) {
     this.getServices();
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   getServices() {
     this.movingServices = [

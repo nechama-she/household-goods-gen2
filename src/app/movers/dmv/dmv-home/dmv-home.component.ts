@@ -2,6 +2,7 @@ import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SEOService } from '../../../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-dmv-home',
@@ -18,7 +19,8 @@ export class DmvHomeComponent {
     private titleService: Title,
     private meta: Meta,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private seoService: SEOService
   ) {
     this.source = activatedRoute.snapshot.paramMap.get('source');
 
@@ -50,6 +52,9 @@ export class DmvHomeComponent {
       if (this.skWidget.nativeElement.innerHTML == '')
         this.skWidget.nativeElement.appendChild(script);
       this.scriptAdded = true;
+    }
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
     }
   }
   openBookOnlineModal() {

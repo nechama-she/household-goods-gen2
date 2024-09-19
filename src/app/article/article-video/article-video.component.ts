@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Table } from '../../model/interface/table';
 
 import { JsonLdService } from '../../services/jsonld.service';
+import { SEOService } from '../../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-article-video',
@@ -33,7 +34,8 @@ export class ArticleVideoComponent {
     private titleService: Title,
     private meta: Meta,
     private router: Router,
-    private jsonLdService: JsonLdService
+    private jsonLdService: JsonLdService,
+    private seoService: SEOService
   ) {
     if (router.url.includes('how-to-find-an-interstate-mover')) {
       this.currentPage = 'Interstate Movers';
@@ -82,6 +84,11 @@ export class ArticleVideoComponent {
       },
       { key: 'southern-california', name: 'Southern California', states: [] },
     ];
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   ngOnDestroy(): void {
     if (this.jsonLdData) {

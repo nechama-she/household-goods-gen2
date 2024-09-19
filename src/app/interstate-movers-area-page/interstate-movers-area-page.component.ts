@@ -4,6 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { ServiceArea } from '../model/interface/service-area';
 import { State } from '../model/interface/state';
 import { Table } from '../model/interface/table';
+import { SEOService } from '../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-interstate-movers-area-page',
@@ -37,7 +38,8 @@ export class InterstateMoversAreaPageComponent {
     private route: ActivatedRoute,
     private router: Router,
     private titleService: Title,
-    private meta: Meta
+    private meta: Meta,
+    private seoService: SEOService
   ) {
     if (router.url.includes('long-distance-moving')) {
       this.service = 'Long Distance';
@@ -117,6 +119,11 @@ export class InterstateMoversAreaPageComponent {
         this.getPrices();
       }
     });
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   getPricesSC() {
     this.prices = {

@@ -5,6 +5,8 @@ import { JsonLdService } from '../../services/jsonld.service';
 import { ServiceArea } from '../../model/interface/service-area';
 import { ArticlePage } from '../../model/interface/article-page';
 import { Table } from '../../model/interface/table';
+import { SEOService } from '../../services/SEOService/seo.service';
+
 @Component({
   selector: 'app-faq-blog-post',
   templateUrl: './faq-blog-post.component.html',
@@ -31,7 +33,8 @@ export class FaqBlogPostComponent {
     private titleService: Title,
     private meta: Meta,
     private router: Router,
-    private jsonLdService: JsonLdService
+    private jsonLdService: JsonLdService,
+    private seoService: SEOService
   ) {
     switch (true) {
       case router.url.includes('household-moving-services'):
@@ -130,6 +133,11 @@ export class FaqBlogPostComponent {
       { key: 'southern-california', name: 'Southern California', states: [] },
     ];
     // this.addJsonLdScript();
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   ngOnDestroy(): void {
     if (this.jsonLdData) {
