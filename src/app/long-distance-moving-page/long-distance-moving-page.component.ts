@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { ServiceArea } from '../model/interface/service-area';
+import { SEOService } from '../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-long-distance-moving-page',
@@ -17,7 +18,8 @@ export class LongDistanceMovingPageComponent {
   constructor(
     private titleService: Title,
     private location: Location,
-    private meta: Meta
+    private meta: Meta,
+    private seoService: SEOService
   ) {
     this.titleService.setTitle(
       'Long Distance Movers - State To State | Household Goods Movers'
@@ -55,6 +57,11 @@ export class LongDistanceMovingPageComponent {
       },
       { key: 'southern-california', name: 'Southern California', states: [] },
     ];
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   toggleVisibility() {
     this.isListVisible = !this.isListVisible;

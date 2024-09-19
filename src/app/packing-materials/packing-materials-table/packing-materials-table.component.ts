@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { SEOService } from '../../services/SEOService/seo.service';
+
 @Component({
   selector: 'app-packing-materials-table',
   templateUrl: './packing-materials-table.component.html',
@@ -8,7 +10,11 @@ import { Title, Meta } from '@angular/platform-browser';
 export class PackingMaterialsTableComponent {
   table: any;
 
-  constructor(private titleService: Title, private meta: Meta) {
+  constructor(
+    private titleService: Title,
+    private meta: Meta,
+    private seoService: SEOService
+  ) {
     this.getPackingMaterialPrices();
     this.titleService.setTitle(
       'Household Goods Moving And Storage | Essential Moving Supplies Checklist'
@@ -21,6 +27,11 @@ export class PackingMaterialsTableComponent {
       name: 'og:description',
       content: 'Essential Moving Supplies Checklist for an Easy Move',
     });
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   getPackingMaterialPrices() {
     this.table = {

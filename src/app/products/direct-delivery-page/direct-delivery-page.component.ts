@@ -8,6 +8,11 @@ import {
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+
+import { SEOService } from '../../services/SEOService/seo.service';
+
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
@@ -45,8 +50,12 @@ export class DirectDeliveryPageComponent {
   });
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    private titleService: Title,
+    private router: Router,
+    private meta: Meta,
     private fb: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private seoService: SEOService
   ) {}
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -54,6 +63,17 @@ export class DirectDeliveryPageComponent {
   }
 
   ngOnInit() {
+    /* const newCanonicalUrl =
+      'https://www.household-goods-moving-and-storage.com' + this.router.url;
+    const canonicalTag = this.meta.getTag('rel="canonical"');
+    if (canonicalTag) {
+      this.meta.updateTag({ rel: 'canonical', href: newCanonicalUrl });
+    } else {
+      this.meta.addTag({ rel: 'canonical', href: newCanonicalUrl });
+    } */
+    this.titleService.setTitle(
+      'Direct Delivery with Flat Rates for a 26-Foot Truck | Household Goods Movers'
+    );
     const datepipe: DatePipe = new DatePipe('en-US');
     this.date = datepipe.transform(new Date(), 'yyyy-MM-dd');
 
@@ -84,6 +104,10 @@ export class DirectDeliveryPageComponent {
     }
   }
   ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
+
     this.addGoogleMap();
   }
   creatNewLead() {

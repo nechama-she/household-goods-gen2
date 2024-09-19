@@ -2,9 +2,8 @@ import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-
-import {  Meta } from '@angular/platform-browser';
-
+import { SEOService } from '../../services/SEOService/seo.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quote',
@@ -40,15 +39,15 @@ export class QuoteComponent {
     @Inject(DOCUMENT) private document: Document,
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private meta: Meta
+    private meta: Meta,
+    private seoService: SEOService
   ) {}
   ngOnInit(): void {
+    console.log(this.document);
     this.meta.updateTag({
-
       name: 'og:image:secure',
       content:
         'https://www.household-goods-moving-and-storage.com/assets/images/dmv/dmv_movers_og_image.jpg',
-
     });
     this.meta.updateTag({
       property: 'og:image:secure',
@@ -67,7 +66,6 @@ export class QuoteComponent {
     this.meta.updateTag({
       property: 'og:description',
       content: 'Nationwide Moving Services at Affordable Rates',
-
     });
     let form = this.document.querySelector(
       '[name="leadFormHome"]'
@@ -83,6 +81,9 @@ export class QuoteComponent {
   ngAfterViewInit() {
     this.addGoogleReviews();
     this.addGoogleProfile();
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   addGoogleReviews() {
     this.addScript(

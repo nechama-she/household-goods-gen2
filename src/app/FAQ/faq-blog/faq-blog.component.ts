@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { JsonLdService } from '../../services/jsonld.service';
 import { Title, Meta } from '@angular/platform-browser';
+import { SEOService } from '../../services/SEOService/seo.service';
 @Component({
   selector: 'app-faq-blog',
   templateUrl: './faq-blog.component.html',
@@ -14,7 +15,8 @@ export class FaqBlogComponent {
   constructor(
     private titleService: Title,
     private meta: Meta,
-    private jsonLdService: JsonLdService
+    private jsonLdService: JsonLdService,
+    private seoService: SEOService
   ) {
     this.titleService.setTitle(
       'Moving and Packing Tips, Moving Blog | Household Goods Movers'
@@ -32,6 +34,11 @@ export class FaqBlogComponent {
 
     this.getBlogPosts();
     this.addJsonLdScript();
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   ngOnDestroy(): void {
     if (this.jsonLdData) {

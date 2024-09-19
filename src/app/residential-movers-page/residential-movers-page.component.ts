@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ServiceArea } from '../model/interface/service-area';
+import { SEOService } from '../services/SEOService/seo.service';
 
 @Component({
   selector: 'app-residential-movers-page',
@@ -14,7 +15,11 @@ export class ResidentialMoversPageComponent {
   toggleText = 'hide';
   serviceArea: ServiceArea[];
 
-  constructor(private titleService: Title, private meta: Meta) {
+  constructor(
+    private titleService: Title,
+    private meta: Meta,
+    private seoService: SEOService
+  ) {
     this.titleService.setTitle(
       'Residential Movers - State To State | Household Goods Movers'
     );
@@ -52,6 +57,11 @@ export class ResidentialMoversPageComponent {
       },
       { key: 'southern-california', name: 'Southern California', states: [] },
     ];
+  }
+  ngAfterViewInit() {
+    if (typeof document !== 'undefined') {
+      this.seoService.setCanonicalURL();
+    }
   }
   toggleVisibility() {
     this.isListVisible = !this.isListVisible;
