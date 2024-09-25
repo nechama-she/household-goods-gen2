@@ -342,7 +342,7 @@ class AutocompleteDirectionsHandler {
           console.log(distance);
 
           if (distance > 100) {
-            console.log('distance is bigge than 100');
+            console.log('distance is bigger than 100');
             const price = 2300 + Math.max(0, distance - 230) * 10;
             console.log(price);
             document.getElementById('movePrice').innerText = ('$' +

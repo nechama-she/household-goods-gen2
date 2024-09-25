@@ -43,7 +43,6 @@ export class QuoteComponent {
     private seoService: SEOService
   ) {}
   ngOnInit(): void {
-    console.log(this.document);
     this.meta.updateTag({
       name: 'og:image:secure',
       content:
