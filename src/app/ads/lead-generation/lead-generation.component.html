@@ -1,0 +1,205 @@
+<header>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <img class="header-logo" src="../../../assets/images/moving-logo.webp" />
+    </div>
+  </div>
+  <div class="col d-flex justify-content-center">
+    <div class="row">
+      <div class="col header-phone">
+        <a class="bi bi-telephone-fill" href="tel:833-359-6786">
+          833-359-6786</a
+        >
+      </div>
+    </div>
+  </div>
+</header>
+<div class="form-container">
+  <form [formGroup]="moveForm" (ngSubmit)="submitForm()">
+    <!-- Step 1: Zipcode Moving From -->
+    <div *ngIf="currentStep === 1">
+      <h3>Where are you moving From?</h3>
+      <input
+        class="form-control form-input"
+        type="text"
+        formControlName="zipFrom"
+        placeholder="Enter City ot ZIP Code"
+      />
+    </div>
+
+    <!-- Step 2: Select Move Size -->
+    <div *ngIf="currentStep === 2">
+      <h3>Select Your Move Size</h3>
+      <div class="button-group">
+        <ul>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === 'studio'
+              }"
+              (click)="selectMoveSize('studio')"
+            >
+              Studio
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === '1br'
+              }"
+              (click)="selectMoveSize('1br')"
+            >
+              1 Bedroom
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === '2br'
+              }"
+              (click)="selectMoveSize('2br')"
+            >
+              2 Bedrooms
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === '3br'
+              }"
+              (click)="selectMoveSize('3br')"
+            >
+              3 Bedrooms
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === '4br'
+              }"
+              (click)="selectMoveSize('4br')"
+            >
+              4+ Bedrooms
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="move-size-button btn btn-lg"
+              [ngClass]="{
+                selected: moveForm.get('moveSize')?.value === 'office'
+              }"
+              (click)="selectMoveSize('office')"
+            >
+              Office
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 3: Select Move Date -->
+    <div *ngIf="currentStep === 3">
+      <h3>Select Move Date</h3>
+      <input
+        class="form-control form-input"
+        type="date"
+        formControlName="moveDate"
+        (change)="dateChange()"
+      />
+    </div>
+
+    <!-- Step 4: Zipcode Moving To -->
+    <div *ngIf="currentStep === 4">
+      <h3>Enter Zipcode Moving To</h3>
+      <input
+        class="form-control form-input"
+        type="text"
+        formControlName="zipTo"
+        placeholder="Zipcode Moving To"
+      />
+    </div>
+
+    <!-- Step 5: Enter Email -->
+    <div *ngIf="currentStep === 5">
+      <h3>Enter Your Email</h3>
+      <input
+        class="form-control form-input"
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <!-- Step 6: Enter First and Last Name -->
+    <div *ngIf="currentStep === 6">
+      <h3>Enter Your First and Last Name</h3>
+      <input
+        class="form-control form-input"
+        type="text"
+        formControlName="name"
+        placeholder="First and Last Name"
+      />
+    </div>
+
+    <!-- Step 7: Enter Phone Number -->
+    <div *ngIf="currentStep === 7">
+      <h3>Enter Your Phone Number</h3>
+      <input
+        class="form-control form-input"
+        type="tel"
+        formControlName="phone"
+        placeholder="Phone Number"
+      />
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+      <div>
+        <button
+          class="btn btn-lg Navigate-button"
+          type="button"
+          (click)="previousStep()"
+          *ngIf="currentStep != 1"
+        >
+          Previous
+        </button>
+      </div>
+      <div>
+        <button
+          class="btn btn-lg Navigate-button"
+          type="button"
+          (click)="nextStep()"
+          *ngIf="currentStep != 2 && currentStep != 7"
+          [disabled]="
+            (!moveForm.get('zipFrom').valid && currentStep === 1) ||
+            (!moveForm.get('moveDate').valid && currentStep === 3) ||
+            (!moveForm.get('zipTo').valid && currentStep === 4) ||
+            (!moveForm.get('email').valid && currentStep === 5) ||
+            (!moveForm.get('name').valid && currentStep === 6)
+          "
+        >
+          Next
+        </button>
+        <button
+          class="btn btn-lg Navigate-button"
+          type="submit"
+          [disabled]="!moveForm.valid"
+          *ngIf="currentStep === 7"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
