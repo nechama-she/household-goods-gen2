@@ -1,6 +1,31 @@
+/* Flexbox on the wrapper to control layout */
+.wrapper {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+}
 header {
-  max-width: 900px;
-  margin: 0 auto;
+  background-color: white;
+}
+/* Main content should expand to take up available space */
+main {
+  flex-grow: 1; /* Makes the content take up the remaining space */
+}
+
+header .row {
+  margin: 0px !important;
+}
+header .col {
+  padding-right: 0px;
+}
+footer .row {
+  margin: 0px !important;
+}
+footer .col {
+  padding-right: 0px;
+}
+hr {
+  margin: 0px;
 }
 .header-logo {
   width: 150px;
@@ -16,8 +41,24 @@ header {
 .col-header-details {
   margin-left: 0px;
 }
+.move-details {
+  max-width: 320px;
+  margin: 10px auto;
+  font-size: 13px;
+  border-top: 1px solid #8c979e;
+  border-left: 1px solid #8c979e;
+  color: #8c979e;
+}
+.move-details .row {
+  margin: 0px;
+  border-bottom: 1px solid #8c979e;
+}
+.move-details .col {
+  border-right: 1px solid #8c979e;
+  padding: 5px;
+}
 .form-input {
-  width: 316px;
+  width: 320px;
   border: 1px solid #273947;
 }
 .form-input:focus {
@@ -26,8 +67,8 @@ header {
   box-shadow: 0 0 5px #273947;
 }
 .form-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 10px auto;
   padding: 2px;
 }
 .form-container ul {
@@ -40,9 +81,13 @@ header {
 }
 h3 {
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 17px;
+  text-align: center;
 }
-
+.icon-50 {
+  font-size: 50px;
+  color: #273947;
+}
 input {
   display: block;
   width: calc(100% - 20px);
@@ -63,7 +108,7 @@ input {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 316px;
+  width: 320px;
 }
 
 .move-size-button.selected {
@@ -79,7 +124,7 @@ input {
 .buttons {
   display: flex;
   justify-content: space-between;
-  width: 316px;
+  width: 320px;
 }
 
 button {
@@ -90,4 +135,6 @@ button {
   border: 1px solid #273947;
   font-weight: bold;
   color: #273947;
+  min-width: 115px;
+  background-color: white;
 }
