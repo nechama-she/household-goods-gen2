@@ -18,11 +18,31 @@ header .row {
 header .col {
   padding-right: 0px;
 }
+main .row {
+  margin: 0px !important;
+}
+main .col {
+  padding: 0px;
+}
+footer {
+  background-color: white;
+}
 footer .row {
+  max-width: 320px;
   margin: 0px !important;
 }
 footer .col {
   padding-right: 0px;
+}
+.terms {
+  font-size: 14px;
+  color: #8c979e;
+}
+.terms a {
+  color: #8c979e;
+}
+.terms .col {
+  text-align: center;
 }
 hr {
   margin: 0px;
@@ -137,4 +157,16 @@ button {
   color: #273947;
   min-width: 115px;
   background-color: white;
+}
+.disclousre {
+  font-size: 14px;
+  padding: 20px;
+}
+.google-review {
+  max-width: 185px;
+  padding: 0px;
+}
+.bbb-profile {
+  margin-top: 32px;
+  padding: 0px;
 }
