@@ -10,7 +10,7 @@
     </div>
     <div class="col d-flex justify-content-center">
       <div class="row">
-        <div class="col header-phone">
+        <div class="col phone">
           <a class="bi bi-telephone-fill" href="tel:833-359-6786">
             833-359-6786</a
           >
@@ -20,6 +20,28 @@
   </header>
   <main>
     <hr />
+    <div class="row" *ngIf="formSubmitted">
+      <div class="col d-flex justify-content-center">
+        <div class="after-submit">
+          <div style="width: 320px">
+            <h1>You Are All Set!</h1>
+            <b>
+              Thank you for submitting your request. To provide an accurate
+              quote, we'll need a few additional details based on your
+              responses. One of our representatives will be in touch with you
+              shortly.
+            </b>
+            <div class="phone button-phone">
+              <button class="btn btn-lg Navigate-button" type="button">
+                <a class="bi bi-telephone-fill" href="tel:833-359-6786">
+                  833-359-6786</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="move-details" *ngIf="progressStep > 1">
       <div class="row">
         <div class="col">Move Datails:</div>
@@ -67,7 +89,10 @@
       </div>
     </div>
 
-    <div class="form-container d-flex justify-content-center">
+    <div
+      class="form-container d-flex justify-content-center"
+      [hidden]="formSubmitted"
+    >
       <div class="row">
         <div class="col"></div>
         <div class="col">

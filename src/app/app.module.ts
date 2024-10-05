@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { LeadGenerationComponent } from './ads/lead-generation/lead-generation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermsAndConditionsComponent } from './ads/terms-and-conditions/terms-and-conditions.component';
+import { LeadSubmittedComponent } from './ads/lead-submitted/lead-submitted.component';
 @NgModule({
-  declarations: [AppComponent, LeadGenerationComponent, TermsAndConditionsComponent],
+  declarations: [AppComponent, LeadGenerationComponent, TermsAndConditionsComponent, LeadSubmittedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

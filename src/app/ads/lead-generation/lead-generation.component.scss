@@ -44,19 +44,25 @@ footer .col {
 .terms .col {
   text-align: center;
 }
+.after-submit {
+  max-width: 320px;
+  text-align: center;
+}
+
 hr {
   margin: 0px;
 }
 .header-logo {
   width: 150px;
 }
-.header-phone {
+.phone {
   font-size: 30px;
   font-weight: bold;
 }
-.header-phone a {
+.phone a {
   color: #273947;
   text-decoration: none;
+  cursor: pointer;
 }
 .col-header-details {
   margin-left: 0px;

@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AutocompleteDirectionsHandler } from '../../handlers/AutocompleteDirectionsHandler';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-lead-generation',
@@ -20,6 +20,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ],
 })
 export class LeadGenerationComponent {
+  formSubmitted: boolean = false;
   moveForm: FormGroup;
   currentStep = 1;
   progressStep = 1;
@@ -29,7 +30,7 @@ export class LeadGenerationComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private fb: FormBuilder,
-    private router: Router
+    private httpClient: HttpClient
   ) {
     const datepipe: DatePipe = new DatePipe('en-US');
     this.date = datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -112,9 +113,38 @@ export class LeadGenerationComponent {
   submitForm() {
     if (this.moveForm.valid) {
       console.log(this.moveForm.value);
-      alert('Form submitted successfully!');
+      this.formSubmitted = true;
+      this.creatNewLead();
     } else {
       alert('Please complete all required fields.');
     }
+  }
+  creatNewLead() {
+    let url = 'https://formspree.io/f/mqkrkgkn';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    };
+
+    let data = `firstNameInput=${this.moveForm.get('name').value}
+      &lastNameInput=''
+      &phoneInput=${this.moveForm.get('phone').value}
+      &emailInput=${this.moveForm.get('email').value}
+      &movingFrom=${this.moveForm.get('addressFrom').value}
+      &movingTo=${this.moveForm.get('addressTo').value}
+      &moveDate=${this.moveForm.get('moveDate').value}
+      &moveSize=${this.moveForm.get('moveSize').value}
+      &urlSource='Landing Page Quote'`;
+    let errorMessage: string = '';
+
+    this.httpClient.post<any>(url, data, httpOptions).subscribe({
+      next: (data) => {},
+      error: (error) => {
+        errorMessage = error.message;
+        console.log('error!', errorMessage);
+      },
+    });
   }
 }
