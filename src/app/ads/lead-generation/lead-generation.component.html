@@ -23,7 +23,7 @@
     <div class="row" *ngIf="formSubmitted">
       <div class="col d-flex justify-content-center">
         <div class="after-submit">
-          <div style="width: 320px">
+          <div style="width: 300px">
             <h1>You Are All Set!</h1>
             <b>
               Thank you for submitting your request. To provide an accurate
@@ -42,258 +42,266 @@
         </div>
       </div>
     </div>
-    <div class="move-details" *ngIf="progressStep > 1">
-      <div class="row">
-        <div class="col">Move Datails:</div>
-      </div>
-      <div class="row">
-        <div class="col col-4">
-          <i class="bi bi-geo-alt-fill"> Moving From</i>
-        </div>
-        <div class="col text-right">{{ addressFrom.value }}</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 2">
-        <div class="col col-4"><i class="bi bi-arrows-move"> Move Size</i></div>
-        <div class="col">{{ moveForm.get("moveSize").value }}</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 3">
-        <div class="col col-4">
-          <i class="bi bi-calendar-check-fill"> Move Date</i>
-        </div>
-        <div class="col">{{ moveForm.get("moveDate").value }}</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 4">
-        <div class="col col-4">
-          <i class="bi bi-geo-alt-fill"> Moving To</i>
-        </div>
-        <div class="col">{{ addressTo.value }}</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 5">
-        <div class="col">Contact Information:</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 5">
-        <div class="col col-4">
-          <i class="bi bi-envelope-at-fill"> Email</i>
-        </div>
-        <div class="col">{{ moveForm.get("email").value }}</div>
-      </div>
-      <div class="row" *ngIf="progressStep > 6">
-        <div class="col col-4"><i class="bi bi-person-fill"> Full Name</i></div>
-        <div class="col">{{ moveForm.get("name").value }}</div>
-      </div>
-      <div class="row" *ngIf="moveForm.get('phone').valid">
-        <div class="col col-4">
-          <i class="bi bi-telephone-fill"> Phone</i>
-        </div>
-        <div class="col">{{ moveForm.get("phone").value }}</div>
-      </div>
-    </div>
 
-    <div
-      class="form-container d-flex justify-content-center"
-      [hidden]="formSubmitted"
-    >
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <form [formGroup]="moveForm" (ngSubmit)="submitForm()">
-            <div
-              [style.display]="currentStep === 1 ? 'block' : 'none'"
-              [@fadeAnimation]
-            >
-              <h3>Where Are You Moving From?</h3>
-              <input
-                #addressFrom
-                id="addressFrom"
-                class="form-control form-input"
-                type="text"
-                formControlName="addressFrom"
-                placeholder="Enter City,State or ZIP Code"
-              />
-              <span id="zipFrom" style="display: none"></span>
-            </div>
+    <div *ngIf="!formSubmitted">
+      <div class="move-details" *ngIf="progressStep > 1">
+        <div class="row">
+          <div class="col">Move Datails:</div>
+        </div>
+        <div class="row">
+          <div class="col col-4">
+            <i class="bi bi-geo-alt-fill"> Moving From</i>
+          </div>
+          <div class="col text-right">{{ addressFrom.value }}</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 2">
+          <div class="col col-4">
+            <i class="bi bi-arrows-move"> Move Size</i>
+          </div>
+          <div class="col">{{ moveForm.get("moveSize").value }}</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 3">
+          <div class="col col-4">
+            <i class="bi bi-calendar-check-fill"> Move Date</i>
+          </div>
+          <div class="col">{{ moveForm.get("moveDate").value }}</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 4">
+          <div class="col col-4">
+            <i class="bi bi-geo-alt-fill"> Moving To</i>
+          </div>
+          <div class="col">{{ addressTo.value }}</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 5">
+          <div class="col">Contact Information:</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 5">
+          <div class="col col-4">
+            <i class="bi bi-envelope-at-fill"> Email</i>
+          </div>
+          <div class="col">{{ moveForm.get("email").value }}</div>
+        </div>
+        <div class="row" *ngIf="progressStep > 6">
+          <div class="col col-4">
+            <i class="bi bi-person-fill"> Full Name</i>
+          </div>
+          <div class="col">{{ moveForm.get("name").value }}</div>
+        </div>
+        <div class="row" *ngIf="moveForm.get('phone').valid">
+          <div class="col col-4">
+            <i class="bi bi-telephone-fill"> Phone</i>
+          </div>
+          <div class="col">{{ moveForm.get("phone").value }}</div>
+        </div>
+      </div>
 
-            <div *ngIf="currentStep === 2" [@fadeAnimation]>
-              <h3>Select Your Move Size</h3>
-              <div class="button-group">
-                <ul>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected: moveForm.get('moveSize')?.value === 'studio'
-                      }"
-                      (click)="selectMoveSize('studio')"
-                    >
-                      Studio
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected:
-                          moveForm.get('moveSize')?.value === '1 Bedroom'
-                      }"
-                      (click)="selectMoveSize('1 Bedroom')"
-                    >
-                      1 Bedroom
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected:
-                          moveForm.get('moveSize')?.value === '2 Bedrooms'
-                      }"
-                      (click)="selectMoveSize('2 Bedrooms')"
-                    >
-                      2 Bedrooms
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected:
-                          moveForm.get('moveSize')?.value === '3 Bedrooms'
-                      }"
-                      (click)="selectMoveSize('3 Bedrooms')"
-                    >
-                      3 Bedrooms
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected:
-                          moveForm.get('moveSize')?.value === '4+ Bedrooms'
-                      }"
-                      (click)="selectMoveSize('4+ Bedrooms')"
-                    >
-                      4+ Bedrooms
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      class="move-size-button btn btn-lg"
-                      [ngClass]="{
-                        selected: moveForm.get('moveSize')?.value === 'office'
-                      }"
-                      (click)="selectMoveSize('office')"
-                    >
-                      Office
-                    </button>
-                  </li>
-                </ul>
+      <div
+        class="form-container d-flex justify-content-center"
+        [hidden]="formSubmitted"
+      >
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <form [formGroup]="moveForm" (ngSubmit)="submitForm()">
+              <div
+                [style.display]="currentStep === 1 ? 'block' : 'none'"
+                [@fadeAnimation]
+              >
+                <h3>Where Are You Moving From?</h3>
+                <input
+                  #addressFrom
+                  id="addressFrom"
+                  class="form-control form-input"
+                  type="text"
+                  formControlName="addressFrom"
+                  placeholder="Enter City,State or ZIP Code"
+                />
+                <span id="zipFrom" style="display: none"></span>
               </div>
-            </div>
 
-            <div *ngIf="currentStep === 3" [@fadeAnimation]>
-              <h3>When Are You Moving?</h3>
-              <input
-                class="form-control form-input"
-                type="date"
-                formControlName="moveDate"
-                (change)="dateChange()"
-                min="{{ date }}"
-              />
-            </div>
-
-            <div
-              [style.display]="currentStep === 4 ? 'block' : 'none'"
-              [@fadeAnimation]
-            >
-              <h3>Where Are You Moving To?</h3>
-              <input
-                #addressTo
-                id="addressTo"
-                class="form-control form-input"
-                type="text"
-                formControlName="addressTo"
-                placeholder="Enter City,State or ZIP Code"
-              />
-            </div>
-
-            <div *ngIf="currentStep === 5" [@fadeAnimation]>
-              <h3>Enter Your Email</h3>
-              <input
-                class="form-control form-input"
-                type="email"
-                formControlName="email"
-                placeholder="Email"
-              />
-            </div>
-
-            <div *ngIf="currentStep === 6" [@fadeAnimation]>
-              <h3>Enter Your First and Last Name</h3>
-              <input
-                class="form-control form-input"
-                type="text"
-                formControlName="name"
-                placeholder="First and Last Name"
-              />
-            </div>
-
-            <div *ngIf="currentStep === 7" [@fadeAnimation]>
-              <h3>Enter Your Phone Number</h3>
-              <input
-                class="form-control form-input"
-                type="tel"
-                formControlName="phone"
-                placeholder="Phone Number"
-              />
-            </div>
-
-            <div class="buttons">
-              <div>
-                <button
-                  class="btn btn-lg Navigate-button"
-                  type="button"
-                  (click)="previousStep()"
-                  *ngIf="currentStep != 1"
-                >
-                  Previous
-                </button>
+              <div *ngIf="currentStep === 2" [@fadeAnimation]>
+                <h3>Select Your Move Size</h3>
+                <div class="button-group">
+                  <ul>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected: moveForm.get('moveSize')?.value === 'studio'
+                        }"
+                        (click)="selectMoveSize('studio')"
+                      >
+                        Studio
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected:
+                            moveForm.get('moveSize')?.value === '1 Bedroom'
+                        }"
+                        (click)="selectMoveSize('1 Bedroom')"
+                      >
+                        1 Bedroom
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected:
+                            moveForm.get('moveSize')?.value === '2 Bedrooms'
+                        }"
+                        (click)="selectMoveSize('2 Bedrooms')"
+                      >
+                        2 Bedrooms
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected:
+                            moveForm.get('moveSize')?.value === '3 Bedrooms'
+                        }"
+                        (click)="selectMoveSize('3 Bedrooms')"
+                      >
+                        3 Bedrooms
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected:
+                            moveForm.get('moveSize')?.value === '4+ Bedrooms'
+                        }"
+                        (click)="selectMoveSize('4+ Bedrooms')"
+                      >
+                        4+ Bedrooms
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="move-size-button btn btn-lg"
+                        [ngClass]="{
+                          selected: moveForm.get('moveSize')?.value === 'office'
+                        }"
+                        (click)="selectMoveSize('office')"
+                      >
+                        Office
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <button
-                  class="btn btn-lg Navigate-button"
-                  type="button"
-                  (click)="nextStep()"
-                  *ngIf="currentStep != 7"
-                  [disabled]="
-                    (!moveForm.get('addressFrom').valid && currentStep === 1) ||
-                    (!moveForm.get('moveSize').valid && currentStep === 2) ||
-                    (!moveForm.get('moveDate').valid && currentStep === 3) ||
-                    (!moveForm.get('addressTo').valid && currentStep === 4) ||
-                    (!moveForm.get('email').valid && currentStep === 5) ||
-                    (!moveForm.get('name').valid && currentStep === 6)
-                  "
-                >
-                  Next
-                </button>
-                <button
-                  class="btn btn-lg Navigate-button"
-                  type="submit"
-                  [disabled]="!moveForm.valid"
-                  *ngIf="currentStep === 7"
-                >
-                  Submit
-                </button>
+
+              <div *ngIf="currentStep === 3" [@fadeAnimation]>
+                <h3>When Are You Moving?</h3>
+                <input
+                  class="form-control form-input"
+                  type="date"
+                  formControlName="moveDate"
+                  (change)="dateChange()"
+                  min="{{ date }}"
+                />
               </div>
-            </div>
-          </form>
+
+              <div
+                [style.display]="currentStep === 4 ? 'block' : 'none'"
+                [@fadeAnimation]
+              >
+                <h3>Where Are You Moving To?</h3>
+                <input
+                  #addressTo
+                  id="addressTo"
+                  class="form-control form-input"
+                  type="text"
+                  formControlName="addressTo"
+                  placeholder="Enter City,State or ZIP Code"
+                />
+              </div>
+
+              <div *ngIf="currentStep === 5" [@fadeAnimation]>
+                <h3>Enter Your Email</h3>
+                <input
+                  class="form-control form-input"
+                  type="email"
+                  formControlName="email"
+                  placeholder="Email"
+                />
+              </div>
+
+              <div *ngIf="currentStep === 6" [@fadeAnimation]>
+                <h3>Enter Your First and Last Name</h3>
+                <input
+                  class="form-control form-input"
+                  type="text"
+                  formControlName="name"
+                  placeholder="First and Last Name"
+                />
+              </div>
+
+              <div *ngIf="currentStep === 7" [@fadeAnimation]>
+                <h3>Enter Your Phone Number</h3>
+                <input
+                  class="form-control form-input"
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="Phone Number"
+                />
+              </div>
+
+              <div class="buttons">
+                <div>
+                  <button
+                    class="btn btn-lg Navigate-button"
+                    type="button"
+                    (click)="previousStep()"
+                    *ngIf="currentStep != 1"
+                  >
+                    Previous
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="btn btn-lg Navigate-button"
+                    type="button"
+                    (click)="nextStep()"
+                    *ngIf="currentStep != 7"
+                    [disabled]="
+                      (!moveForm.get('addressFrom').valid &&
+                        currentStep === 1) ||
+                      (!moveForm.get('moveSize').valid && currentStep === 2) ||
+                      (!moveForm.get('moveDate').valid && currentStep === 3) ||
+                      (!moveForm.get('addressTo').valid && currentStep === 4) ||
+                      (!moveForm.get('email').valid && currentStep === 5) ||
+                      (!moveForm.get('name').valid && currentStep === 6)
+                    "
+                  >
+                    Next
+                  </button>
+                  <button
+                    class="btn btn-lg Navigate-button"
+                    type="submit"
+                    [disabled]="!moveForm.valid"
+                    *ngIf="currentStep === 7"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col"></div>
         </div>
-        <div class="col"></div>
       </div>
     </div>
   </main>

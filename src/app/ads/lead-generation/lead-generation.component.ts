@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutocompleteDirectionsHandler } from '../../handlers/AutocompleteDirectionsHandler';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
@@ -20,6 +20,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   ],
 })
 export class LeadGenerationComponent {
+  @ViewChild('addressFrom') addressFrom: ElementRef;
+  @ViewChild('addressTo') addressTo: ElementRef;
+
   formSubmitted: boolean = false;
   moveForm: FormGroup;
   currentStep = 1;
@@ -128,13 +131,12 @@ export class LeadGenerationComponent {
       }),
     };
 
-    let data = `firstNameInput=${this.moveForm.get('name').value}
-      &lastNameInput=''
+    let data = `nameInput=${this.moveForm.get('name').value}
       &phoneInput=${this.moveForm.get('phone').value}
       &emailInput=${this.moveForm.get('email').value}
-      &movingFrom=${this.moveForm.get('addressFrom').value}
-      &movingTo=${this.moveForm.get('addressTo').value}
-      &moveDate=${this.moveForm.get('moveDate').value}
+      &movingFromInput=${this.addressFrom.nativeElement.value}
+      &movingToInput=${this.addressTo.nativeElement.value}
+      &moveDateInput=${this.moveForm.get('moveDate').value}
       &moveSize=${this.moveForm.get('moveSize').value}
       &urlSource='Landing Page Quote'`;
     let errorMessage: string = '';
