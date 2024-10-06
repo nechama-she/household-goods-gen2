@@ -1,6 +1,25 @@
 <div class="wrapper">
   <header>
     <div class="row">
+      <div class="col d-flex justify-content-center header-name">
+        Household Goods Mover
+      </div>
+    </div>
+    <div class="col d-flex justify-content-center header-dot">
+      <div class="row">
+        <div class="col">
+          USDOT Number:
+
+          <a
+            target="_blank"
+            href="https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string=4012295"
+          >
+            4012295</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col d-flex justify-content-center">
         <img
           class="header-logo"
@@ -8,6 +27,7 @@
         />
       </div>
     </div>
+
     <div class="col d-flex justify-content-center">
       <div class="row">
         <div class="col phone">
@@ -44,6 +64,16 @@
     </div>
 
     <div *ngIf="!formSubmitted">
+      <div class="row">
+        <div class="col d-flex justify-content-center quote-header">
+          Moving Cost Calculator
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center text-center quote-text">
+          Enter Your Move Details to Get Instant Rates & Availability!
+        </div>
+      </div>
       <div class="move-details" *ngIf="progressStep > 1">
         <div class="row">
           <div class="col">Move Datails:</div>
