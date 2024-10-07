@@ -94,6 +94,7 @@ export class LeadGenerationComponent {
     if (this.moveForm.get('moveDate').valid) this.nextStep();
   }
   nextStep() {
+    (window as any).fbq('track', `Step ${this.currentStep}`);
     if (this.currentStep < 7) {
       this.currentStep++;
     }
