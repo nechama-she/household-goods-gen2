@@ -94,7 +94,30 @@ export class LeadGenerationComponent {
     if (this.moveForm.get('moveDate').valid) this.nextStep();
   }
   nextStep() {
-    (window as any).fbq('track', `Step ${this.currentStep}`);
+    let facebookEventValue;
+    switch (this.currentStep) {
+      case 1:
+        facebookEventValue = this.addressFrom.nativeElement.value;
+        break;
+      case 2:
+        facebookEventValue = this.moveForm.get('moveSize').value;
+        break;
+      case 3:
+        facebookEventValue = this.moveForm.get('moveDate').value;
+        break;
+      case 4:
+        facebookEventValue = this.addressTo.nativeElement.value;
+        break;
+      case 5:
+        facebookEventValue = this.moveForm.get('email').value;
+        break;
+      case 6:
+        facebookEventValue = this.moveForm.get('name').value;
+        break;
+    }
+    (window as any).fbq('track', `Step ${this.currentStep}`, {
+      stepValue: facebookEventValue,
+    });
     if (this.currentStep < 7) {
       this.currentStep++;
     }
