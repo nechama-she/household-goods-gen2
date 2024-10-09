@@ -63,14 +63,6 @@ export class DirectDeliveryPageComponent {
   }
 
   ngOnInit() {
-    /* const newCanonicalUrl =
-      'https://www.household-goods-moving-and-storage.com' + this.router.url;
-    const canonicalTag = this.meta.getTag('rel="canonical"');
-    if (canonicalTag) {
-      this.meta.updateTag({ rel: 'canonical', href: newCanonicalUrl });
-    } else {
-      this.meta.addTag({ rel: 'canonical', href: newCanonicalUrl });
-    } */
     this.titleService.setTitle(
       'Direct Delivery with Flat Rates for a 26-Foot Truck | Household Goods Movers'
     );
@@ -246,7 +238,11 @@ class AutocompleteDirectionsHandler {
     // Specify just the place data fields that you need.
     const originAutocomplete = new google.maps.places.Autocomplete(
       originInput,
-      { fields: ['place_id'] }
+      {
+        fields: ['place_id'],
+
+        componentRestrictions: { country: 'us' },
+      }
     );
     // Specify just the place data fields that you need.
     const destinationAutocomplete = new google.maps.places.Autocomplete(
