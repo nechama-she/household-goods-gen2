@@ -49,6 +49,7 @@ import { DirectDeliveryPageSmallScreenComponent } from './products/direct-delive
 import { CollapsibleComponent } from './collapsible/collapsible.component';
 import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
 import { ConsolidatedMoveComponent } from './homepage/consolidated-move/consolidated-move.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ConsolidatedMoveComponent } from './homepage/consolidated-move/consolid
     CollapsibleComponent,
     DirectDeliveryAfterPaymentComponent,
     ConsolidatedMoveComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
