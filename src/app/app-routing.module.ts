@@ -21,6 +21,7 @@ import { MovingServicesMainComponent } from './moving-services/moving-services-m
 import { DirectDeliveryPageComponent } from './products/direct-delivery-page/direct-delivery-page.component';
 import { OrderSummaryComponent } from './products/order-summary/order-summary.component';
 import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
@@ -131,6 +132,10 @@ const routes: Routes = [
   {
     path: 'household-moving-company/long-distance-moving/interstate-movers/:area/:state',
     component: InterstateMoversAreaPageComponent,
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 const routerOptions: ExtraOptions = {
