@@ -11,6 +11,7 @@ export class FAQHomepageComponent {
   scriptId: string = 'faq-homepage';
   constructor(private jsonLdService: JsonLdService) {}
   ngOnInit(): void {
+    console.log('QuoteComponent ngOnInit');
     this.getJsonLd();
     this.jsonLdService.addJsonLdScript(this.jsonLdData, 'faq-homepage');
   }
