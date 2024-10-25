@@ -34,10 +34,15 @@ export class MovingServicesMainComponent {
       },
       {
         h2: 'Local Movers',
-        p: 'For your local move, trust our team of trained professionals to handle relocations within your neighborhood, community, or city. Typically covering distances under 50 miles, our relocation service ensures a smooth transition to your new home. Hire Household Goods Moving And Storage today for a hassle-free local move experience.',
+        p: 'For your local move in Rockville, trust our team of trained professionals to handle relocations within your neighborhood, community, or city. Covering distances typically under 50 miles, our relocation service ensures a smooth transition to your new home. Hire Household Goods Moving and Storage today for a hassle-free Rockville moving experience: ',
         linkToPost: 'local-movers-rockville-maryland',
         linkToPostText: 'MOVING LOCAL',
         logo: '../../../assets/images/household-moving-services/local movers.png',
+        a: {
+          href: 'https://www.household-goods-moving-and-storage.com/local-movers-rockville-maryland',
+          target: '_blank',
+          rel: 'noopener nofollow',
+        },
       },
       {
         h2: 'Short-Distance Movers',

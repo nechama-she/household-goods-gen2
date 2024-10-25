@@ -31,6 +31,13 @@
           </h2>
           <p>
             {{ service.p }}
+            <a
+              *ngIf="service.a"
+              href="{{ service.a.href }}"
+              target="_blank"
+              rel="noopener nofollow"
+              >{{ service.a.href }}</a
+            >
           </p>
           <button type="button" class="btn btn-lg service-button">
             <a href="{{ service.linkToPost }}">{{ service.linkToPostText }}</a>
