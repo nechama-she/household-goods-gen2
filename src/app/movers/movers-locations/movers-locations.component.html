@@ -1,0 +1,207 @@
+<div class="container">
+  <nav aria-label="breadcrumb" style="margin-top: 5px">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a style="color: #273947; font-weight: 600" routerLink=""
+          >Household Goods Moving And Storage</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Movers Service Areas
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Household Goods Movers - Service Areas</h1>
+    </div>
+  </div>
+  <div class="row" *ngFor="let location of locations; let i = index">
+    <div col="col">
+      <h2>{{ location.state }}</h2>
+      <ul>
+        <li *ngFor="let city of location.cities; let j = index">
+          <h3>{{ city.name }}</h3>
+          <p>
+            {{ city.address }} Call us today at
+            <b
+              ><a [href]="'tel:' + city.phoneLink">{{
+                city.phoneDispaly
+              }}</a></b
+            >
+            or request a quote here:
+            <b
+              ><a
+                [href]="city.pageLink"
+                target="_blank"
+                rel="noopener nofollow"
+                >{{ city.pageSeoLinkText }}</a
+              ></b
+            >
+            to book your mover in {{ city.name }} today!
+          </p>
+
+          <div class="row">
+            <div class="col">
+              <h4>More Info</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5>
+                <a
+                  [href]="
+                    '/map/household-goods-movers-' + city.name.toLowerCase()
+                  "
+                  >Get Directions</a
+                >
+              </h5>
+              <address>
+                <a
+                  [href]="
+                    '/map/household-goods-movers-' + city.name.toLowerCase()
+                  "
+                  >{{ city.address }}</a
+                >
+              </address>
+              Serving {{ city.name }} Area
+              <div>
+                <img
+                  width="300"
+                  height="300"
+                  [src]="'../../../assets/images/locations/' + city.imgSrc"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <h5>Hours</h5>
+              <table>
+                <tbody>
+                  <tr>
+                    <th scope="col">Mon</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Mon'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Tue</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Tue'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Wed</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Wed'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Thu</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Thu'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Fri</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Fri'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Sat</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Sat'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Sun</th>
+                    <td>7:00 AM - 10:00 PM</td>
+                    <td
+                      [ngClass]="{
+                        open: isOpen === true,
+                        closed: isOpen === false
+                      }"
+                    >
+                      <strong *ngIf="today === 'Sun'">
+                        {{ isOpen ? "Open Now" : "Closed" }}</strong
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button
+                class="btn btn-lg"
+                style="
+                  background-color: #ffde59;
+                  border: 0px;
+                  color: #273947;
+                  font-weight: bold;
+                "
+              >
+                <a [title]="city.pageLinkTitle" [href]="city.pageLink">
+                  {{ city.name }} Movers</a
+                >
+              </button>
+            </div>
+          </div>
+
+          <br />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

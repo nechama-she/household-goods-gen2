@@ -1,0 +1,19 @@
+.content {
+  padding: 15px;
+  display: block; /* Show content by default */
+}
+#map {
+  height: 100% !important;
+  width: 100% !important;
+}
+#map-inputs {
+  margin-top: 15px;
+  margin-left: 15px;
+  padding: 15px;
+  background-color: white;
+  text-align: center;
+}
+#map-inputs input {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}

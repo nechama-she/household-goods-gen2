@@ -1,0 +1,26 @@
+<div id="map-inputs">
+  <input
+    id="origin-input"
+    class="controls"
+    type="text"
+    placeholder="Enter an origin location"
+  />
+
+  <input id="destination-input" class="controls" [value]="moverAddress" />
+
+  <div id="mode-selector" class="controls">
+    <input type="radio" name="type" id="changemode-walking" />
+    <label for="changemode-walking">Walking</label>
+
+    <input type="radio" name="type" id="changemode-transit" />
+    <label for="changemode-transit">Transit</label>
+
+    <input type="radio" name="type" id="changemode-driving" checked="checked" />
+    <label for="changemode-driving">Driving</label>
+  </div>
+</div>
+<div class="content">
+  <div style="width: inherit; height: 440px; min-width: 260px">
+    <div id="map"></div>
+  </div>
+</div>

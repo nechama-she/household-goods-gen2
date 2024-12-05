@@ -22,9 +22,16 @@ import { DirectDeliveryPageComponent } from './products/direct-delivery-page/dir
 import { OrderSummaryComponent } from './products/order-summary/order-summary.component';
 import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MoversLocationsComponent } from './movers/movers-locations/movers-locations.component';
+import { MoverMapComponent } from './mover-map/mover-map.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
+  {
+    path: 'map/:mover',
+    component: MoverMapComponent,
+  },
+  { path: 'movers-service-areas', component: MoversLocationsComponent },
   { path: 'direct-delivery-move', component: DirectDeliveryPageComponent },
   {
     path: 'direct-delivery-move-thank-you',

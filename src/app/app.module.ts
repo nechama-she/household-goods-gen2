@@ -50,6 +50,10 @@ import { CollapsibleComponent } from './collapsible/collapsible.component';
 import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-after-payment/direct-delivery-after-payment.component';
 import { ConsolidatedMoveComponent } from './homepage/consolidated-move/consolidated-move.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MoversLocationsComponent } from './movers/movers-locations/movers-locations.component';
+import { SafePipePipe } from './custom-pipes/safe-pipe.pipe';
+import { SafePipe } from './custom-pipes/safe.pipe';
+import { MoverMapComponent } from './mover-map/mover-map.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +99,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DirectDeliveryAfterPaymentComponent,
     ConsolidatedMoveComponent,
     PageNotFoundComponent,
+    MoversLocationsComponent,
+    SafePipePipe,
+    SafePipe,
+    MoverMapComponent,
   ],
   imports: [
     BrowserModule,
