@@ -50,26 +50,29 @@ export class MoverMapComponent {
       }
     };
     let locationIndex = 0;
-    switch (window.location.href) {
-      case findLocationUrl('rockville'):
-        locationIndex = 0;
-        break;
-      case findLocationUrl('germantown'):
-        locationIndex = 1;
-        break;
-      case findLocationUrl('d.c.'):
-        locationIndex = 2;
-        break;
-      case findLocationUrl('miami'):
-        locationIndex = 3;
-        break;
-      case findLocationUrl('chicago'):
-        locationIndex = 4;
-        break;
-      case findLocationUrl('los%20angeles'):
-        locationIndex = 5;
-        break;
+    if (typeof window !== 'undefined') {
+      switch (window.location.href) {
+        case findLocationUrl('rockville'):
+          locationIndex = 0;
+          break;
+        case findLocationUrl('germantown'):
+          locationIndex = 1;
+          break;
+        case findLocationUrl('dc'):
+          locationIndex = 2;
+          break;
+        case findLocationUrl('miami'):
+          locationIndex = 3;
+          break;
+        case findLocationUrl('chicago'):
+          locationIndex = 4;
+          break;
+        case findLocationUrl('los-angeles'):
+          locationIndex = 5;
+          break;
+      }
     }
+
     this.moverAddress = moversLocations[locationIndex].address;
   }
   ngAfterViewInit() {
