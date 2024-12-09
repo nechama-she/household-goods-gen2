@@ -11,8 +11,10 @@ export class MoversLocationsComponent {
   locations: any;
   isOpen: boolean = false;
   today: string;
-  jsonLdData: any;
-  scriptId: string = 'moversServiceAreas';
+  jsonLdDataBreadcrumb: any;
+  scriptIdBreadcrumb: string = 'moversServiceAreasBreadcrumb';
+  jsonLdDataOrganization: any;
+  scriptIdOrganization: string = 'moversServiceAreasOrganization';
   constructor(
     private titleService: Title,
     private meta: Meta,
@@ -50,12 +52,21 @@ export class MoversLocationsComponent {
     this.isOpen = startDate < currentDate && endDate > currentDate;
   }
   ngOnDestroy(): void {
-    if (this.jsonLdData) {
-      this.jsonLdService.removeJsonLdScript(this.jsonLdData, this.scriptId);
+    if (this.jsonLdDataBreadcrumb) {
+      this.jsonLdService.removeJsonLdScript(
+        this.jsonLdDataBreadcrumb,
+        this.scriptIdBreadcrumb
+      );
+    }
+    if (this.jsonLdDataOrganization) {
+      this.jsonLdService.removeJsonLdScript(
+        this.jsonLdDataOrganization,
+        this.scriptIdOrganization
+      );
     }
   }
   addJsonLdScript() {
-    this.jsonLdData = {
+    this.jsonLdDataBreadcrumb = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -73,7 +84,85 @@ export class MoversLocationsComponent {
         },
       ],
     };
-    this.jsonLdService.addJsonLdScript(this.jsonLdData, this.scriptId);
+    this.jsonLdService.addJsonLdScript(
+      this.jsonLdDataBreadcrumb,
+      this.scriptIdBreadcrumb
+    );
+    this.jsonLdDataOrganization = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Household Goods Moving And Storage',
+      url: 'https://www.household-goods-moving-and-storage.com',
+      logo: 'https://www.household-goods-moving-and-storage.com/assets/images/moving-logo.webp',
+      description:
+        'Household Goods Moving and Storage specializes in state-to-state and local moves for household goods. We proudly serve customers through our branches in Rockville, MD; Germantown, MD; Washington, DC; Chicago, IL; Miami, FL; and Los Angeles, CA.',
+      address: [
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '10655 Pine Haven Terrace',
+          addressLocality: 'Rockville',
+          addressRegion: 'MD',
+          postalCode: '20852',
+          addressCountry: 'US',
+          name: 'Rockville Branch',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '19960 Wild Cherry Ln',
+          addressLocality: 'Germantown',
+          addressRegion: 'MD',
+          postalCode: '20874',
+          addressCountry: 'US',
+          name: 'Germantown Branch',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '5644 3rd St NE',
+          addressLocality: 'Washington',
+          addressRegion: 'DC',
+          postalCode: '20011',
+          addressCountry: 'US',
+          name: 'DC Branch',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '600 NE 185th St',
+          addressLocality: 'Miami',
+          addressRegion: 'FL',
+          postalCode: '33179',
+          addressCountry: 'US',
+          name: 'Miami Branch',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '1830 N Kostner Ave',
+          addressLocality: 'Chicago',
+          addressRegion: 'IL',
+          postalCode: '60639',
+          addressCountry: 'US',
+          name: 'Chicago Branch',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '4908 Sunnyslope Ave',
+          addressLocality: 'Sherman Oaks',
+          addressRegion: 'CA',
+          postalCode: '91423',
+          addressCountry: 'US',
+          name: 'Los Angeles Branch',
+        },
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-833-359-6786',
+        contactType: 'Customer Service',
+        areaServed: 'US',
+      },
+    };
+    this.jsonLdService.addJsonLdScript(
+      this.jsonLdDataOrganization,
+      this.scriptIdOrganization
+    );
   }
   getLocations() {
     this.locations = [
