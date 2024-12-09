@@ -51,20 +51,14 @@
           <div class="row">
             <div class="col">
               <h5>
-                <a
-                  [href]="
-                    '/map/household-goods-movers-' + city.name.toLowerCase()
-                  "
+                <a [href]="'/map/household-goods-movers-' + city.urlName"
                   >Get Directions</a
                 >
               </h5>
               <address>
-                <a
-                  [href]="
-                    '/map/household-goods-movers-' + city.name.toLowerCase()
-                  "
-                  >{{ city.address }}</a
-                >
+                <a [href]="'/map/household-goods-movers-' + city.urlName">{{
+                  city.address
+                }}</a>
               </address>
               Serving {{ city.name }} Area
               <div>

@@ -82,6 +82,7 @@ export class MoversLocationsComponent {
         cities: [
           {
             name: 'Rockville',
+            urlName: 'rockville',
             address: '10655 Pine Haven Ter Rockville, MD 20852.',
             phoneDispaly: '(240)-570-7987',
             phoneLink: '+12405707987',
@@ -95,6 +96,7 @@ export class MoversLocationsComponent {
           },
           {
             name: 'Germantown',
+            urlName: 'germantown',
             address: '19960 Wild Cherry Ln. Germantown, MD, 20874.',
             phoneDispaly: '(202)-937-2625',
             phoneLink: '+12029372625',
@@ -113,6 +115,7 @@ export class MoversLocationsComponent {
         cities: [
           {
             name: 'D.C.',
+            urlName: 'dc',
             address: '5644 3rd St NE, Washington, DC 20011',
             phoneDispaly: '(240)-226-3174',
             phoneLink: '+12402263174',
@@ -131,6 +134,7 @@ export class MoversLocationsComponent {
         cities: [
           {
             name: 'Miami',
+            urlName: 'miami',
             address: '600 NE 185th St, Miami FL 33179.',
             phoneDispaly: '(786)-347-7217',
             phoneLink: '+17863477217',
@@ -149,6 +153,7 @@ export class MoversLocationsComponent {
         cities: [
           {
             name: 'Chicago',
+            urlName: 'chicago',
             address: '1830 N Kostner Ave, Chicago, IL 60639.',
             phoneDispaly: '(773)-694-1227',
             phoneLink: '+1773-694-1227',
@@ -167,6 +172,7 @@ export class MoversLocationsComponent {
         cities: [
           {
             name: 'Los Angeles',
+            urlName: 'los-angeles',
             address: '4908 Sunnyslope Ave, Sherman Oaks, CA 91423.',
             phoneDispaly: '(213)-340-2846',
             phoneLink: '+12133402846',
