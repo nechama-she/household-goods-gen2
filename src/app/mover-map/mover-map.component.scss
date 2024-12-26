@@ -1,6 +1,10 @@
 .content {
   padding: 15px;
   display: block; /* Show content by default */
+  text-align: center;
+}
+.content h2 {
+  font-size: medium;
 }
 #map {
   height: 100% !important;
