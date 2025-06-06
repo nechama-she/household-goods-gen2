@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <nav class="breadcrumbs">
+    <a routerLink="/">Home</a>
+    <span *ngIf="state"
+      >→ <span class="state">{{ state | titlecase }}</span></span
+    >
+  </nav>
+  <div class="county-wrapper">
+    <div class="container">
+      <section class="state-hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Movers in {{ state | titlecase }}</h1>
+            <p class="hero-subtitle">
+              <strong
+                >Looking for reliable movers in {{ state | titlecase }}? Whether
+                you're planning a local move or a long-distance move, Household
+                Goods Moving And Storage is here to help.
+              </strong>
+            </p>
+            <p class="hero-body">
+              <strong
+                >Accredited by the Better Business Bureau(BBB) with an A+ rating
+                and backed by 5-star reviews on Google</strong
+              >, we've become a trusted choice for moving services in
+              {{ state | titlecase }}. When you choose Household Goods Moving
+              And Storage, you're not just moving items — you're moving
+              everything that makes your house a home. From start to finish, we
+              coordinate every detail with care and professionalism. If you're
+              searching for moving companies in {{ state | titlecase }} —
+              whether you're moving in, from, or to the state — we're the moving
+              service that understands what matters most.
+            </p>
+            <a class="quote-button" (click)="openBookOnlineModal()"
+              >Get a Quote</a
+            >
+          </div>
+          <div class="hero-image">
+            <img src="/assets/images/moving-truck.jpg" alt="Moving crew" />
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="map-wrapper">
+    <iframe
+      width="600"
+      height="450"
+      style="border: 0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDx5bz0q8NHI-dBbtx87yBUvLn7c94qts4&q=Household Goods Moving And Storage"
+    >
+    </iframe>
+  </div>
+  <div class="county-wrapper" *ngFor="let county of counties">
+    <div class="container">
+      <div class="title">
+        <h1>{{ county.name }}</h1>
+      </div>
+      <div class="area-box">
+        <div class="columns">
+          <div class="column" *ngFor="let col of splitCities(county.cities)">
+            <p *ngFor="let city of col">
+              <a
+                [routerLink]="
+                  getCityUrl(
+                    county.name === 'City of Alexandria' ? 'Alexandria' : city,
+                    county.name === 'City of Alexandria' ? city : null
+                  )
+                "
+                class="city-link"
+              >
+                {{ city }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-state-faq [state]="state"></app-state-faq>
+</div>

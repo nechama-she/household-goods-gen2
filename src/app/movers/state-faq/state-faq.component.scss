@@ -1,0 +1,60 @@
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.faq-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #273947;
+}
+
+.faq-item {
+  margin-bottom: 12px; /* adds spacing between questions */
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Question style */
+.faq-question {
+  width: 100%;
+  background-color: #f9f9f9; /* default soft background */
+  color: #273947;
+  border: none;
+  text-align: left;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.faq-question:hover {
+  background-color: #fff4b5; /* subtle yellow on hover */
+}
+
+/* Active (open) state */
+.faq-item.open .faq-question {
+  background-color: #ffde59; /* brand yellow */
+}
+
+/* Answer block */
+.faq-answer {
+  padding: 16px;
+  background-color: #fdfdfd;
+  color: #273947;
+}
+
+/* Plus/minus symbol */
+.symbol {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #273947;
+}

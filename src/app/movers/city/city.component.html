@@ -1,0 +1,80 @@
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <ol>
+    <li><a routerLink="/">Home</a></li>
+    <li>
+      <a [routerLink]="'/' + state.toLowerCase()">{{ state }}</a>
+    </li>
+    <li aria-current="page">Movers in {{ city }}, {{ state }}</li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ titleText }}</h1>
+    <h2>{{ subtitle }}</h2>
+    <p>{{ description }}</p>
+    <button (click)="openBookOnlineModal()" class="cta-button">
+      Get a Free Quote
+    </button>
+  </div>
+
+  <div class="hero-image">
+    <img
+      src="/assets/images/moving-truck.jpg"
+      [alt]="'Moving services in ' + city + ', ' + state"
+    />
+  </div>
+</section>
+
+<div class="map-wrapper">
+  <iframe
+    width="600"
+    height="450"
+    style="border: 0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDx5bz0q8NHI-dBbtx87yBUvLn7c94qts4&q=Household Goods Moving And Storage"
+  ></iframe>
+</div>
+
+<div class="city-info-layout">
+  <div class="city-info-text">
+    <h2>Local and long-distance moving company in {{ stateFull }}</h2>
+    <p>{{ paragraphText }}</p>
+  </div>
+
+  <div class="city-info-list">
+    <div class="columns">
+      <ul>
+        <li
+          *ngFor="let city of otherCities | slice : 0 : otherCities.length / 2"
+        >
+          <a [routerLink]="getCityUrl(city)">{{ city }}</a>
+        </li>
+      </ul>
+      <ul>
+        <li *ngFor="let city of otherCities | slice : otherCities.length / 2">
+          <a [routerLink]="getCityUrl(city)">{{ city }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="faq-container" *ngIf="faqList.length">
+  <h2>FAQs - Moving in {{ city }}</h2>
+  <div
+    class="faq-item"
+    *ngFor="let faq of faqList; let i = index"
+    [ngClass]="{ open: faq.open }"
+  >
+    <button class="faq-question" (click)="toggleFaq(i)">
+      {{ faq.question }}
+      <span class="symbol">{{ faq.open ? "-" : "+" }}</span>
+    </button>
+    <div class="faq-answer" *ngIf="faq.open">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+</section>

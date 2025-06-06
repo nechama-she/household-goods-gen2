@@ -1,0 +1,16 @@
+<div class="faq-container">
+  <h2>Moving FAQs</h2>
+
+  <div
+    *ngFor="let faq of selectedFaqs; let i = index"
+    [ngClass]="{ 'faq-item': true, open: faq.open }"
+  >
+    <button class="faq-question" (click)="toggleFaq(i)">
+      {{ faq.question }}
+      <span class="symbol">{{ faq.open ? "-" : "+" }}</span>
+    </button>
+    <div class="faq-answer" *ngIf="faq.open">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+</div>

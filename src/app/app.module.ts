@@ -54,6 +54,11 @@ import { MoversLocationsComponent } from './movers/movers-locations/movers-locat
 import { SafePipePipe } from './custom-pipes/safe-pipe.pipe';
 import { SafePipe } from './custom-pipes/safe.pipe';
 import { MoverMapComponent } from './mover-map/mover-map.component';
+import { StatesComponent } from './movers/states/states.component';
+import { StateComponent } from './movers/state/state.component';
+import { CityComponent } from './movers/city/city.component';
+import { StateFaqComponent } from './movers/state-faq/state-faq.component';
+import { LocationCardsComponent } from './homepage/location-cards/location-cards.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +108,11 @@ import { MoverMapComponent } from './mover-map/mover-map.component';
     SafePipePipe,
     SafePipe,
     MoverMapComponent,
+    StatesComponent,
+    StateComponent,
+    CityComponent,
+    StateFaqComponent,
+    LocationCardsComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ import { DirectDeliveryAfterPaymentComponent } from './products/direct-delivery-
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MoversLocationsComponent } from './movers/movers-locations/movers-locations.component';
 import { MoverMapComponent } from './mover-map/mover-map.component';
+import { StateComponent } from './movers/state/state.component';
+import { CityComponent } from './movers/city/city.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
@@ -139,6 +141,14 @@ const routes: Routes = [
   {
     path: 'household-moving-company/long-distance-moving/interstate-movers/:area/:state',
     component: InterstateMoversAreaPageComponent,
+  },
+  {
+    path: ':state',
+    component: StateComponent,
+  },
+  {
+    path: ':state/movers-in/:city',
+    component: CityComponent,
   },
   {
     path: '**',
