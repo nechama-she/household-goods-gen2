@@ -1,0 +1,263 @@
+:host {
+  display: block;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #273947;
+  background-color: #f8f9fa;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  color: #6c757d;
+
+  a {
+    color: #273947;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  li {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  li::after {
+    content: "→";
+    margin-left: 0.5rem;
+    color: #bbb;
+  }
+
+  li:last-child::after {
+    content: "";
+  }
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+
+  .hero-text {
+    flex: 1 1 55%;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: #555;
+      margin-bottom: 1rem;
+      font-weight: normal;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .cta-button {
+      background-color: #ffde59;
+      color: #273947;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #f4d847;
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1 1 40%;
+    text-align: right;
+
+    img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+  }
+}
+.map-wrapper {
+  margin-top: 40px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 450px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+/* FAQ Section */
+.faq-container {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  padding: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #273947;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+
+      .symbol {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-left: 1rem;
+      }
+
+      &:hover {
+        background-color: #fff8cc;
+      }
+    }
+
+    &.open .faq-question {
+      background-color: #fff8cc;
+    }
+
+    .faq-answer {
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+
+    .hero-text,
+    .hero-image {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-height: 300px;
+    }
+  }
+
+  .faq-container {
+    padding: 1.5rem 1rem;
+  }
+}
+.city-info-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  .city-info-text {
+    flex: 0 0 40%;
+    max-width: 40%;
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+  }
+
+  .city-info-list {
+    flex: 1;
+    background-color: #f5f5f5;
+    border-radius: 0 0 60px 60px;
+    padding: 2rem;
+
+    .columns {
+      display: flex;
+      gap: 3rem;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            color: #000;
+            text-decoration: underline;
+
+            &:hover {
+              color: #007bff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .city-info-text,
+    .city-info-list {
+      max-width: 100%;
+    }
+
+    .columns {
+      flex-direction: column;
+    }
+  }
+}

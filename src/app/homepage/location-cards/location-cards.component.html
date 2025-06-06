@@ -1,0 +1,7 @@
+<div class="cards-container">
+  <div class="card" *ngFor="let location of locations">
+    <h3>{{ location.name }}</h3>
+    <p>{{ location.description }}</p>
+    <a [routerLink]="location.link" class="card-link">{{ location.cta }}</a>
+  </div>
+</div>
