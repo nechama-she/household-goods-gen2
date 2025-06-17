@@ -24,12 +24,33 @@
       data-use-service-core
       defer
     ></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-16520194225"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-16520194225");
+    </script>
+    <script>
+      gtag("config", "AW-16520194225/8bCsCLb-gN0aELHRuMU9", {
+        phone_conversion_number: "(240)-570-7987",
+      });
+    </script>
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://www.household-goods-moving-and-storage.com/#business",
         "name": "Household Goods Moving And Storage",
+        "url": "https://www.household-goods-moving-and-storage.com",
         "image": "https://www.household-goods-moving-and-storage.com/assets/images/moving-logo.webp",
         "telephone": "(240) 570-7987",
         "address": {
@@ -43,8 +64,59 @@
         "priceRange": "$360 - $20,000",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "5",
-          "reviewCount": "58"
+          "ratingValue": "4.9",
+          "reviewCount": "73"
+        },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "sameAs": [
+          "https://www.facebook.com/HouseholdGoodsMovingAndStorage",
+          "https://www.instagram.com/householdgoodsmoving",
+          "https://www.youtube.com/@HouseholdGoodsMovingAndStorage",
+          "https://www.bbb.org/us/md/rockville/profile/moving-and-storage-companies/household-goods-moving-and-storage-0241-236079449"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Long-distance moving services",
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "provider": {
+          "@id": "https://www.household-goods-moving-and-storage.com/#business"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Local residential and commercial moving services",
+        "areaServed": [
+          {
+            "@type": "State",
+            "name": "Maryland"
+          },
+          {
+            "@type": "State",
+            "name": "Virginia"
+          },
+          {
+            "@type": "City",
+            "name": "Washington",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "DC",
+              "addressCountry": "US"
+            }
+          }
+        ],
+        "provider": {
+          "@id": "https://www.household-goods-moving-and-storage.com/#business"
         }
       }
     </script>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
+import { JsonldscriptService } from '../../services/jsonldscript.service';
 
 @Component({
   selector: 'app-state',
@@ -18,6 +19,7 @@ export class StateComponent {
     private metaService: Meta,
     private router: Router,
     private location: Location,
+    private jsonLd: JsonldscriptService,
     @Inject(DOCUMENT) private document: Document
   ) {}
   ngOnInit(): void {
@@ -31,6 +33,25 @@ export class StateComponent {
         if (this.state === 'dc') {
           formattedState = 'Washington, D.C.';
         }
+        const breadcrumbSchema = {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://www.household-goods-moving-and-storage.com',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: `${formattedState} Movers`,
+              item: `https://www.household-goods-moving-and-storage.com/${stateParam}`,
+            },
+          ],
+        };
+        this.jsonLd.inject(breadcrumbSchema, 'breadcrumb');
         const fullUrl = 'https://www.household-goods-moving-and-storage.com'; // fallback for SSR
         const currentPath = this.location.prepareExternalUrl(this.router.url);
         const fullCurrentUrl = fullUrl + currentPath;
@@ -296,6 +317,8 @@ export class StateComponent {
     this.metaService.removeTag("property='og:image:type'");
     this.metaService.removeTag("property='og:locale'");
     this.metaService.removeTag("property='og:site_name'");
+
+    this.jsonLd.remove('breadcrumb');
   }
   getCityUrl(city: string, neighborhood?: string): string {
     const formattedCity = city.toLowerCase().replace(/ /g, '-');
