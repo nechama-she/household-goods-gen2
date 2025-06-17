@@ -120,7 +120,6 @@ export class FAQHomepageComponent {
     };
   }
   ngOnDestroy(): void {
-    console.log('FAQHomepageComponent ngOnDestroy');
     if (this.jsonLdData) {
       this.jsonLdService.removeJsonLdScript(this.jsonLdData, this.scriptId);
     }

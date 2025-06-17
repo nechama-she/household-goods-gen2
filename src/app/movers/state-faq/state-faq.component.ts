@@ -1,4 +1,14 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  OnDestroy,
+  Inject,
+} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Renderer2 } from '@angular/core';
+import { JsonldscriptService } from '../../services/jsonldscript.service';
 
 @Component({
   selector: 'app-state-faq',
@@ -7,8 +17,9 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class StateFaqComponent implements OnChanges {
   @Input() state: string = '';
+  structuredData: string = '';
   selectedFaqs: { question: string; answer: string; open: boolean }[] = [];
-
+  jsonLdScriptElement!: HTMLScriptElement;
   faqList: {
     [key: string]: { question: string; answer: string; open: boolean }[];
   } = {
@@ -111,7 +122,52 @@ export class StateFaqComponent implements OnChanges {
       },
     ],
   };
+  constructor(
+    private renderer: Renderer2,
+    private jsonLd: JsonldscriptService,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
+  ngOnInit(): void {
+    const faqs = this.faqList[this.state?.toLowerCase()];
+    if (!faqs) return;
 
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      about: {
+        '@id': 'https://www.household-goods-moving-and-storage.com/#business',
+      },
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+    this.jsonLd.inject(faqSchema, 'faq');
+
+    const breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.household-goods-moving-and-storage.com',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: `${this.state} Movers`,
+          item: `https://www.household-goods-moving-and-storage.com/${this.state?.toLowerCase()}`,
+        },
+      ],
+    };
+    this.jsonLd.inject(breadcrumbSchema, 'breadcrumb');
+  }
   ngOnChanges(): void {
     const key = this.state.toLowerCase();
     this.selectedFaqs = this.faqList[key] || [];
@@ -119,5 +175,8 @@ export class StateFaqComponent implements OnChanges {
 
   toggleFaq(index: number): void {
     this.selectedFaqs[index].open = !this.selectedFaqs[index].open;
+  }
+  ngOnDestroy(): void {
+    this.jsonLd.remove('faq');
   }
 }
