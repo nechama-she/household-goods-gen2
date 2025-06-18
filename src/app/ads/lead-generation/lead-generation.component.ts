@@ -5,6 +5,7 @@ import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lead-generation',
@@ -33,7 +34,8 @@ export class LeadGenerationComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private fb: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {
     const datepipe: DatePipe = new DatePipe('en-US');
     this.date = datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -94,30 +96,6 @@ export class LeadGenerationComponent {
     if (this.moveForm.get('moveDate').valid) this.nextStep();
   }
   nextStep() {
-    let facebookEventValue;
-    switch (this.currentStep) {
-      case 1:
-        facebookEventValue = this.addressFrom.nativeElement.value;
-        break;
-      case 2:
-        facebookEventValue = this.moveForm.get('moveSize').value;
-        break;
-      case 3:
-        facebookEventValue = this.moveForm.get('moveDate').value;
-        break;
-      case 4:
-        facebookEventValue = this.addressTo.nativeElement.value;
-        break;
-      case 5:
-        facebookEventValue = this.moveForm.get('email').value;
-        break;
-      case 6:
-        facebookEventValue = this.moveForm.get('name').value;
-        break;
-    }
-    (window as any).fbq('track', `Step ${this.currentStep}`, {
-      stepValue: facebookEventValue,
-    });
     if (this.currentStep < 7) {
       this.currentStep++;
     }
@@ -142,6 +120,7 @@ export class LeadGenerationComponent {
       console.log(this.moveForm.value);
       this.formSubmitted = true;
       this.creatNewLead();
+      this.router.navigate(['/thank-you']);
     } else {
       alert('Please complete all required fields.');
     }

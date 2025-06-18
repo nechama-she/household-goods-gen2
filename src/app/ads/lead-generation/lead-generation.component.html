@@ -1,336 +1,390 @@
 <div class="wrapper">
-  <header>
-    <div class="row">
-      <div class="col d-flex justify-content-center header-name">
-        Household Goods Mover
-      </div>
-    </div>
-    <div class="col d-flex justify-content-center header-dot">
-      <div class="row">
-        <div class="col">
+  <!-- Header -->
+  <header
+    class="landing-header py-3 px-4 shadow-sm d-flex flex-wrap align-items-center justify-content-between"
+  >
+    <!-- Left: Logo & Name -->
+    <div class="d-flex align-items-center mb-3 mb-md-0">
+      <img
+        src="assets/images/moving-logo.webp"
+        alt="Household Goods Mover Logo"
+        class="me-3"
+        style="height: 60px; width: auto"
+      />
+      <div>
+        <h1 class="h5 mb-1 mb-sm-0">Household Goods Mover</h1>
+        <div class="text-muted small">
           USDOT Number:
-
           <a
-            target="_blank"
             href="https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string=4012295"
+            target="_blank"
           >
-            4012295</a
-          >
+            4012295
+          </a>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col d-flex justify-content-center">
-        <img
-          class="header-logo"
-          src="../../../assets/images/moving-logo.webp"
-        />
       </div>
     </div>
 
-    <div class="col d-flex justify-content-center">
-      <div class="row">
-        <div class="col phone">
-          <a class="bi bi-telephone-fill" href="tel:833-359-6786">
-            833-359-6786</a
-          >
-        </div>
-      </div>
+    <!-- Right: CTA Buttons -->
+    <div class="d-flex gap-2">
+      <a
+        href="tel:8333596786"
+        class="btn btn-navy d-flex align-items-center gap-1"
+      >
+        <i class="bi bi-telephone-fill"></i> (833)359-6786
+      </a>
+      <a
+        href="#quoteform"
+        class="btn btn-yellow d-flex align-items-center gap-1"
+      >
+        <i class="bi bi-arrow-down-circle"></i> Get a Quote
+      </a>
     </div>
   </header>
   <main>
     <hr />
-    <div class="row" *ngIf="formSubmitted">
-      <div class="col d-flex justify-content-center">
-        <div class="after-submit">
-          <div style="width: 300px">
-            <h1>You Are All Set!</h1>
-            <b>
-              Thank you for submitting your request. To provide an accurate
-              quote, we'll need a few additional details based on your
-              responses. One of our representatives will be in touch with you
-              shortly.
-            </b>
-            <div class="phone button-phone">
-              <button class="btn btn-lg Navigate-button" type="button">
-                <a class="bi bi-telephone-fill" href="tel:833-359-6786">
-                  833-359-6786</a
-                >
-              </button>
-            </div>
-          </div>
-        </div>
+    <div class="container my-4 info-section">
+      <div class="image-col">
+        <img
+          src="assets/images/homepage-mover.jpg"
+          alt="household goods movers"
+          class="img-fluid rounded"
+        />
+      </div>
+      <div class="text-col">
+        <h1>Household Goods Moving And Storage</h1>
+        <p>
+          From small apartments to large homes, across the street or across the
+          country, we provide household goods moving and storage services with
+          care and professionalism. Trust our team to ensure your belongings are
+          safely packed, transported, and delivered on time with hassle-free
+          service throughout the U.S.
+        </p>
+        <ul class="list-unstyled mt-3">
+          <li class="mb-2">
+            <i class="bi bi-box2-heart"></i>
+            <strong> Expert Packing:</strong> We carefully pack and protect your
+            items.
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-people-fill"></i>
+            <strong> Dedicated Team:</strong> Experienced movers at every step.
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-truck"></i>
+            <strong> Timely Delivery:</strong> We prioritize on-time delivery.
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-signpost-split"></i>
+            <strong> Full Coverage:</strong> Long-distance service nationwide.
+          </li>
+        </ul>
+        <p class="mt-3">
+          Call us today at
+          <a href="tel:8333596786"><strong>833-359-6786</strong></a> or
+          <strong><a href="#quoteform">request a quote</a></strong> to book your
+          mover today!
+        </p>
       </div>
     </div>
 
-    <div *ngIf="!formSubmitted">
-      <div class="row">
-        <div class="col d-flex justify-content-center quote-header">
-          Moving Cost Calculator
+    <div class="container py-5">
+      <div class="row align-items-start">
+        <!-- Left Column: Text -->
+        <div class="col-lg-7 mb-4 mb-lg-0">
+          <h2 class="fw-bold">Moving Cost Calculator</h2>
+          <p class="lead mb-3">
+            Enter your move details to get instant rates & availability.
+          </p>
+          <p class="text-success fw-semibold">
+            ✅ special Discount: You've unlocked exclusive pricing by finding us
+            on Google.
+          </p>
+          <ul class="mt-3 ps-3">
+            <li>✔ Instant quote process</li>
+            <li>✔ 5-Star Rated Moving Service</li>
+            <li>✔ Long-distance & state-to-state moves</li>
+            <li>✔ No hidden fees</li>
+          </ul>
         </div>
-      </div>
-      <div class="row">
-        <div class="col d-flex justify-content-center text-center quote-text">
-          Enter Your Move Details to Get Instant Rates & Availability!
-        </div>
-      </div>
-      <div class="move-details" *ngIf="progressStep > 1">
-        <div class="row">
-          <div class="col">Move Datails:</div>
-        </div>
-        <div class="row">
-          <div class="col col-4">
-            <i class="bi bi-geo-alt-fill"> Moving From</i>
-          </div>
-          <div class="col text-right">{{ addressFrom.value }}</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 2">
-          <div class="col col-4">
-            <i class="bi bi-arrows-move"> Move Size</i>
-          </div>
-          <div class="col">{{ moveForm.get("moveSize").value }}</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 3">
-          <div class="col col-4">
-            <i class="bi bi-calendar-check-fill"> Move Date</i>
-          </div>
-          <div class="col">{{ moveForm.get("moveDate").value }}</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 4">
-          <div class="col col-4">
-            <i class="bi bi-geo-alt-fill"> Moving To</i>
-          </div>
-          <div class="col">{{ addressTo.value }}</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 5">
-          <div class="col">Contact Information:</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 5">
-          <div class="col col-4">
-            <i class="bi bi-envelope-at-fill"> Email</i>
-          </div>
-          <div class="col">{{ moveForm.get("email").value }}</div>
-        </div>
-        <div class="row" *ngIf="progressStep > 6">
-          <div class="col col-4">
-            <i class="bi bi-person-fill"> Full Name</i>
-          </div>
-          <div class="col">{{ moveForm.get("name").value }}</div>
-        </div>
-        <div class="row" *ngIf="moveForm.get('phone').valid">
-          <div class="col col-4">
-            <i class="bi bi-telephone-fill"> Phone</i>
-          </div>
-          <div class="col">{{ moveForm.get("phone").value }}</div>
-        </div>
-      </div>
 
-      <div
-        class="form-container d-flex justify-content-center"
-        [hidden]="formSubmitted"
-      >
-        <div class="row">
-          <div class="col"></div>
-          <div class="col">
-            <form [formGroup]="moveForm" (ngSubmit)="submitForm()">
-              <div
-                [style.display]="currentStep === 1 ? 'block' : 'none'"
-                [@fadeAnimation]
-              >
-                <h3>Where Are You Moving From?</h3>
-                <input
-                  #addressFrom
-                  id="addressFrom"
-                  class="form-control form-input"
-                  type="text"
-                  formControlName="addressFrom"
-                  placeholder="Enter City,State or ZIP Code"
-                />
-                <span id="zipFrom" style="display: none"></span>
+        <!-- Right Column: Your Existing Quote Form -->
+        <div class="col-lg-5 form-col" id="quoteform">
+          <div>
+            <div class="text-center">
+              <h4 style="color: #273947">Start Your Quick Quote</h4>
+              <small class="text-muted">Takes less than 1 minute</small>
+            </div>
+            <div class="move-details" *ngIf="progressStep > 1">
+              <div class="row">
+                <div class="col">Move Datails:</div>
               </div>
-
-              <div *ngIf="currentStep === 2" [@fadeAnimation]>
-                <h3>Select Your Move Size</h3>
-                <div class="button-group">
-                  <ul>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected: moveForm.get('moveSize')?.value === 'studio'
-                        }"
-                        (click)="selectMoveSize('studio')"
-                      >
-                        Studio
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected:
-                            moveForm.get('moveSize')?.value === '1 Bedroom'
-                        }"
-                        (click)="selectMoveSize('1 Bedroom')"
-                      >
-                        1 Bedroom
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected:
-                            moveForm.get('moveSize')?.value === '2 Bedrooms'
-                        }"
-                        (click)="selectMoveSize('2 Bedrooms')"
-                      >
-                        2 Bedrooms
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected:
-                            moveForm.get('moveSize')?.value === '3 Bedrooms'
-                        }"
-                        (click)="selectMoveSize('3 Bedrooms')"
-                      >
-                        3 Bedrooms
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected:
-                            moveForm.get('moveSize')?.value === '4+ Bedrooms'
-                        }"
-                        (click)="selectMoveSize('4+ Bedrooms')"
-                      >
-                        4+ Bedrooms
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="move-size-button btn btn-lg"
-                        [ngClass]="{
-                          selected: moveForm.get('moveSize')?.value === 'office'
-                        }"
-                        (click)="selectMoveSize('office')"
-                      >
-                        Office
-                      </button>
-                    </li>
-                  </ul>
+              <div class="row">
+                <div class="col col-4">
+                  <i class="bi bi-geo-alt-fill"> Moving From</i>
                 </div>
+                <div class="col text-right">{{ addressFrom.value }}</div>
               </div>
-
-              <div *ngIf="currentStep === 3" [@fadeAnimation]>
-                <h3>When Are You Moving (Estimate)?</h3>
-                <input
-                  class="form-control form-input"
-                  type="date"
-                  formControlName="moveDate"
-                  (change)="dateChange()"
-                  min="{{ date }}"
-                />
-              </div>
-
-              <div
-                [style.display]="currentStep === 4 ? 'block' : 'none'"
-                [@fadeAnimation]
-              >
-                <h3>Where Are You Moving To?</h3>
-                <input
-                  #addressTo
-                  id="addressTo"
-                  class="form-control form-input"
-                  type="text"
-                  formControlName="addressTo"
-                  placeholder="Enter City,State or ZIP Code"
-                />
-              </div>
-
-              <div *ngIf="currentStep === 5" [@fadeAnimation]>
-                <h3>Enter Your Email</h3>
-                <input
-                  class="form-control form-input"
-                  type="email"
-                  formControlName="email"
-                  placeholder="Email"
-                />
-              </div>
-
-              <div *ngIf="currentStep === 6" [@fadeAnimation]>
-                <h3>Enter Your First and Last Name</h3>
-                <input
-                  class="form-control form-input"
-                  type="text"
-                  formControlName="name"
-                  placeholder="First and Last Name"
-                />
-              </div>
-
-              <div *ngIf="currentStep === 7" [@fadeAnimation]>
-                <h3>Enter Your Phone Number</h3>
-                <input
-                  class="form-control form-input"
-                  type="tel"
-                  formControlName="phone"
-                  placeholder="Phone Number"
-                />
-              </div>
-
-              <div class="buttons">
-                <div>
-                  <button
-                    class="btn btn-lg Navigate-button"
-                    type="button"
-                    (click)="previousStep()"
-                    *ngIf="currentStep != 1"
-                  >
-                    Previous
-                  </button>
+              <div class="row" *ngIf="progressStep > 2">
+                <div class="col col-4">
+                  <i class="bi bi-arrows-move"> Move Size</i>
                 </div>
-                <div>
-                  <button
-                    class="btn btn-lg Navigate-button"
-                    type="button"
-                    (click)="nextStep()"
-                    *ngIf="currentStep != 7"
-                    [disabled]="
-                      (!moveForm.get('addressFrom').valid &&
-                        currentStep === 1) ||
-                      (!moveForm.get('moveSize').valid && currentStep === 2) ||
-                      (!moveForm.get('moveDate').valid && currentStep === 3) ||
-                      (!moveForm.get('addressTo').valid && currentStep === 4) ||
-                      (!moveForm.get('email').valid && currentStep === 5) ||
-                      (!moveForm.get('name').valid && currentStep === 6)
-                    "
-                  >
-                    Next
-                  </button>
-                  <button
-                    class="btn btn-lg Navigate-button"
-                    type="submit"
-                    [disabled]="!moveForm.valid"
-                    *ngIf="currentStep === 7"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <div class="col">{{ moveForm.get("moveSize").value }}</div>
               </div>
-            </form>
+              <div class="row" *ngIf="progressStep > 3">
+                <div class="col col-4">
+                  <i class="bi bi-calendar-check-fill"> Move Date</i>
+                </div>
+                <div class="col">{{ moveForm.get("moveDate").value }}</div>
+              </div>
+              <div class="row" *ngIf="progressStep > 4">
+                <div class="col col-4">
+                  <i class="bi bi-geo-alt-fill"> Moving To</i>
+                </div>
+                <div class="col">{{ addressTo.value }}</div>
+              </div>
+              <div class="row" *ngIf="progressStep > 5">
+                <div class="col">Contact Information:</div>
+              </div>
+              <div class="row" *ngIf="progressStep > 5">
+                <div class="col col-4">
+                  <i class="bi bi-envelope-at-fill"> Email</i>
+                </div>
+                <div class="col">{{ moveForm.get("email").value }}</div>
+              </div>
+              <div class="row" *ngIf="progressStep > 6">
+                <div class="col col-4">
+                  <i class="bi bi-person-fill"> Full Name</i>
+                </div>
+                <div class="col">{{ moveForm.get("name").value }}</div>
+              </div>
+              <div class="row" *ngIf="moveForm.get('phone').valid">
+                <div class="col col-4">
+                  <i class="bi bi-telephone-fill"> Phone</i>
+                </div>
+                <div class="col">{{ moveForm.get("phone").value }}</div>
+              </div>
+            </div>
+
+            <div
+              class="form-container d-flex justify-content-center"
+              [hidden]="formSubmitted"
+            >
+              <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                  <form [formGroup]="moveForm" (ngSubmit)="submitForm()">
+                    <div
+                      [style.display]="currentStep === 1 ? 'block' : 'none'"
+                      [@fadeAnimation]
+                    >
+                      <h3>Where Are You Moving From?</h3>
+                      <input
+                        #addressFrom
+                        id="addressFrom"
+                        class="form-control form-input"
+                        type="text"
+                        formControlName="addressFrom"
+                        placeholder="Enter City,State or ZIP Code"
+                      />
+                      <span id="zipFrom" style="display: none"></span>
+                    </div>
+
+                    <div *ngIf="currentStep === 2" [@fadeAnimation]>
+                      <h3>Select Your Move Size</h3>
+                      <div class="button-group">
+                        <ul>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value === 'studio'
+                              }"
+                              (click)="selectMoveSize('studio')"
+                            >
+                              Studio
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value ===
+                                  '1 Bedroom'
+                              }"
+                              (click)="selectMoveSize('1 Bedroom')"
+                            >
+                              1 Bedroom
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value ===
+                                  '2 Bedrooms'
+                              }"
+                              (click)="selectMoveSize('2 Bedrooms')"
+                            >
+                              2 Bedrooms
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value ===
+                                  '3 Bedrooms'
+                              }"
+                              (click)="selectMoveSize('3 Bedrooms')"
+                            >
+                              3 Bedrooms
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value ===
+                                  '4+ Bedrooms'
+                              }"
+                              (click)="selectMoveSize('4+ Bedrooms')"
+                            >
+                              4+ Bedrooms
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              type="button"
+                              class="move-size-button btn btn-lg"
+                              [ngClass]="{
+                                selected:
+                                  moveForm.get('moveSize')?.value === 'office'
+                              }"
+                              (click)="selectMoveSize('office')"
+                            >
+                              Office
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div *ngIf="currentStep === 3" [@fadeAnimation]>
+                      <h3>When Are You Moving (Estimate)?</h3>
+                      <input
+                        class="form-control form-input"
+                        type="date"
+                        formControlName="moveDate"
+                        (change)="dateChange()"
+                        min="{{ date }}"
+                      />
+                    </div>
+
+                    <div
+                      [style.display]="currentStep === 4 ? 'block' : 'none'"
+                      [@fadeAnimation]
+                    >
+                      <h3>Where Are You Moving To?</h3>
+                      <input
+                        #addressTo
+                        id="addressTo"
+                        class="form-control form-input"
+                        type="text"
+                        formControlName="addressTo"
+                        placeholder="Enter City,State or ZIP Code"
+                      />
+                    </div>
+
+                    <div *ngIf="currentStep === 5" [@fadeAnimation]>
+                      <h3>Enter Your Email</h3>
+                      <input
+                        class="form-control form-input"
+                        type="email"
+                        formControlName="email"
+                        placeholder="Email"
+                      />
+                    </div>
+
+                    <div *ngIf="currentStep === 6" [@fadeAnimation]>
+                      <h3>Enter Your First and Last Name</h3>
+                      <input
+                        class="form-control form-input"
+                        type="text"
+                        formControlName="name"
+                        placeholder="First and Last Name"
+                      />
+                    </div>
+
+                    <div *ngIf="currentStep === 7" [@fadeAnimation]>
+                      <h3>Enter Your Phone Number</h3>
+                      <input
+                        class="form-control form-input"
+                        type="tel"
+                        formControlName="phone"
+                        placeholder="Phone Number"
+                      />
+                    </div>
+
+                    <div class="buttons">
+                      <div>
+                        <button
+                          class="btn btn-lg Navigate-button"
+                          type="button"
+                          (click)="previousStep()"
+                          *ngIf="currentStep != 1"
+                        >
+                          Previous
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-lg Navigate-button"
+                          type="button"
+                          (click)="nextStep()"
+                          *ngIf="currentStep != 7"
+                          [disabled]="
+                            (!moveForm.get('addressFrom').valid &&
+                              currentStep === 1) ||
+                            (!moveForm.get('moveSize').valid &&
+                              currentStep === 2) ||
+                            (!moveForm.get('moveDate').valid &&
+                              currentStep === 3) ||
+                            (!moveForm.get('addressTo').valid &&
+                              currentStep === 4) ||
+                            (!moveForm.get('email').valid &&
+                              currentStep === 5) ||
+                            (!moveForm.get('name').valid && currentStep === 6)
+                          "
+                        >
+                          Next
+                        </button>
+                        <button
+                          class="btn btn-lg Navigate-button"
+                          type="submit"
+                          [disabled]="!moveForm.valid"
+                          *ngIf="currentStep === 7"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col"></div>
+              </div>
+            </div>
           </div>
-          <div class="col"></div>
         </div>
       </div>
     </div>
@@ -338,36 +392,13 @@
   <footer>
     <div class="d-flex justify-content-center">
       <div class="row">
-        <div class="col align-middle bbb-profile">
-          <a
-            href="https://www.bbb.org/us/md/rockville/profile/moving-and-storage-companies/household-goods-moving-and-storage-0241-236079449/#sealclick"
-            target="_blank"
-            rel="nofollow"
-            ><img
-              src="https://seal-dc-easternpa.bbb.org/seals/blue-seal-120-70-bbb-236079449.png"
-              style="border: 0"
-              alt="Household Goods Moving And Storage BBB Business Review"
-          /></a>
-        </div>
-        <div class="col google-review">
-          <div
-            class="elfsight-app-cd8a4f85-6eff-4bc6-9ee0-6df2d12752ac"
-            data-elfsight-app-lazy
-          ></div>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center terms">
-      <div class="row">
-        <div class="col">
-          <a
-            class="bi bi-c-circle"
-            href="https://www.household-goods-moving-and-storage.com"
-            target="_blank"
-            >Household Goods Moving and Storage</a
-          >
-          <br />
-          <a href="/privacy-policy" target="_blank">Terms and Conditions</a>
+        <div class="col align-middle">
+          <img
+            src="assets/images/rate.png"
+            alt="Household Goods Mover Logo"
+            class="me-3"
+            style="height: auto; width: 320px"
+          />
         </div>
       </div>
     </div>
