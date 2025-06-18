@@ -120,7 +120,6 @@ export class LeadGenerationComponent {
       console.log(this.moveForm.value);
       this.formSubmitted = true;
       this.creatNewLead();
-      this.router.navigate(['/thank-you']);
     } else {
       alert('Please complete all required fields.');
     }
@@ -145,7 +144,9 @@ export class LeadGenerationComponent {
     let errorMessage: string = '';
 
     this.httpClient.post<any>(url, data, httpOptions).subscribe({
-      next: (data) => {},
+      next: (data) => {
+        this.router.navigate(['/thank-you']);
+      },
       error: (error) => {
         errorMessage = error.message;
         console.log('error!', errorMessage);
