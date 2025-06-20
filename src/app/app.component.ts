@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  phoneLink = '12405707987';
+  phoneLink = '2405707987';
   phone = '(240)-570-7987';
   homePageLink = '/';
 
