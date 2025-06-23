@@ -92,13 +92,14 @@
       <div class="row align-items-start">
         <!-- Left Column: Text -->
         <div class="col-lg-7 mb-4 mb-lg-0">
-          <h2 class="fw-bold">Moving Cost Calculator</h2>
+          <h2 class="fw-bold">{{ groupLabel || "" }} Moving Cost Calculator</h2>
           <p class="lead mb-3">
-            Enter your move details to get instant rates & availability.
+            Enter your {{ groupLabel?.toLowerCase() || "" }} move details to get
+            instant rates & availability.
           </p>
           <p class="text-success fw-semibold">
-            ✅ special Discount: You've unlocked exclusive pricing by finding us
-            on Google.
+            ✅ Special Discount{{ groupLabel ? " for " + groupLabel : "" }}:
+            You've unlocked exclusive pricing by finding us on Google.
           </p>
           <ul class="mt-3 ps-3">
             <li>✔ Instant quote process</li>
@@ -388,6 +389,7 @@
         </div>
       </div>
     </div>
+    <app-review-gallery></app-review-gallery>
   </main>
   <footer>
     <div class="d-flex justify-content-center">

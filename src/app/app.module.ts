@@ -12,8 +12,9 @@ import { LeadGenerationComponent } from './ads/lead-generation/lead-generation.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermsAndConditionsComponent } from './ads/terms-and-conditions/terms-and-conditions.component';
 import { LeadSubmittedComponent } from './ads/lead-submitted/lead-submitted.component';
+import { ReviewGalleryComponent } from './ads/review-gallery/review-gallery.component';
 @NgModule({
-  declarations: [AppComponent, LeadGenerationComponent, TermsAndConditionsComponent, LeadSubmittedComponent],
+  declarations: [AppComponent, LeadGenerationComponent, TermsAndConditionsComponent, LeadSubmittedComponent, ReviewGalleryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

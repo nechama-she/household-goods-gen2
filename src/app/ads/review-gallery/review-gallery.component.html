@@ -1,0 +1,20 @@
+<div class="gallery-wrapper">
+  <button class="scroll-button left" (click)="scroll(scrollContainer, 'left')">
+    &#8249;
+  </button>
+
+  <div
+    class="review-scroll-container"
+    #scrollContainer
+    (click)="openGoogleCard()"
+  >
+    <img *ngFor="let img of reviewImages" [src]="img" alt="Google Review" />
+  </div>
+
+  <button
+    class="scroll-button right"
+    (click)="scroll(scrollContainer, 'right')"
+  >
+    &#8250;
+  </button>
+</div>

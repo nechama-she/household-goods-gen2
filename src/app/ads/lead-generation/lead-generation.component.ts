@@ -5,7 +5,7 @@ import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lead-generation',
@@ -23,7 +23,15 @@ import { Router } from '@angular/router';
 export class LeadGenerationComponent {
   @ViewChild('addressFrom') addressFrom: ElementRef;
   @ViewChild('addressTo') addressTo: ElementRef;
+  groupType: string | null = null;
+  groupLabel: string = '';
 
+  groupMap: { [key: string]: string } = {
+    senior: 'Seniors',
+    local: 'Local Moves',
+    apartment: 'Apartment Movers',
+    'long-distance': 'Long-Distance Moves',
+  };
   formSubmitted: boolean = false;
   moveForm: FormGroup;
   currentStep = 1;
@@ -35,7 +43,8 @@ export class LeadGenerationComponent {
     @Inject(DOCUMENT) private document: Document,
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     const datepipe: DatePipe = new DatePipe('en-US');
     this.date = datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -58,7 +67,14 @@ export class LeadGenerationComponent {
       ],
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.queryParamMap.subscribe((params) => {
+      const group = params.get('group');
+      this.groupType = group;
+      this.groupLabel =
+        group && this.groupMap[group] ? this.groupMap[group] : '';
+    });
+  }
   ngAfterViewInit() {
     this.addGoogleMap();
   }
