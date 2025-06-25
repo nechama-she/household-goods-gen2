@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { SEOService } from '../../services/SEOService/seo.service';
 import { Meta } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quote',
@@ -40,9 +41,19 @@ export class QuoteComponent {
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private meta: Meta,
-    private seoService: SEOService
+    private seoService: SEOService,
+    private router: Router
   ) {}
   ngOnInit(): void {
+    const url = this.router.url;
+
+    if (url.includes('thank-you')) {
+      let modal = this.document.getElementById(
+        'sendQouteThankModal'
+      ) as HTMLFormElement;
+      modal.style.display = 'block';
+      modal.classList.add('show');
+    }
     this.meta.updateTag({
       name: 'og:image:secure',
       content:
@@ -133,11 +144,13 @@ export class QuoteComponent {
       this.httpClient.post<any>(url, data, httpOptions).subscribe({
         next: (data) => {
           console.log('email sent' + JSON.stringify(data));
-          let modal = this.document.getElementById(
+          /*let modal = this.document.getElementById(
             'sendQouteThankModal'
           ) as HTMLFormElement;
           modal.style.display = 'block';
-          modal.classList.add('show');
+          modal.classList.add('show');*/
+
+          this.router.navigate(['/thank-you']);
         },
         error: (error) => {
           errorMessage = error.message;

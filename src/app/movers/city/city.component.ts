@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { CityContentService } from '../../services/city-content.service';
 import { StateDataService } from '../../services/state-data.service';
+import { JsonldscriptService } from '../../services/jsonldscript.service';
 
 @Component({
   selector: 'app-city',
@@ -30,6 +31,7 @@ export class CityComponent implements OnInit {
     private stateDataService: StateDataService,
     private titleService: Title,
     private metaService: Meta,
+    private jsonLd: JsonldscriptService,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
@@ -39,8 +41,7 @@ export class CityComponent implements OnInit {
       this.city = this.normalizeCityName(rawCity);
       this.state = params.get('state') || '';
       this.stateFull = this.titleCase(this.state);
-      console.log(111);
-
+      this.addBreadcrumbJsonLd(rawCity, this.state);
       const county = this.stateDataService.getCountyByCity(this.city);
 
       if (county) {
@@ -66,26 +67,76 @@ export class CityComponent implements OnInit {
         const fullTitle = `${this.titleText} | Household Goods Mover`;
         const currentUrl = this.document.location.href;
 
-        this.titleService.setTitle(fullTitle);
-        this.metaService.updateTag({
-          name: 'description',
-          content: this.description,
-        });
-        this.metaService.updateTag({
-          property: 'og:title',
-          content: this.titleText,
-        });
-        this.metaService.updateTag({
-          property: 'og:description',
-          content: this.description,
-        });
-        this.metaService.updateTag({
-          property: 'og:image',
-          content: this.imageUrl || '/assets/images/default.jpg',
-        });
-        this.metaService.updateTag({ property: 'og:url', content: currentUrl });
+        this.addTags(fullTitle, currentUrl);
       }
     });
+  }
+  addTags(fullTitle, currentUrl) {
+    this.titleService.setTitle(fullTitle);
+    this.metaService.updateTag({
+      property: 'og:title',
+      content: fullTitle,
+    });
+    this.metaService.updateTag({
+      name: 'description',
+      content: this.description,
+    });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: this.description,
+    });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaService.updateTag({ property: 'og:url', content: currentUrl });
+    this.metaService.updateTag({
+      property: 'og:image',
+      content: this.imageUrl || '/assets/images/moving-truck.jpg',
+    });
+    this.metaService.updateTag({
+      property: 'og:image:width',
+      content: '452',
+    });
+    this.metaService.updateTag({
+      property: 'og:image:height',
+      content: '360',
+    });
+    this.metaService.updateTag({
+      property: 'og:image:type',
+      content: 'image/jpeg',
+    });
+    this.metaService.updateTag({ property: 'og:locale', content: 'en_US' });
+    this.metaService.updateTag({
+      property: 'og:site_name',
+      content: 'Household Goods Moving and Storage',
+    });
+  }
+  addBreadcrumbJsonLd(city: string, state: string) {
+    const fullCityUrl = `https://www.household-goods-moving-and-storage.com/${state}/movers-in/${city}`;
+    const breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.household-goods-moving-and-storage.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: this.titleCase(state),
+          item: `https://www.household-goods-moving-and-storage.com/${state}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: this.titleCase(city),
+          item: fullCityUrl,
+        },
+      ],
+    };
+
+    this.jsonLd.inject(breadcrumbSchema, 'breadcrumb');
   }
   normalizeCityName(slug: string): string {
     return slug
@@ -134,5 +185,19 @@ export class CityComponent implements OnInit {
     ) as HTMLFormElement;
     modal.style.display = 'block';
     modal.classList.add('show');
+  }
+  ngOnDestroy(): void {
+    this.metaService.removeTag("name='description'");
+    this.metaService.removeTag("property='og:title'");
+    this.metaService.removeTag("property='og:description'");
+    this.metaService.removeTag("property='og:type'");
+    this.metaService.removeTag("property='og:url'");
+    this.metaService.removeTag("property='og:image'");
+    this.metaService.removeTag("property='og:image:width'");
+    this.metaService.removeTag("property='og:image:height'");
+    this.metaService.removeTag("property='og:image:type'");
+    this.metaService.removeTag("property='og:locale'");
+    this.metaService.removeTag("property='og:site_name'");
+    this.jsonLd.remove('breadcrumb');
   }
 }
