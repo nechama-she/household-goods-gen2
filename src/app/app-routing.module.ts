@@ -26,9 +26,14 @@ import { MoversLocationsComponent } from './movers/movers-locations/movers-locat
 import { MoverMapComponent } from './mover-map/mover-map.component';
 import { StateComponent } from './movers/state/state.component';
 import { CityComponent } from './movers/city/city.component';
+import { MovingGuideComponent } from './moving-guide/moving-guide.component';
+import { WhyUsComponent } from './why-us/why-us.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
+  { path: 'thank-you', component: QuoteComponent },
+  { path: 'household-goods-moving/guide', component: MovingGuideComponent },
+  { path: 'why/us', component: WhyUsComponent },
   {
     path: 'map/:mover',
     component: MoverMapComponent,

@@ -59,6 +59,8 @@ import { StateComponent } from './movers/state/state.component';
 import { CityComponent } from './movers/city/city.component';
 import { StateFaqComponent } from './movers/state-faq/state-faq.component';
 import { LocationCardsComponent } from './homepage/location-cards/location-cards.component';
+import { MovingGuideComponent } from './moving-guide/moving-guide.component';
+import { WhyUsComponent } from './why-us/why-us.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +115,8 @@ import { LocationCardsComponent } from './homepage/location-cards/location-cards
     CityComponent,
     StateFaqComponent,
     LocationCardsComponent,
+    MovingGuideComponent,
+    WhyUsComponent,
   ],
   imports: [
     BrowserModule,
