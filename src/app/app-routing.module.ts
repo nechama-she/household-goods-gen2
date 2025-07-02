@@ -28,10 +28,16 @@ import { StateComponent } from './movers/state/state.component';
 import { CityComponent } from './movers/city/city.component';
 import { MovingGuideComponent } from './moving-guide/moving-guide.component';
 import { WhyUsComponent } from './why-us/why-us.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { DoNotSellComponent } from './do-not-sell/do-not-sell.component';
+import { DoNotSellCaComponent } from './do-not-sell-ca/do-not-sell-ca.component';
 
 const routes: Routes = [
   { path: '', component: QuoteComponent },
   { path: 'thank-you', component: QuoteComponent },
+  { path: 'terms-of-use', component: TermsOfUseComponent },
+  { path: 'do-not-sell', component: DoNotSellComponent },
+  { path: 'do-not-sell-ca', component: DoNotSellCaComponent },
   { path: 'household-goods-moving/guide', component: MovingGuideComponent },
   { path: 'why/us', component: WhyUsComponent },
   {

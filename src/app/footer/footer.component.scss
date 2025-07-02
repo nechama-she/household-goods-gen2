@@ -39,3 +39,32 @@ form {
 .btn:hover {
   background-color: #e55e00;
 }
+
+.sticky-footer-links {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.sticky-footer-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.sticky-footer-links a:hover {
+  text-decoration: underline;
+}
+
+.sticky-footer-links .divider {
+  color: #ccc;
+  margin: 0 4px;
+}
