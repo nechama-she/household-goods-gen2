@@ -61,6 +61,9 @@ import { StateFaqComponent } from './movers/state-faq/state-faq.component';
 import { LocationCardsComponent } from './homepage/location-cards/location-cards.component';
 import { MovingGuideComponent } from './moving-guide/moving-guide.component';
 import { WhyUsComponent } from './why-us/why-us.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { DoNotSellComponent } from './do-not-sell/do-not-sell.component';
+import { DoNotSellCaComponent } from './do-not-sell-ca/do-not-sell-ca.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +120,9 @@ import { WhyUsComponent } from './why-us/why-us.component';
     LocationCardsComponent,
     MovingGuideComponent,
     WhyUsComponent,
+    TermsOfUseComponent,
+    DoNotSellComponent,
+    DoNotSellCaComponent,
   ],
   imports: [
     BrowserModule,
