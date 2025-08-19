@@ -11,9 +11,9 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class MoverMapComponent {
   googleMapScriptAdded: boolean = false;
-  moverAddress: string = '10655 Pine Haven Ter Rockville, MD 20852';
-  moverTitle: string = 'Household Goods Movers in Rockville, MD';
-  h2Title: string = 'Get Direction to Household Goods Movers in Rockville, MD';
+  moverAddress: string = '11812 Hunting Ridge Ct, Potomac, MD 20854';
+  moverTitle: string = 'Household Goods Movers in Potomac, MD';
+  h2Title: string = 'Get Direction to Household Goods Movers in Potomac, MD';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -23,11 +23,11 @@ export class MoverMapComponent {
     const moversLocations = [
       {
         position: { lat: 39.03096, lng: -77.11769 },
-        title: 'Household Goods Movers in Rockville, MD',
+        title: 'Household Goods Movers in Potomac, MD',
         htmlTitle:
-          'Household Goods Movers in Rockville, MD - Updated December 2024 - Phone Number - (240)-570-7987',
-        address: '10655 Pine Haven Ter Rockville, MD 20852',
-        place: 'Rockville, MD',
+          'Household Goods Movers in Potomac, MD - Updated August 2025 - Phone Number - (240)-570-7987',
+        address: '11812 Hunting Ridge Ct, Potomac, MD 20854',
+        place: 'Potomac, MD',
       },
       {
         position: { lat: 39.18202, lng: -77.2868 },

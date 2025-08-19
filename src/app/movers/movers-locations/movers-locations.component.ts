@@ -99,12 +99,12 @@ export class MoversLocationsComponent {
       address: [
         {
           '@type': 'PostalAddress',
-          streetAddress: '10655 Pine Haven Terrace',
-          addressLocality: 'Rockville',
+          streetAddress: '11812 Hunting Ridge Ct',
+          addressLocality: 'Potomac',
           addressRegion: 'MD',
-          postalCode: '20852',
+          postalCode: '20854',
           addressCountry: 'US',
-          name: 'Rockville Branch',
+          name: 'Potomac Branch',
         },
         {
           '@type': 'PostalAddress',
@@ -172,7 +172,7 @@ export class MoversLocationsComponent {
           {
             name: 'Rockville',
             urlName: 'rockville',
-            address: '10655 Pine Haven Ter Rockville, MD 20852.',
+            address: '11812 Hunting Ridge Ct, Potomac, MD 20854',
             phoneDispaly: '(240)-570-7987',
             phoneLink: '+12405707987',
             pageLink:
