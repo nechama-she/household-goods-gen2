@@ -64,6 +64,7 @@ import { WhyUsComponent } from './why-us/why-us.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { DoNotSellComponent } from './do-not-sell/do-not-sell.component';
 import { DoNotSellCaComponent } from './do-not-sell-ca/do-not-sell-ca.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { DoNotSellCaComponent } from './do-not-sell-ca/do-not-sell-ca.component'
     TermsOfUseComponent,
     DoNotSellComponent,
     DoNotSellCaComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,

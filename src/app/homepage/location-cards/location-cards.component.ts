@@ -28,5 +28,26 @@ export class LocationCardsComponent {
       link: '/dc',
       cta: 'Start Your Move',
     },
+     {
+      name: 'New York',
+      description:
+        'We handle long-distance moves out of New York with professional crews, careful packing, and clear pricing, making your relocation simple from start to finish.',
+      link: '/newyork',
+      cta: 'Start Your Move',
+    },
+     {
+      name: 'New Jersey',
+      description:
+        'We help New Jersey residents move out of state with skilled movers, organized service, and honest pricing, making your transition smooth from the first box to delivery.',
+      link: '/newjersey',
+      cta: 'Start Your Move',
+    },
+     {
+      name: 'Chicago',
+      description:
+        'Leaving Chicago? Our moving team provides reliable long-distance service with steady handling and upfront pricing, giving you a smooth start wherever you\'re headed next.',
+      link: '/chicago',
+      cta: 'Start Your Move',
+    },
   ];
 }

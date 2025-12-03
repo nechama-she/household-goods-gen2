@@ -13,6 +13,7 @@ import { JsonldscriptService } from '../../services/jsonldscript.service';
 export class StateComponent {
   state: string = '';
   counties: { name: string; cities: string[] }[] = [];
+  stateFormat: String;
   constructor(
     private route: ActivatedRoute,
     private titleService: Title,
@@ -20,6 +21,8 @@ export class StateComponent {
     private router: Router,
     private location: Location,
     private jsonLd: JsonldscriptService,
+    
+
     @Inject(DOCUMENT) private document: Document
   ) {}
   ngOnInit(): void {
@@ -33,6 +36,13 @@ export class StateComponent {
         if (this.state === 'dc') {
           formattedState = 'Washington, D.C.';
         }
+        if (this.state === 'newyork') {
+          formattedState = 'New York';
+        }
+        if (this.state === 'newjersey') {
+          formattedState = 'New Jersey';
+        }
+        this.stateFormat=formattedState;
         const breadcrumbSchema = {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
@@ -112,8 +122,19 @@ export class StateComponent {
       }
     });
   }
+  get mapUrl(): string {
+    let address = 'Household Goods Moving And Storage';
+    if(this.state=='newyork' || this.state=='newjersey')
+      address = '321 Sherman Ave, Newark, NJ 07114';
+    if(this.state=='chicago')
+      address = '4401 W Cortland St, Chicago, IL 60639';
+    const encoded = encodeURIComponent(address);
+    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyDx5bz0q8NHI-dBbtx87yBUvLn7c94qts4&q=${encoded}`;
+  }
   setPageTitle(state: string): void {
+    console.log(state)
     const formattedState = state.charAt(0).toUpperCase() + state.slice(1);
+    console.log(formattedState)
     this.titleService.setTitle(
       `Movers in ${formattedState} | Household Goods Mover`
     );
@@ -301,6 +322,13 @@ export class StateComponent {
           ],
         },
       ],
+      newyork:[
+
+      ],
+      newjersey:[
+
+      ],
+      chicago:[]
     };
 
     this.counties = data[state] || [];
