@@ -89,11 +89,11 @@ export class QuoteComponent {
     });
   }
   ngAfterViewInit() {
-    //this.addGoogleReviews();
-    /*this.addGoogleProfile();
+    this.addGoogleReviews();
+    this.addGoogleProfile();
     if (typeof document !== 'undefined') {
       this.seoService.setCanonicalURL();
-    }*/
+    }
   }
   addGoogleReviews() {
     this.addScript(

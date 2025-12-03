@@ -2,7 +2,7 @@
   <nav class="breadcrumbs">
     <a routerLink="/">Home</a>
     <span *ngIf="state"
-      >→ <span class="state">{{ state | titlecase }}</span></span
+      >→ <span class="state">{{ stateFormat }}</span></span
     >
   </nav>
   <div class="county-wrapper">
@@ -10,10 +10,10 @@
       <section class="state-hero">
         <div class="hero-content">
           <div class="hero-text">
-            <h1>Movers in {{ state | titlecase }}</h1>
+            <h1>Movers in {{ stateFormat }}</h1>
             <p class="hero-subtitle">
               <strong
-                >Looking for reliable movers in {{ state | titlecase }}? Whether
+                >Looking for reliable movers in {{ stateFormat }}? Whether
                 you're planning a local move or a long-distance move, Household
                 Goods Moving And Storage is here to help.
               </strong>
@@ -23,11 +23,11 @@
                 >Accredited by the Better Business Bureau(BBB) with an A+ rating
                 and backed by 5-star reviews on Google</strong
               >, we've become a trusted choice for moving services in
-              {{ state | titlecase }}. When you choose Household Goods Moving
+              {{ stateFormat }}. When you choose Household Goods Moving
               And Storage, you're not just moving items — you're moving
               everything that makes your house a home. From start to finish, we
               coordinate every detail with care and professionalism. If you're
-              searching for moving companies in {{ state | titlecase }} —
+              searching for moving companies in {{ stateFormat }} —
               whether you're moving in, from, or to the state — we're the moving
               service that understands what matters most.
             </p>
@@ -50,9 +50,10 @@
       loading="lazy"
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDx5bz0q8NHI-dBbtx87yBUvLn7c94qts4&q=Household Goods Moving And Storage"
+      [src]="mapUrl | safeUrl"
     >
     </iframe>
+   
   </div>
   <div class="county-wrapper" *ngFor="let county of counties">
     <div class="container">

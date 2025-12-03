@@ -1,5 +1,5 @@
 <div class="faq-container">
-  <h2>Moving FAQs</h2>
+  <h2 *ngIf="selectedFaqs?.length > 0">Moving FAQs</h2>
 
   <div
     *ngFor="let faq of selectedFaqs; let i = index"
