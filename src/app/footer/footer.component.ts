@@ -34,9 +34,11 @@ export class FooterComponent {
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
+    const affId = localStorage.getItem('aff_id');
     let data = `yourName=${this.form.value.yourName}
     &yourEmail=${this.form.value.yourEmail}
-    &yourMessage=${this.form.value.yourMessage}`;
+    &yourMessage=${this.form.value.yourMessage}
+    &referralId=${affId ?? ''}`;
     let errorMessage: string = '';
 
     this.httpClient.post<any>(url, data, httpOptions).subscribe({

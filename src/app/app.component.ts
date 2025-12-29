@@ -1,7 +1,8 @@
-import { Component, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, Inject, PLATFORM_ID  } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser  } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd  } from '@angular/router';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,12 +17,16 @@ export class AppComponent {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: object,
     private httpClient: HttpClient,
     private router: Router
   ) {
+    
     // this.logActivity('init');
   }
-
+  ngOnInit() {
+ 
+  }
   closeSendQouteThankModal() {
     let modal = this.document.getElementById(
       'sendQouteThankModal'
@@ -34,29 +39,11 @@ export class AppComponent {
     ) as HTMLFormElement;
     modal.style.display = 'block';
     modal.classList.add('show');
-    //this.logActivity('order callback');
   }
   openMenuModal() {
     let modal = this.document.getElementById('menuModal') as HTMLFormElement;
     modal.style.display = 'block';
     modal.classList.add('show');
   }
-  logActivity(action) {
-    let url = 'https://formspree.io/f/mwkgagwo';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    };
-    let data = `url=${this.router.url}
-        &action=${action}`;
-
-    this.httpClient.post<any>(url, data, httpOptions).subscribe({
-      next: (data) => {
-        console.log('logged');
-      },
-      error: (error) => {},
-    });
-  }
+  
 }

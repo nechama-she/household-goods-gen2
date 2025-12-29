@@ -31,8 +31,12 @@ import { WhyUsComponent } from './why-us/why-us.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { DoNotSellComponent } from './do-not-sell/do-not-sell.component';
 import { DoNotSellCaComponent } from './do-not-sell-ca/do-not-sell-ca.component';
+import { affiliateCaptureGuard } from './guards/affiliate-capture.guard';
+import { affiliateRedirectGuard } from './guards/affiliate-redirect.guard';
+import { affiliateFromStoreGuard } from './guards/affiliate-from-store.guard';
+import { UrlMatchResult, UrlSegment } from '@angular/router';
 
-const routes: Routes = [
+const CHILD_ROUTES: Routes = [
   { path: '', component: QuoteComponent },
   { path: 'thank-you', component: QuoteComponent },
   { path: 'terms-of-use', component: TermsOfUseComponent },
@@ -164,6 +168,18 @@ const routes: Routes = [
   {
     path: '**',
     component: PageNotFoundComponent,
+  },
+];
+export function nonRefMatcher(segments: UrlSegment[]): UrlMatchResult | null {
+  if (segments.length && segments[0].path === 'ref') return null; // do not match /ref/*
+  return { consumed: [] }; // match everything else without consuming segments
+}
+const routes: Routes = [
+  { path: 'ref/:affId', canActivate: [affiliateCaptureGuard], children: CHILD_ROUTES },
+   {
+    path: '',
+    canActivateChild: [affiliateFromStoreGuard],
+    children: CHILD_ROUTES,
   },
 ];
 const routerOptions: ExtraOptions = {

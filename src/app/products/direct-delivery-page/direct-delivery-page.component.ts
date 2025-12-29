@@ -112,6 +112,7 @@ export class DirectDeliveryPageComponent {
     };
     if (this.faltRateFormForm.valid) {
       this.checkout = true;
+      const affId = localStorage.getItem('aff_id');
       let data = `firstNameInput=${this.faltRateFormForm.value.firstNameInput}
       &lastNameInput=${this.faltRateFormForm.value.lastNameInput}
       &phoneInput=${this.faltRateFormForm.value.phoneInput}
@@ -125,7 +126,8 @@ export class DirectDeliveryPageComponent {
       &moveDate=${
         (document.getElementById('moveDate') as HTMLInputElement).value
       }
-      &moveSize='26 ft truck'`;
+      &moveSize='26 ft truck'
+      &referralId=${affId ?? ''}`;
       let errorMessage: string = '';
 
       this.httpClient.post<any>(url, data, httpOptions).subscribe({
