@@ -90,10 +90,10 @@ export class QuoteComponent {
   }
   ngAfterViewInit() {
     this.addGoogleReviews();
-    this.addGoogleProfile();
+    /*this.addGoogleProfile();
     if (typeof document !== 'undefined') {
       this.seoService.setCanonicalURL();
-    }
+    }*/
   }
   addGoogleReviews() {
     this.addScript(
@@ -130,7 +130,7 @@ export class QuoteComponent {
       }),
     };
     console.log(this.leadFormHome.valid);
-
+    const affId = localStorage.getItem('aff_id');
     if (this.leadFormHome.valid) {
       let data = `movingFromInput=${this.leadFormHome.value.movingFromInput}
       &movingToInput=${this.leadFormHome.value.movingToInput}
@@ -138,7 +138,8 @@ export class QuoteComponent {
       &moveSize=${this.leadFormHome.value.moveSizeInput}
       &nameInput=${this.leadFormHome.value.nameInput}
       &emailInput=${this.leadFormHome.value.emailInput}
-      &phoneInput=${this.leadFormHome.value.phoneInput}`;
+      &phoneInput=${this.leadFormHome.value.phoneInput}
+      &referralId=${affId ?? ''}`;
       let errorMessage: string = '';
 
       this.httpClient.post<any>(url, data, httpOptions).subscribe({

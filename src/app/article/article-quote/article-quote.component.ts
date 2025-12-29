@@ -57,6 +57,7 @@ export class ArticleQuoteComponent {
       }),
     };
     if (this.leadForm.valid) {
+      const affId = localStorage.getItem('aff_id');
       let data = `movingFromInput=${this.leadForm.value.movingFromInput}
       &movingToInput=${this.leadForm.value.movingToInput}
       &moveDateInput=${this.leadForm.value.moveDateInput}
@@ -64,7 +65,9 @@ export class ArticleQuoteComponent {
       &nameInput=${this.leadForm.value.nameInput}
       &emailInput=${this.leadForm.value.emailInput}
       &phoneInput=${this.leadForm.value.phoneInput}
-      &urlSource=${this.urlSource}`;
+      &urlSource=${this.urlSource}
+      &referralId=${affId ?? ''}`;
+
       let errorMessage: string = '';
 
       this.httpClient.post<any>(url, data, httpOptions).subscribe({

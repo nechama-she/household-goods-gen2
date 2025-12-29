@@ -37,9 +37,11 @@ export class OrderCallbackFormComponent {
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
+    const affId = localStorage.getItem('aff_id');
     if (this.orderCallbackForm.valid) {
       let data = `nameInput=${this.orderCallbackForm.value.nameInput}
-      &phoneInput=${this.orderCallbackForm.value.phoneInput}`;
+      &phoneInput=${this.orderCallbackForm.value.phoneInput}
+      &referralId=${affId ?? ''}`;
       let errorMessage: string = '';
 
       this.httpClient.post<any>(url, data, httpOptions).subscribe({
