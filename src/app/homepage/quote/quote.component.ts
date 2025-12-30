@@ -54,21 +54,7 @@ export class QuoteComponent {
       modal.style.display = 'block';
       modal.classList.add('show');
     }
-    this.meta.updateTag({
-      name: 'og:image:secure',
-      content:
-        'https://www.household-goods-moving-and-storage.com/assets/images/dmv/dmv_movers_og_image.jpg',
-    });
-    this.meta.updateTag({
-      property: 'og:image:secure',
-      content:
-        'https://www.household-goods-moving-and-storage.com/assets/images/homepageFBad.png',
-    });
-    this.meta.updateTag({
-      property: 'og:image:url',
-      content:
-        'https://www.household-goods-moving-and-storage.com/assets/images/homepageFBad.png',
-    });
+   
     this.meta.updateTag({
       property: 'og:title',
       content: 'Household Goods Moving And Storage',
